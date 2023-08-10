@@ -883,7 +883,9 @@ h1,h2,h3,h4,div,p,span {
 .deal__product--item-name h3 {
   color: var(--text-desciption-color);
 }
-
+.deal__product--item-name h3:hover {
+  color: var(ma);
+}
 .special__offers--container {
   padding: 0px var(--container-padding);
 }
@@ -1031,7 +1033,7 @@ h1,h2,h3,h4,div,p,span {
 }
 .popular__aricles--item {
   display: flex;
-  width: 2300px !important;
+  margin-right: 10px;
 }
 .popular__aricles--item img {
   margin-right: 25px;
@@ -1039,7 +1041,8 @@ h1,h2,h3,h4,div,p,span {
 .popular__aricles--item .main {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: space-between;
+  margin-bottom: 20px;
 }
 .popular__aricle--item-name h3 {
   color: var(--text-desciption-color);
@@ -1065,6 +1068,7 @@ h1,h2,h3,h4,div,p,span {
 
 .type__content--items {
   display: flex;
+  align-items: center;
 }
 .type__content--items .item {
   width: calc(100% / 5);
