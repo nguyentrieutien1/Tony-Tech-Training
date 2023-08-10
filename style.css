@@ -131,7 +131,11 @@ body {
   display: flex;
   align-items: center;
 }
-.header__nav--bottom-left--phone i {
+.header__nav--bottom-left--phone .phone__text p:nth-child(1) {
+  color: var(--text-blur-color);
+  font-size: 16px;
+}
+ .header__nav--bottom-left--phone i {
   font-size: 25px;
   color: var(--main-color);
   margin-right: 10px;
@@ -149,7 +153,7 @@ body {
   align-items: center;
 }
 .header__nav--bottom-right i {
-  font-size: 30px;
+  font-size: 28px;
   color: var(--text-sub-color);
 }
 
@@ -226,7 +230,7 @@ body {
   width: max-content;
 }
 .header__nav--bottom-right--cart {
-  margin: 0 50px;
+  margin: 0 30px;
 }
 .header__nav--bottom-right .item {
   position: relative;
