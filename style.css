@@ -834,6 +834,7 @@ h1,h2,h3,h4,div,p,span {
     transform: translateX(-14.5%);
   }
 }
+
 @keyframes slideAnimation2 {
   0% {
     transform: translateX(0);
