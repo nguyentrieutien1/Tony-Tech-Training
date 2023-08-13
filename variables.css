@@ -1,0 +1,25 @@
+:root {
+     --font--size-sub: 14px;
+     --font-size-large: 24px;
+     --container-padding: 252px;
+     --section-padding: 60px;
+     --container-tablet--padding: 10px;
+     --primary-color: #ff0000;
+  --header-nav-top-color: #333;
+  --text-sub-color: #999;
+  --header-nav-border-color: #00000027;
+  --main-color: #5faf4b;
+  --white-color: #fff;
+  --text-desciption-color: #0062bd;
+  --start-color: #ccc;
+  --text-title: #000;
+  --body-color: #f8f8f8;
+  --main-text-color: #000000;
+  --text-blur-color: #666;
+  --text-boxdown-color: #666666;
+  --border-color: rgba(0, 0, 0, 0.052);
+  --header--text: #999;
+  --border--input: rgba(0, 0, 0, 0.071);
+  --text-header: #000000;
+  --header--text-cart: #1a1818;
+}

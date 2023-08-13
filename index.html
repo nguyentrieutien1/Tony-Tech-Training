@@ -15,6 +15,8 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="style.css" />
+	<link rel="stylesheet" href="./variables.css">
+	<link rel="stylesheet" href="./responsive.css">
 </head>
 
 <body>
@@ -24,14 +26,22 @@
 			<div class="header__nav">
 				<div class="header__nav--top">
 					<div class="header__nav--top-left">
-						<span>WISHLIST (0)</span> <span>|</span> <span>COMPARE (0)</span> <span>|</span>
+						<span class="account">
+							<span>Account</span>
+							<span><i class="fa-solid fa-chevron-down"></i></span>
+						</span>
+						
+						<div class="wish"><span>WISHLIST (0)</span> <span>|</span> <span>COMPARE (0)</span>
+							<span>|</span>
+						</div>
 					</div>
 					<div class="header__nav--top-right">
 						<div class="header__nav--top-right--item header__nav--top-right__language">
 							<div class="header__nav--top-right__language-text">
-								<span>LANGUAGE:</span>
-								<span style="color: white;">ENGLISH</span>
+								<span class="wish">LANGUAGE:</span>
+								<span style="color: white;">ENGLISH </span>
 								<i class="fa-solid fa-chevron-down"></i>
+								<span>|</span>
 							</div>
 							<div class="header__nav--top-right__language-sub">
 								<ul class="list-group">
@@ -63,9 +73,10 @@
 							</div>
 						</div>
 						<div class="header__nav--top-right--item header__nav--top-right__curr">
-							<span>| CURRENCY :</span>
+							<span class="wish"> CURRENCY :</span>
 							<span style="color: white;"> USD </span>
-							<i class="fa-solid fa-chevron-down"></i> |
+							<i class="fa-solid fa-chevron-down"></i>
+							<span>|</span>
 							<div class="header__nav--top-right__curr-sub">
 								<ul class="list-group">
 									<li class="list-group-item">EUR €</li>
@@ -87,6 +98,9 @@
 						<div class="header__nav--bottom-left--phone header__item">
 							<div class="phone__icon"><i class="fa-solid fa-phone"></i></div>
 							<div class="phone__text">
+								<div class="menu">
+									<i class="fa-solid fa-bars"></i>
+								</div>
 								<p>Helpline:</p>
 								<p>0(+084)012-345</p>
 							</div>
@@ -750,60 +764,102 @@
 						<p>Over 100,000 Auto and Truck Parts</p>
 					</div>
 					<div class="section__content--description-input--container">
-						<div class="section__content--description-input">
+						<!-- <div class="section__content--description-input">
 							<div class="section__content--description-input-1">
 								<div class="stt">1 </div>
 								<i class="fa-solid fa-chevron-down"></i>
 								<input type="text" value="| Nothing selected" class="input1 input">
-								<div class="section__content--option">
-									<ul>
-										<input type="text">
-										<li class="nav-item">
-											Alfa Romeo
-										</li>
-										<li class="nav-item">
-											BMW
-										</li>
-										<li class="nav-item">
-											Ford
-										</li>
-										<li class="nav-item">
-											Huyndai
-										</li>
-										<li class="nav-item">
-											Lexus
-										</li>
-										<li class="nav-item">
-											Volswagen
-										</li>
-									</ul>
 								</div>
+								</div>
+								<div class="section__content--description-input">
+									<div class="section__content--description-input-2">
+										<i class="fa-solid fa-chevron-down"></i>
+										<div class="stt">2 </div><input class="input" style="cursor: not-allowed;" type="text"
+											value="| Nothing selected" name="" id="">
+									</div>
+								</div>
+								<div class="section__content--description-input">
+									<div class="section__content--description-input-3">
+										<i class="fa-solid fa-chevron-down"></i>
+										<div class="stt">3 </div><input class="input" style="cursor: not-allowed;" type="text"
+											value="| Nothing selected" name="" id="">
+									</div>
+								</div>
+								<div class="section__content--description-input">
+									<div class="section__content--description-input-4">
+										<i class="fa-solid fa-chevron-down"></i>
+										<div class="stt">4 </div>
+										<input class="input" style="cursor: not-allowed;" type="text" value="| Nothing selected" name="" id="">
+									</div>
+								</div>
+								<div class="section__content--description-input--search">
+									<i class="fa-solid fa-magnifying-glass"></i>
+								</div> -->
+								
+								<div class="btn__gr">
+									<div class="btn__item">
+										<button class="first section__content--description-input-1">
+											<div class="line"><span>1</span>
+												<span class="dive">|</span>
+												<span class="nothing">Nothing selected</span>
+											</div>
+								
+											<span><i class="fa-solid fa-chevron-down"></i></span>
+									<div class="section__content--option">
+										<ul>
+											<input type="text">
+											<li class="nav-item">
+												Alfa Romeo
+											</li>
+											<li class="nav-item">
+												BMW
+											</li>
+											<li class="nav-item">
+												Ford
+											</li>
+											<li class="nav-item">
+												Huyndai
+											</li>
+											<li class="nav-item">
+												Lexus
+											</li>
+											<li class="nav-item">
+												Volswagen
+											</li>
+										</ul>
+									</div>
+								</button>
 							</div>
-						</div>
-						<div class="section__content--description-input">
-							<div class="section__content--description-input-2">
-								<i class="fa-solid fa-chevron-down"></i>
-								<div class="stt">2 </div><input class="input" style="cursor: not-allowed;" type="text"
-									value="| Nothing selected" name="" id="">
+							<div class="btn__item">
+								<button>
+									<div class="line"><span>1</span>
+										<span class="dive">|</span>
+										<span class="nothing">Nothing selected</span>
+									</div>
+									<span><i class="fa-solid fa-chevron-down"></i></span>
+									</button>
 							</div>
-						</div>
-						<div class="section__content--description-input">
-							<div class="section__content--description-input-3">
-								<i class="fa-solid fa-chevron-down"></i>
-								<div class="stt">3 </div><input class="input" style="cursor: not-allowed;" type="text"
-									value="| Nothing selected" name="" id="">
+							<div class="btn__item">
+								<button>
+									<div class="line"><span>1</span>
+										<span class="dive">|</span>
+										<span class="nothing">Nothing selected</span>
+									</div>
+									<span><i class="fa-solid fa-chevron-down"></i></span>
+									</button>
 							</div>
-						</div>
-						<div class="section__content--description-input">
-							<div class="section__content--description-input-4">
-								<i class="fa-solid fa-chevron-down"></i>
-								<div class="stt">4 </div>
-								<input class="input" style="cursor: not-allowed;" type="text" value="| Nothing selected"
-									name="" id="">
+							<div class="btn__item">
+								<button>
+									<div class="line"><span>1</span>
+										<span class="dive">|</span>
+										<span class="nothing">Nothing selected</span>
+									</div>
+									<span><i class="fa-solid fa-chevron-down"></i></span>
+									</button>
 							</div>
-						</div>
-						<div class="section__content--description-input--search">
-							<i class="fa-solid fa-magnifying-glass"></i>
+							<button class="last">
+								<i class="fa-solid fa-magnifying-glass"></i>
+							</button>
 						</div>
 					</div>
 				</div>
@@ -1445,7 +1501,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="deal__product--item">
+						<div class="deal__product--item toptreding__product--item">
 							<div class="deal__product--item-img">
 								<img src="https://movic.b-cdn.net/at_edmart/26-home_default/hummingbird-printed-t-shirt.jpg"
 									class="img-1" alt="Image">
@@ -1481,7 +1537,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="deal__product--item">
+						<div class="deal__product--item toptreding__product--item">
 							<div class="deal__product--item-img">
 								<img src="https://movic.b-cdn.net/at_edmart/26-home_default/hummingbird-printed-t-shirt.jpg"
 									class="img-1" alt="Image">
@@ -1517,7 +1573,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="deal__product--item">
+						<div class="deal__product--item toptreding__product--item">
 							<div class="deal__product--item-img">
 								<img src="https://movic.b-cdn.net/at_edmart/26-home_default/hummingbird-printed-t-shirt.jpg"
 									class="img-1" alt="Image">
@@ -1943,7 +1999,8 @@
 						<div class="testimonial__item">
 							<i class="fa-solid fa-paintbrush"></i>
 							<div class="testimonial__item--description">
-								Perfect fit. Easy install. Took about 30 minutes with one person. Cost was about half
+								Perfect fit. Easy install. Took about 30 minutes with one person. Cost was about
+								half
 								the price of local!
 							</div>
 							<div class="testimonial__item---info">
@@ -1960,7 +2017,8 @@
 						<div class="testimonial__item">
 							<i class="fa-solid fa-paintbrush"></i>
 							<div class="testimonial__item--description">
-								Perfect fit. Easy install. Took about 30 minutes with one person. Cost was about half
+								Perfect fit. Easy install. Took about 30 minutes with one person. Cost was about
+								half
 								the price of local!
 							</div>
 							<div class="testimonial__item---info">
@@ -1977,7 +2035,8 @@
 						<div class="testimonial__item">
 							<i class="fa-solid fa-paintbrush"></i>
 							<div class="testimonial__item--description">
-								Perfect fit. Easy install. Took about 30 minutes with one person. Cost was about half
+								Perfect fit. Easy install. Took about 30 minutes with one person. Cost was about
+								half
 								the price of local!
 							</div>
 							<div class="testimonial__item---info">
@@ -2021,7 +2080,8 @@
 									<div>His Lose</div>
 								</div>
 								<div class="popular__aricle--item-description">
-									<span> Mi vitae magnis Fusce laoreet nibh felis porttitor laoreet Vestibulum
+									<span> Mi vitae magnis Fusce laoreet nibh felis porttitor laoreet
+										Vestibulum
 										faucibus. At Nulla
 										...</span>
 								</div>
@@ -2048,7 +2108,8 @@
 									<div>His Lose</div>
 								</div>
 								<div class="popular__aricle--item-description">
-									<span> Mi vitae magnis Fusce laoreet nibh felis porttitor laoreet Vestibulum
+									<span> Mi vitae magnis Fusce laoreet nibh felis porttitor laoreet
+										Vestibulum
 										faucibus. At Nulla
 										...</span>
 								</div>
@@ -2073,7 +2134,8 @@
 									<div>His Lose</div>
 								</div>
 								<div class="popular__aricle--item-description">
-									<span> Mi vitae magnis Fusce laoreet nibh felis porttitor laoreet Vestibulum
+									<span> Mi vitae magnis Fusce laoreet nibh felis porttitor laoreet
+										Vestibulum
 										faucibus. At Nulla
 										...</span>
 								</div>
@@ -2098,7 +2160,8 @@
 									<div>His Lose</div>
 								</div>
 								<div class="popular__aricle--item-description">
-									<span> Mi vitae magnis Fusce laoreet nibh felis porttitor laoreet Vestibulum
+									<span> Mi vitae magnis Fusce laoreet nibh felis porttitor laoreet
+										Vestibulum
 										faucibus. At Nulla
 										...</span>
 								</div>
@@ -2123,7 +2186,8 @@
 									<div>His Lose</div>
 								</div>
 								<div class="popular__aricle--item-description">
-									<span> Mi vitae magnis Fusce laoreet nibh felis porttitor laoreet Vestibulum
+									<span> Mi vitae magnis Fusce laoreet nibh felis porttitor laoreet
+										Vestibulum
 										faucibus. At Nulla
 										...</span>
 								</div>
@@ -2148,7 +2212,8 @@
 									<div>His Lose</div>
 								</div>
 								<div class="popular__aricle--item-description">
-									<span> Mi vitae magnis Fusce laoreet nibh felis porttitor laoreet Vestibulum
+									<span> Mi vitae magnis Fusce laoreet nibh felis porttitor laoreet
+										Vestibulum
 										faucibus. At Nulla
 										...</span>
 								</div>
@@ -2248,8 +2313,10 @@
 					</div>
 					<div class="footer__center">
 						<div class="footer__center-des footer__center--col">
-							<p>A major key, never panic. Don’t panic, when it gets crazy and rough, don’t panic, stay
-								calm. They will try to close the door on you, just open it. Another one. How’s business?
+							<p>A major key, never panic. Don’t panic, when it gets crazy and rough, don’t panic,
+								stay
+								calm. They will try to close the door on you, just open it. Another one. How’s
+								business?
 								Boomin. They don’t want us to win. Stay focused. Special cloth alert.</p>
 							<div class="footer__center-des--icons">
 								<i class="fa-brands fa-facebook"></i><i class="fa-brands fa-twitter"></i><i
