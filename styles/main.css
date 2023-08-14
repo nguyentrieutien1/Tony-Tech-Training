@@ -45,12 +45,13 @@ body {
 .header__nav--top-right__language-sub {
   position: absolute;
   top: 38px;
-  display: none;
-  width: 110%;
+  right: 0;
+  width: 120%;
   border: 0.3px solid var(--header-nav-border-color);
-  border-width: 0.4px;
   z-index: 1;
   background-color: var(--white-color);
+  transition: .5s ease;
+  opacity: 0;
 }
 
 .header__nav--top-right__language-text span{
@@ -58,8 +59,9 @@ body {
 }
 .header__nav--top-right__language-text:hover
   ~ .header__nav--top-right__language-sub {
-  display: block;
   z-index: 100;
+  transform: translateY(-1px);
+  opacity: 1;
 }
 
 .header__nav--top-right--item {
@@ -83,13 +85,15 @@ body {
 .header__nav--top-right__curr-sub {
   position: absolute;
   top: 60px;
-  width: 10%;
-  display: none;
+  width: 9%;
   right: 340px;
-  border: 0.3px solid var(--header-nav-border-color);
+  border: 0.3px solid var(--border-color);
   border-width: 0.4px;
   z-index: 2;
+  opacity: 0;
+  transition: .5s ease;
   background-color: var(--white-color);
+  font-size: 14px;
 }
 .header__nav--top-right__curr-sub li {
   display: flex;
@@ -98,8 +102,9 @@ body {
   border: 0.3px solid var(--header-nav-border-color);
 }
 .header__nav--top-right__curr:hover > .header__nav--top-right__curr-sub {
-  display: block;
   z-index: 100;
+  opacity: 1;
+  transform: translateY(-10px);
 }
 .header__nav--top-right__language-sub li img {
   margin-right: 10px;
@@ -410,6 +415,7 @@ body {
   cursor: pointer;
   transition: 0.4s ease;
 }
+
 .header__top--menu-item .text:hover {
   color: var(--main-color);
 }
@@ -841,7 +847,7 @@ body {
   padding-right: 20px;
 }
 .deal__container .deal__time div {
-  margin-right: 5px;
+  margin-right: 8px;
   line-height: 40px;
   text-align: center;
   color: var(--white-color);
@@ -884,12 +890,7 @@ body {
   cursor: pointer;
   overflow: hidden;
   background-color: var(--white-color);
-  height: 400px;
-}
-.deal__product--item img {
-  width: 200px;
-  height: 200px;
-  object-fit: contain;
+  height: 430px;
 }
 .deal__product--item h4 {
   margin: 0 0 20px 0;
@@ -943,8 +944,15 @@ body {
 .deal__product--item:hover  .img-1 {
   display: none;
 }
+.deal__product--item-img{
+  position: absolute;
+  left: 0;
+  top: 0px;
+  width: 100%;
+}
 .deal__product--item-img img {
-  object-fit: cover;
+  width: 100%;  object-fit: cover;
+  height: auto;
 }
 
 .deal__product--item .deal__product--item-list--icon i {
@@ -1517,7 +1525,6 @@ body {
   display: flex;
   flex-direction: column;
   text-align: center;
-  color: #564e4e;
   transition: .5s ease;
 }
 .fixed__item-point:hover {
@@ -1528,6 +1535,7 @@ body {
 .fixed__item-point i {
   margin-top: 10px;
   margin: 15px 0;
+  font-size: 20px;
 }
 .fixed__item-point p {
     font-weight: 300;
@@ -1589,5 +1597,5 @@ border-top-left-radius: 30px;
   border-radius: 0 50px 50px 0;
 }
 .btn__item .dive {
-  margin: 0 2px;
+  margin: 0 4px;
 }
