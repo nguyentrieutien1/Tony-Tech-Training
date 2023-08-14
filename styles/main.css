@@ -745,6 +745,7 @@ body {
   transition: 0.5s ease;
   background-color: white;
   z-index: 999;
+  visibility: hidden;
 }
 .section__content--description-input-1 .section__content--option input {
   width: 100%;
@@ -761,6 +762,7 @@ body {
 .section__content--description-input-1:hover .section__content--option {
   opacity: 1;
   transform: translateY(5px);
+  visibility: visible;
 }
 .section__content--option li {
   border-top: 1px solid #d9d9d9;
@@ -868,7 +870,24 @@ body {
 }
 }
 /* /*  iPads, Tablets */
-@media (max-width: 768px) { }
+@media (max-width: 768px) { 
+  .section__content--description h4 {
+    font-size: 20px;
+  }
+  .section__content--description {
+    padding-top: 0;
+}
+  .section__content--description {
+    padding-top: 53px;
+}
+  .section__container {
+    background-size: 400%;
+}
+.section__content {
+  padding-bottom: 50px;
+}
+ 
+}
 
 .feature___container--item-image {
   position: relative;
