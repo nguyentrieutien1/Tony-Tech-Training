@@ -21,17 +21,25 @@
 </head>
 
 <body>
-	<div class="container">
-		<!-- HEADER -->
-		<header id="header">
+	<!-- HEADER -->
+	<header>
+		<div class="container">
 			<div class="header__nav">
-				<div class="header__nav--top">
+				<div class="header__nav--top padding__content">
 					<div class="header__nav--top-left">
 						<span class="account">
-							<span>Account</span>
+							<i style="font-size: 15px;" class="fa-solid fa-user"></i>
+							<span class="account___text">Account</span>
 							<span><i class="fa-solid fa-chevron-down"></i></span>
+							<div class="account__option">
+								<div class="account__option--item">MY ACCOUNT</div>
+								<div class="account__option--item">WISHLIST (0)</div>
+								<div class="account__option--item">COMPARE (0)</div>
+								<div class="account__option--item">CHECKOUT</div>
+							</div>
+
 						</span>
-						
+
 						<div class="wish"><span>WISHLIST (0)</span> <span>|</span> <span>COMPARE (0)</span>
 							<span>|</span>
 						</div>
@@ -42,7 +50,7 @@
 								<span class="wish">LANGUAGE:</span>
 								<span style="color: white;">ENGLISH </span>
 								<i class="fa-solid fa-chevron-down"></i>
-								<span>|</span>
+								<span class="">|</span>
 							</div>
 							<div class="header__nav--top-right__language-sub">
 								<ul class="list-group">
@@ -77,7 +85,7 @@
 							<span class="wish"> CURRENCY :</span>
 							<span style="color: white;"> USD </span>
 							<i class="fa-solid fa-chevron-down"></i>
-							<span>|</span>
+							<span class="last__dive">|</span>
 							<div class="header__nav--top-right__curr-sub">
 								<ul class="list-group">
 									<li class="list-group-item">EUR €</li>
@@ -91,7 +99,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="header__nav--bottom">
+				<div class="header__nav--bottom padding__content">
 					<div class="header__nav--bottom-left">
 						<div class="header__nav--bottom-left--logo header__item">
 							<img src="./images/logo.jpg" alt="" />
@@ -108,7 +116,7 @@
 						</div>
 					</div>
 					<div class="header__nav--bottom-center header__item">
-						<div class="header__nav--bottom-center--input ">
+						<div class="header__nav--bottom-center--input">
 							<input type="text" class="form-control" required="required"
 								placeholder="Contact author to get 10% off" />
 						</div>
@@ -168,597 +176,630 @@
 						</div>
 					</div>
 				</div>
+				<div class="header__nav--bottom-2 padding__content">
+					<div class="header__nav--bottom-left">
+						<div class="menu">
+							<i class="fa-solid fa-bars"></i>
+						</div>
+						<div class="bt-l--header">
+
+							<div class="header__nav--bottom-left--logo header__item">
+								<img src="./images/logo.jpg" alt="" />
+							</div>
+						</div>
+
+						<div class="header__nav--bottom-right">
+							<div class="item header__nav--bottom-right--cart header__item">
+								<div class="icon"><i class="fa-solid fa-bag-shopping"></i></div>
+								<div class="number">0</div>
+							</div>
+
+						</div>
+					</div>
+					<div class="header__nav--bottom-center header__item">
+						<div class="header__nav--bottom-center--input">
+							<input type="text" class="form-control" required="required"
+								placeholder="Contact author to get 10% off" />
+							<div class="header__nav--bottom-center--icon">
+								<i class="fa-solid fa-magnifying-glass"></i>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
-			<div class="header__top">
-				<ul class="header__top--menu">
-					<li class="header__top--menu-item home">
-						<div class="header__top--menu-item--house">
-							<i class="fa-solid fa-house"></i>
-						</div>
-						<div class="header__top--menu-item--text">
-							Home
-						</div>
-						<div class="header__top--menu-item--down">
-							<i style="font-size: 12px;" class="fa-solid fa-chevron-down"></i>
-						</div>
-						<ul class="home__sub">
-							<li>Home 01</li>
-							<li>Home 02</li>
-							<li>Home 03</li>
-						</ul>
-					</li>
-					<div class="device"></div>
-					<li class="header__top--menu-item interior">
-						<div class="text">
-							Interior
-						</div>
-						<div class="interior__sub">
-							<div class="interior__sub--content">
-								<div class="interior__sub--content-inner">
-									<img src="https://movic.b-cdn.net/at_edmart/c/4-small_default/body-parts.jpg"
-										alt="">
-									<span>Body Part</span>
-								</div>
-								<div class="interior__sub--content-inner">
-									<img src="https://movic.b-cdn.net/at_edmart/c/5-small_default/repair-parts.jpg"
-										alt="">
-									<span>Repair Parts</span>
-								</div>
-								<div class="interior__sub--content-inner">
-									<img src="https://movic.b-cdn.net/at_edmart/c/26-small_default/seat-covers.jpg"
-										alt="">
-									<span>Seat Covers</span>
-								</div>
-								<div class="interior__sub--content-inner">
-									<img src="https://movic.b-cdn.net/at_edmart/c/27-small_default/floor-mats.jpg"
-										alt="">
-									<span>Floor Mats</span>
-								</div>
-								<div class="interior__sub--content-inner">
-									<img src="https://movic.b-cdn.net/at_edmart/c/28-small_default/dash-kit.jpg" alt="">
-									<span>Dash Kit</span>
-								</div>
-								<div class="interior__sub--content-inner">
-									<img src="https://movic.b-cdn.net/at_edmart/c/30-small_default/sun-shades.jpg"
-										alt="">
-									<span>Sun Shades</span>
-								</div>
-								<div class="interior__sub--content-inner">
-									<img src="https://movic.b-cdn.net/at_edmart/c/31-small_default/custom-gauges.jpg"
-										alt="">
-									<span>Custom Gausge</span>
-								</div>
-								<div class="interior__sub--content-inner">
-									<img src="https://movic.b-cdn.net/at_edmart/c/32-small_default/dash-covers.jpg"
-										alt="">
-									<span>Dash Cover</span>
-								</div>
-								<div class="interior__sub--content-inner">
-									<img src="https://movic.b-cdn.net/at_edmart/c/4-small_default/body-parts.jpg"
-										alt="">
-									<span>Body Part</span>
-								</div>
-								<div class="interior__sub--content-inner">
-									<img src="https://movic.b-cdn.net/at_edmart/c/4-small_default/body-parts.jpg"
-										alt="">
-									<span>Body Part</span>
-								</div>
-								<div class="interior__sub--content-inner">
-									<img src="https://movic.b-cdn.net/at_edmart/c/4-small_default/body-parts.jpg"
-										alt="">
-									<span>Body Part</span>
-								</div>
+		</div>
+		<div class="header__top padding__content">
+			<ul class="header__top--menu">
+				<li class="header__top--menu-item home">
+					<div class="header__top--menu-item--house">
+						<i class="fa-solid fa-house"></i>
+					</div>
+					<div class="header__top--menu-item--text">
+						Home
+					</div>
+					<div class="header__top--menu-item--down">
+						<i style="font-size: 12px;" class="fa-solid fa-chevron-down"></i>
+					</div>
+					<ul class="home__sub">
+						<li>Home 01</li>
+						<li>Home 02</li>
+						<li>Home 03</li>
+					</ul>
+				</li>
+				<div class="device"></div>
+				<li class="header__top--menu-item interior">
+					<div class="text">
+						Interior
+					</div>
+					<div class="interior__sub">
+						<div class="interior__sub--content">
+							<div class="interior__sub--content-inner">
+								<img src="https://movic.b-cdn.net/at_edmart/c/4-small_default/body-parts.jpg"
+									alt="">
+								<span>Body Part</span>
+							</div>
+							<div class="interior__sub--content-inner">
+								<img src="https://movic.b-cdn.net/at_edmart/c/5-small_default/repair-parts.jpg"
+									alt="">
+								<span>Repair Parts</span>
+							</div>
+							<div class="interior__sub--content-inner">
+								<img src="https://movic.b-cdn.net/at_edmart/c/26-small_default/seat-covers.jpg"
+									alt="">
+								<span>Seat Covers</span>
+							</div>
+							<div class="interior__sub--content-inner">
+								<img src="https://movic.b-cdn.net/at_edmart/c/27-small_default/floor-mats.jpg"
+									alt="">
+								<span>Floor Mats</span>
+							</div>
+							<div class="interior__sub--content-inner">
+								<img src="https://movic.b-cdn.net/at_edmart/c/28-small_default/dash-kit.jpg"
+									alt="">
+								<span>Dash Kit</span>
+							</div>
+							<div class="interior__sub--content-inner">
+								<img src="https://movic.b-cdn.net/at_edmart/c/30-small_default/sun-shades.jpg"
+									alt="">
+								<span>Sun Shades</span>
+							</div>
+							<div class="interior__sub--content-inner">
+								<img src="https://movic.b-cdn.net/at_edmart/c/31-small_default/custom-gauges.jpg"
+									alt="">
+								<span>Custom Gausge</span>
+							</div>
+							<div class="interior__sub--content-inner">
+								<img src="https://movic.b-cdn.net/at_edmart/c/32-small_default/dash-covers.jpg"
+									alt="">
+								<span>Dash Cover</span>
+							</div>
+							<div class="interior__sub--content-inner">
+								<img src="https://movic.b-cdn.net/at_edmart/c/4-small_default/body-parts.jpg"
+									alt="">
+								<span>Body Part</span>
+							</div>
+							<div class="interior__sub--content-inner">
+								<img src="https://movic.b-cdn.net/at_edmart/c/4-small_default/body-parts.jpg"
+									alt="">
+								<span>Body Part</span>
+							</div>
+							<div class="interior__sub--content-inner">
+								<img src="https://movic.b-cdn.net/at_edmart/c/4-small_default/body-parts.jpg"
+									alt="">
+								<span>Body Part</span>
 							</div>
 						</div>
-					</li>
-					<div class="device"></div>
-					<li class="header__top--menu-item exterior">
-						<div class="text">
-							Exterior
-						</div>
-						<div class="exterior__sub">
-							<div class="exterior__sub--content">
-								<div class="exterior__sub--content-inner">
-									<img src="https://movic.b-cdn.net/at_edmart/c/4-small_default/body-parts.jpg"
-										alt="">
-									<span>Body Part</span>
-								</div>
-								<div class="exterior__sub--content-inner">
-									<img src="https://movic.b-cdn.net/at_edmart/c/4-small_default/body-parts.jpg"
-										alt="">
-									<span>Body Part</span>
-								</div>
-								<div class="exterior__sub--content-inner">
-									<img src="https://movic.b-cdn.net/at_edmart/c/4-small_default/body-parts.jpg"
-										alt="">
-									<span>Body Part</span>
-								</div>
-								<div class="exterior__sub--content-inner">
-									<img src="https://movic.b-cdn.net/at_edmart/c/4-small_default/body-parts.jpg"
-										alt="">
-									<span>Body Part</span>
-								</div>
-								<div class="exterior__sub--content-inner">
-									<img src="https://movic.b-cdn.net/at_edmart/c/4-small_default/body-parts.jpg"
-										alt="">
-									<span>Body Part</span>
-								</div>
-								<div class="exterior__sub--content-inner">
-									<img src="https://movic.b-cdn.net/at_edmart/c/4-small_default/body-parts.jpg"
-										alt="">
-									<span>Body Part</span>
-								</div>
-								<div class="exterior__sub--content-inner">
-									<img src="https://movic.b-cdn.net/at_edmart/c/4-small_default/body-parts.jpg"
-										alt="">
-									<span>Body Part</span>
-								</div>
-								<div class="exterior__sub--content-inner">
-									<img src="https://movic.b-cdn.net/at_edmart/c/4-small_default/body-parts.jpg"
-										alt="">
-									<span>Body Part</span>
-								</div>
-								<div class="exterior__sub--content-inner">
-									<img src="https://movic.b-cdn.net/at_edmart/c/4-small_default/body-parts.jpg"
-										alt="">
-									<span>Body Part</span>
-								</div>
-								<div class="exterior__sub--content-inner">
-									<img src="https://movic.b-cdn.net/at_edmart/c/4-small_default/body-parts.jpg"
-										alt="">
-									<span>Body Part</span>
-								</div>
-								<div class="exterior__sub--content-inner">
-									<img src="https://movic.b-cdn.net/at_edmart/c/4-small_default/body-parts.jpg"
-										alt="">
-									<span>Body Part</span>
-								</div>
-								<div class="exterior__sub--content-inner">
-									<img src="https://movic.b-cdn.net/at_edmart/c/4-small_default/body-parts.jpg"
-										alt="">
-									<span>Body Part</span>
-								</div>
-								<div class="exterior__sub--content-inner">
-									<img src="https://movic.b-cdn.net/at_edmart/c/4-small_default/body-parts.jpg"
-										alt="">
-									<span>Body Part</span>
-								</div>
-								<div class="exterior__sub--content-inner">
-									<img src="https://movic.b-cdn.net/at_edmart/c/4-small_default/body-parts.jpg"
-										alt="">
-									<span>Body Part</span>
-								</div>
-								<div class="exterior__sub--content-inner">
-									<img src="https://movic.b-cdn.net/at_edmart/c/4-small_default/body-parts.jpg"
-										alt="">
-									<span>Body Part</span>
-								</div>
+					</div>
+				</li>
+				<div class="device"></div>
+				<li class="header__top--menu-item exterior">
+					<div class="text">
+						Exterior
+					</div>
+					<div class="exterior__sub">
+						<div class="exterior__sub--content">
+							<div class="exterior__sub--content-inner">
+								<img src="https://movic.b-cdn.net/at_edmart/c/4-small_default/body-parts.jpg"
+									alt="">
+								<span>Body Part</span>
+							</div>
+							<div class="exterior__sub--content-inner">
+								<img src="https://movic.b-cdn.net/at_edmart/c/4-small_default/body-parts.jpg"
+									alt="">
+								<span>Body Part</span>
+							</div>
+							<div class="exterior__sub--content-inner">
+								<img src="https://movic.b-cdn.net/at_edmart/c/4-small_default/body-parts.jpg"
+									alt="">
+								<span>Body Part</span>
+							</div>
+							<div class="exterior__sub--content-inner">
+								<img src="https://movic.b-cdn.net/at_edmart/c/4-small_default/body-parts.jpg"
+									alt="">
+								<span>Body Part</span>
+							</div>
+							<div class="exterior__sub--content-inner">
+								<img src="https://movic.b-cdn.net/at_edmart/c/4-small_default/body-parts.jpg"
+									alt="">
+								<span>Body Part</span>
+							</div>
+							<div class="exterior__sub--content-inner">
+								<img src="https://movic.b-cdn.net/at_edmart/c/4-small_default/body-parts.jpg"
+									alt="">
+								<span>Body Part</span>
+							</div>
+							<div class="exterior__sub--content-inner">
+								<img src="https://movic.b-cdn.net/at_edmart/c/4-small_default/body-parts.jpg"
+									alt="">
+								<span>Body Part</span>
+							</div>
+							<div class="exterior__sub--content-inner">
+								<img src="https://movic.b-cdn.net/at_edmart/c/4-small_default/body-parts.jpg"
+									alt="">
+								<span>Body Part</span>
+							</div>
+							<div class="exterior__sub--content-inner">
+								<img src="https://movic.b-cdn.net/at_edmart/c/4-small_default/body-parts.jpg"
+									alt="">
+								<span>Body Part</span>
+							</div>
+							<div class="exterior__sub--content-inner">
+								<img src="https://movic.b-cdn.net/at_edmart/c/4-small_default/body-parts.jpg"
+									alt="">
+								<span>Body Part</span>
+							</div>
+							<div class="exterior__sub--content-inner">
+								<img src="https://movic.b-cdn.net/at_edmart/c/4-small_default/body-parts.jpg"
+									alt="">
+								<span>Body Part</span>
+							</div>
+							<div class="exterior__sub--content-inner">
+								<img src="https://movic.b-cdn.net/at_edmart/c/4-small_default/body-parts.jpg"
+									alt="">
+								<span>Body Part</span>
+							</div>
+							<div class="exterior__sub--content-inner">
+								<img src="https://movic.b-cdn.net/at_edmart/c/4-small_default/body-parts.jpg"
+									alt="">
+								<span>Body Part</span>
+							</div>
+							<div class="exterior__sub--content-inner">
+								<img src="https://movic.b-cdn.net/at_edmart/c/4-small_default/body-parts.jpg"
+									alt="">
+								<span>Body Part</span>
+							</div>
+							<div class="exterior__sub--content-inner">
+								<img src="https://movic.b-cdn.net/at_edmart/c/4-small_default/body-parts.jpg"
+									alt="">
+								<span>Body Part</span>
 							</div>
 						</div>
-					</li>
-					<div class="device"></div>
-					<li class="header__top--menu-item performance">
-						<div class="text">
-							Performance
-						</div>
-						<div class="performance__sub">
-							<div class="performance__sub--content">
-								<div class="performance__sub--content-inner">
-									<img src="https://movic.b-cdn.net/at_edmart/c/4-small_default/body-parts.jpg"
-										alt="">
-									<span>Body Part</span>
-								</div>
-								<div class="performance__sub--content-inner">
-									<img src="https://movic.b-cdn.net/at_edmart/c/4-small_default/body-parts.jpg"
-										alt="">
-									<span>Body Part</span>
-								</div>
-								<div class="performance__sub--content-inner">
-									<img src="https://movic.b-cdn.net/at_edmart/c/4-small_default/body-parts.jpg"
-										alt="">
-									<span>Body Part</span>
-								</div>
-								<div class="performance__sub--content-inner">
-									<img src="https://movic.b-cdn.net/at_edmart/c/4-small_default/body-parts.jpg"
-										alt="">
-									<span>Body Part</span>
-								</div>
-								<div class="performance__sub--content-inner">
-									<img src="https://movic.b-cdn.net/at_edmart/c/4-small_default/body-parts.jpg"
-										alt="">
-									<span>Body Part</span>
-								</div>
-								<div class="performance__sub--content-inner">
-									<img src="https://movic.b-cdn.net/at_edmart/c/4-small_default/body-parts.jpg"
-										alt="">
-									<span>Body Part</span>
-								</div>
-								<div class="performance__sub--content-inner">
-									<img src="https://movic.b-cdn.net/at_edmart/c/4-small_default/body-parts.jpg"
-										alt="">
-									<span>Body Part</span>
-								</div>
-								<div class="performance__sub--content-inner">
-									<img src="https://movic.b-cdn.net/at_edmart/c/4-small_default/body-parts.jpg"
-										alt="">
-									<span>Body Part</span>
-								</div>
+					</div>
+				</li>
+				<div class="device"></div>
+				<li class="header__top--menu-item performance">
+					<div class="text">
+						Performance
+					</div>
+					<div class="performance__sub">
+						<div class="performance__sub--content">
+							<div class="performance__sub--content-inner">
+								<img src="https://movic.b-cdn.net/at_edmart/c/4-small_default/body-parts.jpg"
+									alt="">
+								<span>Body Part</span>
+							</div>
+							<div class="performance__sub--content-inner">
+								<img src="https://movic.b-cdn.net/at_edmart/c/4-small_default/body-parts.jpg"
+									alt="">
+								<span>Body Part</span>
+							</div>
+							<div class="performance__sub--content-inner">
+								<img src="https://movic.b-cdn.net/at_edmart/c/4-small_default/body-parts.jpg"
+									alt="">
+								<span>Body Part</span>
+							</div>
+							<div class="performance__sub--content-inner">
+								<img src="https://movic.b-cdn.net/at_edmart/c/4-small_default/body-parts.jpg"
+									alt="">
+								<span>Body Part</span>
+							</div>
+							<div class="performance__sub--content-inner">
+								<img src="https://movic.b-cdn.net/at_edmart/c/4-small_default/body-parts.jpg"
+									alt="">
+								<span>Body Part</span>
+							</div>
+							<div class="performance__sub--content-inner">
+								<img src="https://movic.b-cdn.net/at_edmart/c/4-small_default/body-parts.jpg"
+									alt="">
+								<span>Body Part</span>
+							</div>
+							<div class="performance__sub--content-inner">
+								<img src="https://movic.b-cdn.net/at_edmart/c/4-small_default/body-parts.jpg"
+									alt="">
+								<span>Body Part</span>
+							</div>
+							<div class="performance__sub--content-inner">
+								<img src="https://movic.b-cdn.net/at_edmart/c/4-small_default/body-parts.jpg"
+									alt="">
+								<span>Body Part</span>
 							</div>
 						</div>
-					</li>
-					<div class="device"></div>
-					<li class="header__top--menu-item lighting">
-						<div class="text">Lighting</div>
-						<div class="lighting__sub">
-							<div class="lighting__sub--content">
-								<div class="lighting__sub--content-inner">
+					</div>
+				</li>
+				<div class="device"></div>
+				<li class="header__top--menu-item lighting">
+					<div class="text">Lighting</div>
+					<div class="lighting__sub">
+						<div class="lighting__sub--content">
+							<div class="lighting__sub--content-inner">
+								<span>Interior</span>
+								<p>Interior</p>
+								<p>Body Part</p>
+								<p>Repair Part</p>
+								<p>Seat cover</p>
+								<p>Floor Mats</p>
+								<p>Dash Kit</p>
+							</div>
+							<div class="lighting__sub--content-inner">
+								<span>Interior</span>
+								<p>Interior</p>
+								<p>Body Part</p>
+								<p>Repair Part</p>
+								<p>Seat cover</p>
+								<p>Floor Mats</p>
+								<p>Dash Kit</p>
+							</div>
+							<div class="lighting__sub--content-inner">
+								<span>Interior</span>
+								<p>Interior</p>
+								<p>Body Part</p>
+								<p>Repair Part</p>
+								<p>Seat cover</p>
+								<p>Floor Mats</p>
+								<p>Dash Kit</p>
+							</div>
+							<div class="lighting__sub--content-inner">
+								<span>Interior</span>
+								<p>Interior</p>
+								<p>Body Part</p>
+								<p>Repair Part</p>
+								<p>Seat cover</p>
+								<p>Floor Mats</p>
+								<p>Dash Kit</p>
+							</div>
+						</div>
+					</div>
+				</li>
+				<div class="device"></div>
+				<li class="header__top--menu-item wheels">
+					<div class="text">Wheels & Tires</div>
+					<div class="wheels__sub">
+						<div class="wheels__sub--content">
+							<div class="wheels__sub--content-items">
+								<div class="wheels__sub--content-item">
 									<span>Interior</span>
-									<p>Interior</p>
-									<p>Body Part</p>
-									<p>Repair Part</p>
-									<p>Seat cover</p>
-									<p>Floor Mats</p>
-									<p>Dash Kit</p>
+									<div class="wheels__sub--content-inner">
+										<div class="wheels__sub--content-innter-wrap">
+											<div class="wheels__sub--content-inner--image">
+												<img src="https://movic.b-cdn.net/at_edmart/26-home_default/hummingbird-printed-t-shirt.jpg"
+													alt="">
+											</div>
+											<div class="wheels__sub--content-inner--description">
+												<div class="wheels__sub--content-inner--description-name">
+													SXY Wheels / Niche Road...
+												</div>
+												<div class="wheels__sub--content-inner--description-price">
+													$23,90
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="wheels__sub--content-inner">
+										<div class="wheels__sub--content-innter-wrap">
+											<div class="wheels__sub--content-inner--image">
+												<img src="https://movic.b-cdn.net/at_edmart/26-home_default/hummingbird-printed-t-shirt.jpg"
+													alt="">
+											</div>
+											<div class="wheels__sub--content-inner--description">
+												<div class="wheels__sub--content-inner--description-name">
+													SXY Wheels / Niche Road...
+												</div>
+												<div class="wheels__sub--content-inner--description-price">
+													$23,90
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="wheels__sub--content-inner">
+										<div class="wheels__sub--content-innter-wrap">
+											<div class="wheels__sub--content-inner--image">
+												<img src="https://movic.b-cdn.net/at_edmart/26-home_default/hummingbird-printed-t-shirt.jpg"
+													alt="">
+											</div>
+											<div class="wheels__sub--content-inner--description">
+												<div class="wheels__sub--content-inner--description-name">
+													SXY Wheels / Niche Road...
+												</div>
+												<div class="wheels__sub--content-inner--description-price">
+													$23,90
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="wheels__sub--content-inner">
+										<div class="wheels__sub--content-innter-wrap">
+											<div class="wheels__sub--content-inner--image">
+												<img src="https://movic.b-cdn.net/at_edmart/26-home_default/hummingbird-printed-t-shirt.jpg"
+													alt="">
+											</div>
+											<div class="wheels__sub--content-inner--description">
+												<div class="wheels__sub--content-inner--description-name">
+													SXY Wheels / Niche Road...
+												</div>
+												<div class="wheels__sub--content-inner--description-price">
+													$23,90
+												</div>
+											</div>
+										</div>
+									</div>
 								</div>
-								<div class="lighting__sub--content-inner">
+								<div class="wheels__sub--content-item">
 									<span>Interior</span>
-									<p>Interior</p>
-									<p>Body Part</p>
-									<p>Repair Part</p>
-									<p>Seat cover</p>
-									<p>Floor Mats</p>
-									<p>Dash Kit</p>
+									<div class="wheels__sub--content-inner">
+										<div class="wheels__sub--content-innter-wrap">
+											<div class="wheels__sub--content-inner--image">
+												<img src="https://movic.b-cdn.net/at_edmart/26-home_default/hummingbird-printed-t-shirt.jpg"
+													alt="">
+											</div>
+											<div class="wheels__sub--content-inner--description">
+												<div class="wheels__sub--content-inner--description-name">
+													SXY Wheels / Niche Road...
+												</div>
+												<div class="wheels__sub--content-inner--description-price">
+													$23,90
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="wheels__sub--content-inner">
+										<div class="wheels__sub--content-innter-wrap">
+											<div class="wheels__sub--content-inner--image">
+												<img src="https://movic.b-cdn.net/at_edmart/26-home_default/hummingbird-printed-t-shirt.jpg"
+													alt="">
+											</div>
+											<div class="wheels__sub--content-inner--description">
+												<div class="wheels__sub--content-inner--description-name">
+													SXY Wheels / Niche Road...
+												</div>
+												<div class="wheels__sub--content-inner--description-price">
+													$23,90
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="wheels__sub--content-inner">
+										<div class="wheels__sub--content-innter-wrap">
+											<div class="wheels__sub--content-inner--image">
+												<img src="https://movic.b-cdn.net/at_edmart/26-home_default/hummingbird-printed-t-shirt.jpg"
+													alt="">
+											</div>
+											<div class="wheels__sub--content-inner--description">
+												<div class="wheels__sub--content-inner--description-name">
+													SXY Wheels / Niche Road...
+												</div>
+												<div class="wheels__sub--content-inner--description-price">
+													$23,90
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="wheels__sub--content-inner">
+										<div class="wheels__sub--content-innter-wrap">
+											<div class="wheels__sub--content-inner--image">
+												<img src="https://movic.b-cdn.net/at_edmart/26-home_default/hummingbird-printed-t-shirt.jpg"
+													alt="">
+											</div>
+											<div class="wheels__sub--content-inner--description">
+												<div class="wheels__sub--content-inner--description-name">
+													SXY Wheels / Niche Road...
+												</div>
+												<div class="wheels__sub--content-inner--description-price">
+													$23,90
+												</div>
+											</div>
+										</div>
+									</div>
 								</div>
-								<div class="lighting__sub--content-inner">
+								<div class="wheels__sub--content-item">
 									<span>Interior</span>
-									<p>Interior</p>
-									<p>Body Part</p>
-									<p>Repair Part</p>
-									<p>Seat cover</p>
-									<p>Floor Mats</p>
-									<p>Dash Kit</p>
-								</div>
-								<div class="lighting__sub--content-inner">
-									<span>Interior</span>
-									<p>Interior</p>
-									<p>Body Part</p>
-									<p>Repair Part</p>
-									<p>Seat cover</p>
-									<p>Floor Mats</p>
-									<p>Dash Kit</p>
-								</div>
-							</div>
-						</div>
-					</li>
-					<div class="device"></div>
-					<li class="header__top--menu-item wheels">
-						<div class="text">Wheels & Tires</div>
-						<div class="wheels__sub">
-							<div class="wheels__sub--content">
-								<div class="wheels__sub--content-items">
-									<div class="wheels__sub--content-item">
-										<span>Interior</span>
-										<div class="wheels__sub--content-inner">
-											<div class="wheels__sub--content-innter-wrap">
-												<div class="wheels__sub--content-inner--image">
-													<img src="https://movic.b-cdn.net/at_edmart/26-home_default/hummingbird-printed-t-shirt.jpg"
-														alt="">
-												</div>
-												<div class="wheels__sub--content-inner--description">
-													<div class="wheels__sub--content-inner--description-name">
-														SXY Wheels / Niche Road...
-													</div>
-													<div class="wheels__sub--content-inner--description-price">
-														$23,90
-													</div>
-												</div>
+									<div class="wheels__sub--content-inner">
+										<div class="wheels__sub--content-innter-wrap">
+											<div class="wheels__sub--content-inner--image">
+												<img src="https://movic.b-cdn.net/at_edmart/26-home_default/hummingbird-printed-t-shirt.jpg"
+													alt="">
 											</div>
-										</div>
-										<div class="wheels__sub--content-inner">
-											<div class="wheels__sub--content-innter-wrap">
-												<div class="wheels__sub--content-inner--image">
-													<img src="https://movic.b-cdn.net/at_edmart/26-home_default/hummingbird-printed-t-shirt.jpg"
-														alt="">
+											<div class="wheels__sub--content-inner--description">
+												<div class="wheels__sub--content-inner--description-name">
+													SXY Wheels / Niche Road...
 												</div>
-												<div class="wheels__sub--content-inner--description">
-													<div class="wheels__sub--content-inner--description-name">
-														SXY Wheels / Niche Road...
-													</div>
-													<div class="wheels__sub--content-inner--description-price">
-														$23,90
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="wheels__sub--content-inner">
-											<div class="wheels__sub--content-innter-wrap">
-												<div class="wheels__sub--content-inner--image">
-													<img src="https://movic.b-cdn.net/at_edmart/26-home_default/hummingbird-printed-t-shirt.jpg"
-														alt="">
-												</div>
-												<div class="wheels__sub--content-inner--description">
-													<div class="wheels__sub--content-inner--description-name">
-														SXY Wheels / Niche Road...
-													</div>
-													<div class="wheels__sub--content-inner--description-price">
-														$23,90
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="wheels__sub--content-inner">
-											<div class="wheels__sub--content-innter-wrap">
-												<div class="wheels__sub--content-inner--image">
-													<img src="https://movic.b-cdn.net/at_edmart/26-home_default/hummingbird-printed-t-shirt.jpg"
-														alt="">
-												</div>
-												<div class="wheels__sub--content-inner--description">
-													<div class="wheels__sub--content-inner--description-name">
-														SXY Wheels / Niche Road...
-													</div>
-													<div class="wheels__sub--content-inner--description-price">
-														$23,90
-													</div>
+												<div class="wheels__sub--content-inner--description-price">
+													$23,90
 												</div>
 											</div>
 										</div>
 									</div>
-									<div class="wheels__sub--content-item">
-										<span>Interior</span>
-										<div class="wheels__sub--content-inner">
-											<div class="wheels__sub--content-innter-wrap">
-												<div class="wheels__sub--content-inner--image">
-													<img src="https://movic.b-cdn.net/at_edmart/26-home_default/hummingbird-printed-t-shirt.jpg"
-														alt="">
-												</div>
-												<div class="wheels__sub--content-inner--description">
-													<div class="wheels__sub--content-inner--description-name">
-														SXY Wheels / Niche Road...
-													</div>
-													<div class="wheels__sub--content-inner--description-price">
-														$23,90
-													</div>
-												</div>
+									<div class="wheels__sub--content-inner">
+										<div class="wheels__sub--content-innter-wrap">
+											<div class="wheels__sub--content-inner--image">
+												<img src="https://movic.b-cdn.net/at_edmart/26-home_default/hummingbird-printed-t-shirt.jpg"
+													alt="">
 											</div>
-										</div>
-										<div class="wheels__sub--content-inner">
-											<div class="wheels__sub--content-innter-wrap">
-												<div class="wheels__sub--content-inner--image">
-													<img src="https://movic.b-cdn.net/at_edmart/26-home_default/hummingbird-printed-t-shirt.jpg"
-														alt="">
+											<div class="wheels__sub--content-inner--description">
+												<div class="wheels__sub--content-inner--description-name">
+													SXY Wheels / Niche Road...
 												</div>
-												<div class="wheels__sub--content-inner--description">
-													<div class="wheels__sub--content-inner--description-name">
-														SXY Wheels / Niche Road...
-													</div>
-													<div class="wheels__sub--content-inner--description-price">
-														$23,90
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="wheels__sub--content-inner">
-											<div class="wheels__sub--content-innter-wrap">
-												<div class="wheels__sub--content-inner--image">
-													<img src="https://movic.b-cdn.net/at_edmart/26-home_default/hummingbird-printed-t-shirt.jpg"
-														alt="">
-												</div>
-												<div class="wheels__sub--content-inner--description">
-													<div class="wheels__sub--content-inner--description-name">
-														SXY Wheels / Niche Road...
-													</div>
-													<div class="wheels__sub--content-inner--description-price">
-														$23,90
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="wheels__sub--content-inner">
-											<div class="wheels__sub--content-innter-wrap">
-												<div class="wheels__sub--content-inner--image">
-													<img src="https://movic.b-cdn.net/at_edmart/26-home_default/hummingbird-printed-t-shirt.jpg"
-														alt="">
-												</div>
-												<div class="wheels__sub--content-inner--description">
-													<div class="wheels__sub--content-inner--description-name">
-														SXY Wheels / Niche Road...
-													</div>
-													<div class="wheels__sub--content-inner--description-price">
-														$23,90
-													</div>
+												<div class="wheels__sub--content-inner--description-price">
+													$23,90
 												</div>
 											</div>
 										</div>
 									</div>
-									<div class="wheels__sub--content-item">
-										<span>Interior</span>
-										<div class="wheels__sub--content-inner">
-											<div class="wheels__sub--content-innter-wrap">
-												<div class="wheels__sub--content-inner--image">
-													<img src="https://movic.b-cdn.net/at_edmart/26-home_default/hummingbird-printed-t-shirt.jpg"
-														alt="">
-												</div>
-												<div class="wheels__sub--content-inner--description">
-													<div class="wheels__sub--content-inner--description-name">
-														SXY Wheels / Niche Road...
-													</div>
-													<div class="wheels__sub--content-inner--description-price">
-														$23,90
-													</div>
-												</div>
+									<div class="wheels__sub--content-inner">
+										<div class="wheels__sub--content-innter-wrap">
+											<div class="wheels__sub--content-inner--image">
+												<img src="https://movic.b-cdn.net/at_edmart/26-home_default/hummingbird-printed-t-shirt.jpg"
+													alt="">
 											</div>
-										</div>
-										<div class="wheels__sub--content-inner">
-											<div class="wheels__sub--content-innter-wrap">
-												<div class="wheels__sub--content-inner--image">
-													<img src="https://movic.b-cdn.net/at_edmart/26-home_default/hummingbird-printed-t-shirt.jpg"
-														alt="">
+											<div class="wheels__sub--content-inner--description">
+												<div class="wheels__sub--content-inner--description-name">
+													SXY Wheels / Niche Road...
 												</div>
-												<div class="wheels__sub--content-inner--description">
-													<div class="wheels__sub--content-inner--description-name">
-														SXY Wheels / Niche Road...
-													</div>
-													<div class="wheels__sub--content-inner--description-price">
-														$23,90
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="wheels__sub--content-inner">
-											<div class="wheels__sub--content-innter-wrap">
-												<div class="wheels__sub--content-inner--image">
-													<img src="https://movic.b-cdn.net/at_edmart/26-home_default/hummingbird-printed-t-shirt.jpg"
-														alt="">
-												</div>
-												<div class="wheels__sub--content-inner--description">
-													<div class="wheels__sub--content-inner--description-name">
-														SXY Wheels / Niche Road...
-													</div>
-													<div class="wheels__sub--content-inner--description-price">
-														$23,90
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="wheels__sub--content-inner">
-											<div class="wheels__sub--content-innter-wrap">
-												<div class="wheels__sub--content-inner--image">
-													<img src="https://movic.b-cdn.net/at_edmart/26-home_default/hummingbird-printed-t-shirt.jpg"
-														alt="">
-												</div>
-												<div class="wheels__sub--content-inner--description">
-													<div class="wheels__sub--content-inner--description-name">
-														SXY Wheels / Niche Road...
-													</div>
-													<div class="wheels__sub--content-inner--description-price">
-														$23,90
-													</div>
+												<div class="wheels__sub--content-inner--description-price">
+													$23,90
 												</div>
 											</div>
 										</div>
 									</div>
-									<div class="wheels__sub--content-item">
-										<div class="wheels__sub--about">
-											<div class="title">
-												<b>About Us</b>
+									<div class="wheels__sub--content-inner">
+										<div class="wheels__sub--content-innter-wrap">
+											<div class="wheels__sub--content-inner--image">
+												<img src="https://movic.b-cdn.net/at_edmart/26-home_default/hummingbird-printed-t-shirt.jpg"
+													alt="">
 											</div>
-											<img src="https://prestashop.eoscosmetic.com/at_edmart/themes/at_edmart/assets/img/modules/leobootstrapmenu/banner-menu.jpg"
-												alt="">
-											<div class="description">
-												<p>Lorem ipsum dolor sit amet, consectetur</p>
-												<p>adipiscing elit. Nam risus ligula
-													fringilla vitae
-												<p>
-													magna vel, placerat iaculis felis.
-												</p>
+											<div class="wheels__sub--content-inner--description">
+												<div class="wheels__sub--content-inner--description-name">
+													SXY Wheels / Niche Road...
+												</div>
+												<div class="wheels__sub--content-inner--description-price">
+													$23,90
+												</div>
 											</div>
 										</div>
 									</div>
 								</div>
-
+								<div class="wheels__sub--content-item">
+									<div class="wheels__sub--about">
+										<div class="title">
+											<b>About Us</b>
+										</div>
+										<img src="https://prestashop.eoscosmetic.com/at_edmart/themes/at_edmart/assets/img/modules/leobootstrapmenu/banner-menu.jpg"
+											alt="">
+										<div class="description">
+											<p>Lorem ipsum dolor sit amet, consectetur</p>
+											<p>adipiscing elit. Nam risus ligula
+												fringilla vitae
+											<p>
+												magna vel, placerat iaculis felis.
+											</p>
+										</div>
+									</div>
+								</div>
 							</div>
 
 						</div>
 
-					</li>
-					<div class="device"></div>
-					<li class="header__top--menu-item">
-						<div class="text">
-							Repair Part
-						</div>
-					</li>
-					<div class="device"></div>
-					<li class="header__top--menu-item">
-						<div class="text">
-							Body Part
-						</div>
-					</li>
-					<div class="device"></div>
-					<li class="header__top--menu-item">
-						<div class="text">
-							Audio & Electrolics
-						</div>
-					</li>
-					<div class="device"></div>
-					<li class="header__top--menu-item">
-						<div class="text">
-							Tool & Garage
-						</div>
-					</li>
-					<div class="device"></div>
-					<li class="header__top--menu-item product">
-						<div class="text">Product</div>
-						<div class="product__sub">
-							<div class="product__sub--content">
-								<div class="product__sub--content-item">
-									<div class="product__sub--content-inner">
-										<img src="https://i.pinimg.com/originals/c5/d9/02/c5d9025b68250832a31eac3b6d344955.jpg"
-											alt="">
-									</div>
-								</div>
-								<div class="product__sub--content-item">
-									<div class="product__sub--content-inner">
-										<img src="https://i.pinimg.com/originals/c5/d9/02/c5d9025b68250832a31eac3b6d344955.jpg"
-											alt="">
-									</div>
-								</div>
-								<div class="product__sub--content-item">
-									<div class="product__sub--content-inner">
-										<img src="https://i.pinimg.com/originals/c5/d9/02/c5d9025b68250832a31eac3b6d344955.jpg"
-											alt="">
-									</div>
-								</div>
-								<div class="product__sub--content-item">
-									<div class="product__sub--content-inner">
-										<img src="https://i.pinimg.com/originals/c5/d9/02/c5d9025b68250832a31eac3b6d344955.jpg"
-											alt="">
-									</div>
-								</div>
-								<div class="product__sub--content-item">
-									<div class="product__sub--content-inner">
-										<img src="https://i.pinimg.com/originals/c5/d9/02/c5d9025b68250832a31eac3b6d344955.jpg"
-											alt="">
-									</div>
-								</div>
-								<div class="product__sub--content-item">
-									<div class="product__sub--content-inner">
-										<img src="https://i.pinimg.com/originals/c5/d9/02/c5d9025b68250832a31eac3b6d344955.jpg"
-											alt="">
-									</div>
-								</div>
-								<div class="product__sub--content-item">
-									<p style="line-height: 24px; font-size: 18px; margin-left: 0px; color: #666">
-										No template <br> found for module <br>leobootstrapmenu
-									</p>
-								</div>
+					</div>
 
+				</li>
+				<div class="device"></div>
+				<li class="header__top--menu-item">
+					<div class="text">
+						Repair Part
+					</div>
+				</li>
+				<div class="device"></div>
+				<li class="header__top--menu-item">
+					<div class="text">
+						Body Part
+					</div>
+				</li>
+				<div class="device"></div>
+				<li class="header__top--menu-item">
+					<div class="text">
+						Audio & Electrolics
+					</div>
+				</li>
+				<div class="device"></div>
+				<li class="header__top--menu-item">
+					<div class="text">
+						Tool & Garage
+					</div>
+				</li>
+				<div class="device"></div>
+				<li class="header__top--menu-item product">
+					<div class="text">Product</div>
+					<div class="product__sub">
+						<div class="product__sub--content">
+							<div class="product__sub--content-item">
+								<div class="product__sub--content-inner">
+									<img src="https://i.pinimg.com/originals/c5/d9/02/c5d9025b68250832a31eac3b6d344955.jpg"
+										alt="">
+								</div>
+							</div>
+							<div class="product__sub--content-item">
+								<div class="product__sub--content-inner">
+									<img src="https://i.pinimg.com/originals/c5/d9/02/c5d9025b68250832a31eac3b6d344955.jpg"
+										alt="">
+								</div>
+							</div>
+							<div class="product__sub--content-item">
+								<div class="product__sub--content-inner">
+									<img src="https://i.pinimg.com/originals/c5/d9/02/c5d9025b68250832a31eac3b6d344955.jpg"
+										alt="">
+								</div>
+							</div>
+							<div class="product__sub--content-item">
+								<div class="product__sub--content-inner">
+									<img src="https://i.pinimg.com/originals/c5/d9/02/c5d9025b68250832a31eac3b6d344955.jpg"
+										alt="">
+								</div>
+							</div>
+							<div class="product__sub--content-item">
+								<div class="product__sub--content-inner">
+									<img src="https://i.pinimg.com/originals/c5/d9/02/c5d9025b68250832a31eac3b6d344955.jpg"
+										alt="">
+								</div>
+							</div>
+							<div class="product__sub--content-item">
+								<div class="product__sub--content-inner">
+									<img src="https://i.pinimg.com/originals/c5/d9/02/c5d9025b68250832a31eac3b6d344955.jpg"
+										alt="">
+								</div>
+							</div>
+							<div class="product__sub--content-item">
+								<p style="line-height: 24px; font-size: 18px; margin-left: 0px; color: #666">
+									No template <br> found for module <br>leobootstrapmenu
+								</p>
 							</div>
 
 						</div>
 
-					</li>
-					<div class="device"></div>
-					<li class="header__top--menu-item page">
-						<div class="text" id="page">Page</div>
-						<ul class="page__sub">
-							<div>Blog</div>
-							<div>Delivery</div>
-							<div>About Us</div>
-							<div>Page 404</div>
-						</ul>
-					</li>
-					<div class="device"></div>
-					<li class="header__top--menu-item">
-						<div class="text">
-							Contact
-						</div>
-					</li>
-				</ul>
-			</div>
-		</header>
-		<!-- SECTION -->
-		<section class="section">
-			<div class="section__container">
+					</div>
+
+				</li>
+				<div class="device"></div>
+				<li class="header__top--menu-item page">
+					<div class="text" n id>Page</div>
+					<ul class="page__sub">
+						<div>Blog</div>
+						<div>Delivery</div>
+						<div>About Us</div>
+						<div>Page 404</div>
+					</ul>
+				</li>
+				<div class="device"></div>
+				<li class="header__top--menu-item">
+					<div class="text">
+						Contact
+					</div>
+				</li>
+			</ul>
+		</div>
+	</header>
+	<!-- SECTION -->
+	<section class="section">
+		<div class="container">
+			<div class="section__container padding__content">
 				<div class="section__content">
 					<div class="section__content--description">
 						<h4>SELECT YOUR VEHICLE</h4>
@@ -766,46 +807,45 @@
 					</div>
 					<div class="section__content--description-input--container">
 						<!-- <div class="section__content--description-input">
-							<div class="section__content--description-input-1">
-								<div class="stt">1 </div>
-								<i class="fa-solid fa-chevron-down"></i>
-								<input type="text" value="| Nothing selected" class="input1 input">
-								</div>
-								</div>
-								<div class="section__content--description-input">
-									<div class="section__content--description-input-2">
-										<i class="fa-solid fa-chevron-down"></i>
-										<div class="stt">2 </div><input class="input" style="cursor: not-allowed;" type="text"
-											value="| Nothing selected" name="" id="">
-									</div>
-								</div>
-								<div class="section__content--description-input">
-									<div class="section__content--description-input-3">
-										<i class="fa-solid fa-chevron-down"></i>
-										<div class="stt">3 </div><input class="input" style="cursor: not-allowed;" type="text"
-											value="| Nothing selected" name="" id="">
-									</div>
-								</div>
-								<div class="section__content--description-input">
-									<div class="section__content--description-input-4">
-										<i class="fa-solid fa-chevron-down"></i>
-										<div class="stt">4 </div>
-										<input class="input" style="cursor: not-allowed;" type="text" value="| Nothing selected" name="" id="">
-									</div>
-								</div>
-								<div class="section__content--description-input--search">
-									<i class="fa-solid fa-magnifying-glass"></i>
-								</div> -->
-								
-								<div class="btn__gr">
-									<div class="btn__item">
-										<button class="first section__content--description-input-1">
-											<div class="line"><span>1</span>
-												<span class="dive">|</span>
-												<span class="nothing">Nothing selected</span>
+										<div class="section__content--description-input-1">
+											<div class="stt">1 </div>
+											<i class="fa-solid fa-chevron-down"></i>
+											<input type="text" value="| Nothing selected" class="input1 input">
+										</div>
+										</div>
+										<div class="section__content--description-input">
+											<div class="section__content--description-input-2">
+												<i class="fa-solid fa-chevron-down"></i>
+												<div class="stt">2 </div><input class="input" style="cursor: not-allowed;" type="text"
+													value="| Nothing selected" name="" id="">
 											</div>
-								
-											<span><i class="fa-solid fa-chevron-down"></i></span>
+										</div>
+										<div class="section__content--description-input">
+											<div class="section__content--description-input-3">
+												<i class="fa-solid fa-chevron-down"></i>
+												<div class="stt">3 </div><input class="input" style="cursor: not-allowed;" type="text"
+													value="| Nothing selected" name="" id="">
+											</div>
+										</div>
+										<div class="section__content--description-input">
+											<div class="section__content--description-input-4">
+												<i class="fa-solid fa-chevron-down"></i>
+												<div class="stt">4 </div>
+												<input class="input" style="cursor: not-allowed;" type="text" value="| Nothing selected" name="" id="">
+											</div>
+										</div>
+										<div class="section__content--description-input--search">
+											<i class="fa-solid fa-magnifying-glass"></i>
+										</div> -->
+						<div class="btn__gr">
+							<div class="btn__item">
+								<button class="first section__content--description-input-1">
+									<div class="line"><span>1</span>
+										<span class="dive">|</span>
+										<span class="nothing">Nothing selected</span>
+									</div>
+
+									<span><i class="fa-solid fa-chevron-down"></i></span>
 									<div class="section__content--option">
 										<ul>
 											<input type="text">
@@ -838,7 +878,7 @@
 										<span class="nothing">Nothing selected</span>
 									</div>
 									<span><i class="fa-solid fa-chevron-down"></i></span>
-									</button>
+								</button>
 							</div>
 							<div class="btn__item">
 								<button>
@@ -847,7 +887,7 @@
 										<span class="nothing">Nothing selected</span>
 									</div>
 									<span><i class="fa-solid fa-chevron-down"></i></span>
-									</button>
+								</button>
 							</div>
 							<div class="btn__item">
 								<button>
@@ -856,7 +896,7 @@
 										<span class="nothing">Nothing selected</span>
 									</div>
 									<span><i class="fa-solid fa-chevron-down"></i></span>
-									</button>
+								</button>
 							</div>
 							<button class="last">
 								<i class="fa-solid fa-magnifying-glass"></i>
@@ -865,11 +905,13 @@
 					</div>
 				</div>
 			</div>
-		</section>
+		</div>
+	</section>
 
-		<!-- SECTION -->
-		<section>
-			<div class="feature___container">
+	<!-- SECTION -->
+	<section>
+		<div class="container">
+			<div class="feature___container padding__content">
 
 				<div class="feature___container--item">
 					<div class="feature___container--item-image">
@@ -934,10 +976,12 @@
 					</div>
 				</div>
 			</div>
-		</section>
-		<!-- SECTION -->
-		<section>
-			<div class="banner___container">
+		</div>
+	</section>
+	<!-- SECTION -->
+	<section>
+		<div class="container">
+			<div class="banner___container padding__content">
 				<div class="banner-item banner-item--1">
 					<img src="https://prestashop.eoscosmetic.com/at_edmart/themes/at_edmart/assets/img/modules/appagebuilder/images/banner-1.jpg"
 						alt="">
@@ -947,11 +991,12 @@
 						alt="">
 				</div>
 			</div>
-		</section>
-		<!-- SECTION -->
-		<section>
-			<div class="option__container">
-
+		</div>
+	</section>
+	<!-- SECTION -->
+	<section>
+		<div class="container">
+			<div class="option__container padding__content">
 				<ul class="option__list">
 					<li><a>TOP CATEGORIES</a></li>
 					<li><a>ACCEESSORIES</a></li>
@@ -965,10 +1010,12 @@
 					<li>Audio</li>
 				</ul>
 			</div>
-		</section>
-		<!-- SECTION -->
-		<section>
-			<div class="product__container">
+		</div>
+	</section>
+	<!-- SECTION -->
+	<section>
+		<div class="container">
+			<div class="product__container padding__content">
 				<div class="product__item">
 					<div class="product__item--img">
 						<img src="https://prestashop.eoscosmetic.com/at_edmart/themes/at_edmart/assets/img/modules/appagebuilder/icon/cat-8.jpg"
@@ -1114,10 +1161,12 @@
 					</div>
 				</div>
 			</div>
-		</section>
-		<!-- SECTION -->
-		<section>
-			<div class="deal__container">
+		</div>
+	</section>
+	<!-- SECTION -->
+	<section>
+		<div class="container">
+			<div class="deal__container padding__content">
 				<div class="deal__text">
 					<div>DEALS OF THE DAY</div>
 				</div>
@@ -1130,10 +1179,12 @@
 					<div>03</div>
 				</div>
 			</div>
-		</section>
-		<!-- SECTION -->
-		<section>
-			<div class="deal__product--container">
+		</div>
+	</section>
+	<!-- SECTION -->
+	<section>
+		<div class="container">
+			<div class="deal__product--container padding__content">
 				<div class="deal__product--item">
 					<div class="deal__product--item-img">
 						<img src="https://movic.b-cdn.net/at_edmart/26-home_default/hummingbird-printed-t-shirt.jpg"
@@ -1363,9 +1414,11 @@
 					</div>
 				</div>
 			</div>
-		</section>
-		<section>
-			<div class="banner___container">
+		</div>
+	</section>
+	<section>
+		<div class="container">
+			<div class="banner___container padding__content">
 				<div class="banner-item banner-item--1">
 					<img src="https://prestashop.eoscosmetic.com/at_edmart/themes/at_edmart/assets/img/modules/appagebuilder/images/banner-3.jpg"
 						alt="">
@@ -1379,9 +1432,11 @@
 						alt="">
 				</div>
 			</div>
-		</section>
-		<section>
-			<div class="brand__container">
+		</div>
+	</section>
+	<section>
+		<div class="container">
+			<div class="brand__container padding__content">
 				<div class="brand__content">
 					<div class="brand__content--title">FEATURES BRANDS</div>
 					<div class="brand_images">
@@ -1420,10 +1475,12 @@
 					</div>
 				</div>
 			</div>
-		</section>
-		<!-- TRENDING PRODUCT -->
-		<section>
-			<div class="trending___product--container">
+		</div>
+	</section>
+	<!-- TRENDING PRODUCT -->
+	<section>
+		<div class="container">
+			<div class="trending___product--container padding__content">
 				<div class="trending___product--content">
 					<div class="trending__product--title">
 						<div>TOP TRENDING PRODUCTS</div>
@@ -1613,11 +1670,13 @@
 					</div>
 				</div>
 			</div>
-		</section>
+		</div>
+	</section>
 
-		<!-- POPULAR PRODUCT -->
-		<section>
-			<div class="trending___product--container">
+	<!-- POPULAR PRODUCT -->
+	<section>
+		<div class="container">
+			<div class="trending___product--container padding__content">
 				<div class="trending___product--content">
 					<div class="trending__product--title">
 						<div>POPULAR PRODUCTS</div>
@@ -1813,10 +1872,12 @@
 					</div>
 				</div>
 			</div>
-		</section>
-		<!-- SPECIAL OFFERS SECTION -->
-		<section>
-			<div class="special__offers--container">
+		</div>
+	</section>
+	<!-- SPECIAL OFFERS SECTION -->
+	<section>
+		<div class="container">
+			<div class="special__offers--container padding__content">
 				<div class="special__offers--content">
 					<div class="special__offers--content-text">
 						<h2>SPECIAL OFFERS</h2>
@@ -1827,11 +1888,13 @@
 					</div>
 				</div>
 			</div>
-		</section>
+		</div>
+	</section>
 
-		<!-- SECTITON PRODUCT MISSING IMAGE -->
-		<section>
-			<div class="trending___product--container">
+	<!-- SECTITON PRODUCT MISSING IMAGE -->
+	<section>
+		<div class="container">
+			<div class="trending___product--container padding__content">
 				<div class="trending___product--content">
 					<div class="trending__product--items trending___product--container-coppy">
 						<div class="deal__product--item">
@@ -1985,11 +2048,13 @@
 					</div>
 				</div>
 			</div>
-		</section>
+		</div>
+	</section>
 
-		<!-- TESTIMONIAL SECTION -->
-		<section>
-			<div class="testimonial__container">
+	<!-- TESTIMONIAL SECTION -->
+	<section>
+		<div class="container">
+			<div class="testimonial__container padding__content">
 				<div class="testimontial__child">
 					<div class="testimonial__content">
 						<div class="testimonial__content--title">
@@ -2057,10 +2122,12 @@
 						<div></div>
 					</div>
 				</div>
-		</section>
-		<!-- POPULAR ARTICLES -->
-		<section>
-			<div class="popular__aricles--container">
+			</div>
+	</section>
+	<!-- POPULAR ARTICLES -->
+	<section>
+		<div class="container">
+			<div class="popular__aricles--container padding__content">
 				<div class="popular__aricles--content">
 					<div class="popular__aricles--content-title">
 						<div>POPULAR ARTICLES</div>
@@ -2092,7 +2159,6 @@
 								</div>
 							</div>
 						</div>
-
 
 						<div class="popular__aricles--item">
 							<div class="popular__aricle--item-img">
@@ -2227,9 +2293,11 @@
 					</div>
 				</div>
 			</div>
-		</section>
-		<section>
-			<div class="type__container">
+		</div>
+	</section>
+	<section>
+		<div class="container">
+			<div class="type__container padding__content">
 				<div class="type__content">
 					<div class="type__content--items">
 						<div class="item">
@@ -2269,10 +2337,12 @@
 						</div>
 					</div>
 				</div>
-		</section>
-		<section>
+			</div>
+	</section>
+	<section>
+		<div class="container">
 			<div class="footer">
-				<div class="footer__content">
+				<div class="footer__content padding__content">
 					<div class="footer__top items">
 						<div class="footer_top--img footer_top--info">
 							<img src="https://prestashop.eoscosmetic.com/at_edmart/themes/at_edmart/assets/img/modules/appagebuilder/images/logo-f.png"
@@ -2392,8 +2462,8 @@
 					</div>
 				</div>
 			</div>
-		</section>
-	</div>
+		</div>
+	</section>
 </body>
 
 </html>
