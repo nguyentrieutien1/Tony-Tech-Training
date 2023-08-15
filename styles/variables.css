@@ -8,6 +8,7 @@
   --black-500: #333;
   --black-600: #00000027;
   --black-50: #999;
+  --black-100: #999999;
   --green-50: #5faf4b;
   --white: #fff;
   --blue-100: #0062bd;
@@ -20,4 +21,6 @@
   --black-300: rgba(0, 0, 0, 0.071);
   --black-400: #000000;
   --black-150: #1a1818;
+  --yellow-100: #FDC02D;
+  --red-900: red;
 }
