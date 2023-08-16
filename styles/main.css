@@ -530,6 +530,9 @@ body {
 .product:hover .product__sub {
   display: block;
   z-index: 100;
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .product__sub--content-item img {
@@ -723,9 +726,6 @@ body {
 /*  Mobile */
 
 @media (max-width: 480px) {
-  .container {
-    padding: 0 !important;
-  }
   .header__nav--bottom-2 {
     display: block;
     margin: 20px 0 0 0;
@@ -973,9 +973,7 @@ body {
     padding-bottom: 50px;
   }
 }
-
 /*  Mobile */
-
 @media (max-width: 480px) {
   .section__container {
     background-size: 620%;
@@ -1070,9 +1068,6 @@ body {
   }
 }
 @media (max-width: 768px) {
-  .container {
-    padding: 0 5px;
-  }
   .feature___container {
     flex-wrap: wrap;
     /* margin-top: 0 !important; */
@@ -2596,7 +2591,13 @@ body {
 @media(max-width: 1024px) {
   .testimonial__container {
   margin-bottom: 30px;
+
 }
+.header__top--menu-item .text i {
+  display: block;
+}
+
+ 
 .header__top {
   position: fixed;
   top:0;
@@ -2605,9 +2606,9 @@ body {
   overflow-y: scroll;
   width: 234px;
   height: 100vh !important;
-  border-right: 1px solid black;
   padding: 20px 0 !important;
-  display: none;
+  display: block;
+  margin-bottom: 400px !important;
 }
 .header__top .header__top--menu {
   flex-direction: column;
@@ -2658,7 +2659,7 @@ body {
   position: static !important;
   z-index: 9999;
   height: max-content ;
-  visibility: visible ;
+  visibility: hidden ;
     width: 100% ;
     padding: 0 ;
     opacity: 1 !important;
@@ -2727,21 +2728,37 @@ body {
 }
 .product__sub--content {
   padding: 0;
-  margin: 0 !important;
+  margin:0 0 40px 0 !important;
   flex-wrap: wrap;
+  border: none;
+  width: 100%;
 }
 .product__sub--content-item img {
   width: 100%;
+  height: 100px;
 }
 .product__sub--content-item {
-  width: 45%;
+  width: 40%;
   height: 100px;
-  border: 1px solid black;
-  margin: 5px;
+  border: 1px solid var(--black-300);
+  margin: 5px 5px 0px 10px !important;
   
 }
+.product__sub--content-item:nth-child(8) {
+  border: none;
+  white-space: normal;
+  font-size: 12px !important;
+}
+.product__sub--content-item:nth-child(8) p {
+  font-size: 12px !important;
+  line-height: 20px !important;
+  width: 70px;
+}
+.product__sub--content-item:nth-child(5) {
+  opacity: 0 !important;
+  visibility: hidden;
+}
 .wheels__sub .wheels__sub--content-inner--description-name {
-    color: #3f4245;
     width: 100px !important;
     white-space: normal;
     line-height: 20px;
@@ -2770,9 +2787,7 @@ body {
     white-space: normal;
   width: 200px;
 }
-.product {
-  display: none;
-}
+
 }
 .overlay {
   position: fixed;
