@@ -1,26 +1,25 @@
 :root {
-     --font--size-sub: 14px;
-     --font-size-large: 24px;
-     --container-padding: 252px;
-     --section-padding: 60px;
-     --container-tablet--padding: 10px;
-     --primary-color: #ff0000;
-  --black-500: #333;
-  --black-600: #00000027;
+  --font--size-sub: 14px;
+  --font-size-large: 24px;
+  --container-padding: 252px;
+  --section-padding: 60px;
+  --container-tablet--padding: 10px;
+  --primary-color: #ff0000;
   --black-50: #999;
-  --black-100: #999999;
-  --green-50: #5faf4b;
-  --white: #fff;
-  --blue-100: #0062bd;
-  --white-200: #ccc;
-   --white-200: #f8f8f8;
-   --black-900: #000000;
   --black-70: #666;
-  --black-100: #666666;
+  --black-100: #999999; 
+  --black-150: #1a1818;
   --black-200: rgba(0, 0, 0, 0.052);
   --black-300: rgba(0, 0, 0, 0.071);
   --black-400: #000000;
-  --black-150: #1a1818;
-  --yellow-100: #FDC02D;
+  --black-500: #333;
+  --black-600: #00000027;
+   --black-900: #000000;
+  --green-50: #5faf4b;
+  --white: #fff;
+  --blue-100: #0062bd;
+  --white-200: #f8f8f8;
+ 
+  --yellow-100: #fdc02d;
   --red-900: red;
 }

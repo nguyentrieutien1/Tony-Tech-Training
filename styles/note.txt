@@ -1,9 +1,5 @@
 
 - Apply container class for application
-
-
-
-
 @media (max-width: 1024px) {
   .feature___container--item {
     flex-direction: column;
