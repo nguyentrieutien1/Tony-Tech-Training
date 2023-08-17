@@ -1,3 +1,2 @@
 - Apply container class for application
 - Change background color for offer button
-- Replace text color description by detail number
