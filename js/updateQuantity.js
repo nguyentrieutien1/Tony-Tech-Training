@@ -1,6 +1,7 @@
 import { PRODUCT_NAME } from "../contains/key_name.js";
 import { getFromLocalStorage, saveToLocalStorage } from "../helpers/storage.js";
 import { toInt } from "../utils/coverToInt.js";
+import { handleAddToCart } from "./addToCart.js";
 import { showCart } from "./cart.js";
 
 export const handleUpdateQuantity = () => {
@@ -18,6 +19,7 @@ export const handleUpdateQuantity = () => {
       products[index].quantity = value;
       saveToLocalStorage(PRODUCT_NAME, products);
       showCart();
+      handleAddToCart();
     });
   });
 };

@@ -2,8 +2,9 @@ import { products } from "../data/products.js";
 console.log(products);
 const items = document.querySelector(".trending__product--items");
 export const showAllProducts = () => {
-  const mapProducts = products.map((product) => {
+  const mapProducts = products.map((product, index) => {
     return `<div class="deal__product--item toptreding__product--item">
+							<i class="fa-solid fa-spinner fa-spin ${`fa-spin-${index}`}"></i>
 							<div class="deal__product--item-img">
 								<img src="${product.image}" class="img-2" alt="Image">
 								<img src="${product.image}" class="img-1" alt="Image">

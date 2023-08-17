@@ -4,6 +4,7 @@ import { getFromLocalStorage } from "../helpers/storage.js";
 import { toInt } from "../utils/coverToInt.js";
 import { handleIncrement } from "./increaseProduct.js";
 import { handleDecrement } from "./decreaseProduct.js";
+import { handleUpdateQuantity } from "./updateQuantity.js";
 
 export const showCart = () => {
   const getProductFromLocal = getFromLocalStorage(PRODUCT_NAME);
@@ -47,5 +48,6 @@ export const showCart = () => {
   cart.innerHTML = renderedProduct.join(" ");
   handleIncrement();
   handleDecrement();
+  handleUpdateQuantity();
 };
 showCart();

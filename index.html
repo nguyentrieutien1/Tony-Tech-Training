@@ -17,6 +17,7 @@
 	<link rel="stylesheet" type="text/css" href="./styles/variables.css">
 	<link rel="stylesheet" type="text/css" href="./styles/main.css">
 	<link rel="stylesheet" type="text/css" href="./styles/cart.css">
+	<link rel="stylesheet" type="text/css" href="./styles/modal.css">
 </head>
 
 <body>
@@ -24,6 +25,7 @@
 	<header>
 		<div class="container">
 			<div class="header__nav">
+
 				<div class="header__nav--top padding__content">
 					<div class="header__nav--top-left">
 						<span class="account">
@@ -1480,7 +1482,7 @@
 						<span>Go To Trending Products</span>
 					</div>
 					<div class="trending__product--items">
-						
+
 					</div>
 				</div>
 			</div>
@@ -2199,7 +2201,7 @@
 		<div class="container">
 			<div class="cart__container">
 				<div class="cart__items">
-			
+
 				</div>
 				<div class="cart__checkout">
 					<div class="cart__checkout--container">
@@ -2228,6 +2230,52 @@
 							<div class="cart__checkout--btn cart__checkout--btn-checkout">
 								CHECKOUT
 							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		</section>
+		<section>
+			<div class="container">
+			<div class="modal__container">
+				<h4><i class="fa-solid fa-check"></i>Product successfully added to your shopping cart</h4>
+				<div class="modal__content">
+					<div class="modal__product">
+						<img src="https://movic.b-cdn.net/at_edmart/41-home_default/mug-the-best-is-yet-to-come.jpg" alt="">
+						<div class="modal__product--p">
+							<div class="modal__product--title">
+								Custom Headlights
+							</div>
+							<div class="modal__product--price">
+								<span>$28.72</span> <span>Size: </span><b>S</b>
+							</div>
+							<div class="modal__product--quantity"><span>Quantity:</span><b>2</b></div>
+						</div>
+					</div>
+					<div class="modal__checkout">
+						<div class="modal__checkout--quantity">
+							There are 9 items in your cart.
+						</div>
+						<div class="modal__checkout--total">
+							Subtotal: $229.84
+						</div>
+						<div class="modal__checkout--quantity">
+							Shipping: $7.00
+						</div>
+						<div class="modal__checkout--tax">
+							Total (tax excl.) $236.84
+						</div>
+						<div class="modal__checkout--tax">Total (tax excl.) $236.84
+						</div>
+						<div class="modal__checkout--taxes">
+							Taxes: $0.00
+						</div>
+						<div class="modal__checkout--btn">
+							<span>CONTINUE SHOPPING</span><span>
+								<i class="fa-solid fa-check"></i>
+								PROCCED TO CHECKOUT
+							</span>
 						</div>
 					</div>
 				</div>
@@ -2505,4 +2553,5 @@
 </body>
 <script type="module" src="./js/index.js"></script>
 <script type="module" src="./js/toggle.js"></script>
+
 </html>

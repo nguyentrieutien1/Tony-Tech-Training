@@ -3,10 +3,11 @@
   left: 0;
   bottom: 0;
   width: 100%;
-  height: 180px;
+  height: 160px;
   display: flex;
   background-color: var(--white);
-  z-index: 2;
+  border-top: 2px solid var(--black-900);
+  z-index: 999;
 }
 .cart__container .cart__items {
   display: flex;
@@ -116,4 +117,18 @@
   border: none;
   background-color: var(--green-50);
   color: var(--white);
+}
+.toptreding__product--item .fa-spin {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--black-900);
+  padding: 5px;
+  border-radius: 100%;
+  color: var(--white);
+  display: none ;
 }
