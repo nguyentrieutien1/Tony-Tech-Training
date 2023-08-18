@@ -24,6 +24,8 @@ export const handleAddToCart = () => {
       btn.addEventListener("click", function () {
         console.log(1);
         const spin = document.querySelector(`.fa-spin-${index}`);
+        const image = document.querySelector(`.img-item-${index}`);
+        spin.style.display = "block";
         setTimeout(() => {
           const product_id = toInt(this.getAttribute("data-id"));
           const product = products.find(
@@ -42,8 +44,8 @@ export const handleAddToCart = () => {
           modal__container.classList.add("show__modal");
           spin.style.display = "none";
           modal__checkout.innerHTML = `
-        			Subtotal: $ ${totalPrice({ id: product_id })}
-        		`;
+							Subtotal: $ ${totalPrice({ id: product_id })}
+						`;
           modal__content.innerHTML = findProductById(product_id);
           modal__body.classList.add("show__modal--body");
         }, LOADING_SET_TIME_OUT);

@@ -88,7 +88,7 @@
   box-sizing: border-box;
 }
 .cart__checkout {
-  width: 22%;
+  width: 25%;
   border-left: 1px solid var(--black-600);
   padding-top: 20px;
 }
@@ -200,4 +200,22 @@
 }
 .show__fa-spin-item  {
   display: block;
+}
+
+.cart__items::-webkit-scrollbar {
+  width: 5px; /* Độ rộng của thanh cuộn */
+  height: 5px;
+}
+
+.cart__items::-webkit-scrollbar-thumb {
+  background-color: #888; /* Màu nền của thumb */
+  border-radius: 1px; /* Độ cong góc của thumb */
+}
+
+.cart__items::-webkit-scrollbar-thumb:hover {
+  background-color: #555; /* Màu nền của thumb khi hover */
+}
+
+.cart__items::-webkit-scrollbar-track {
+  background-color: #f1f1f1; /* Màu nền của track */
 }

@@ -10,6 +10,7 @@ import { deleteProduct } from "./deleteProduct.js";
 export const showCart = () => {
   const getProductFromLocal = getFromLocalStorage(PRODUCT_NAME);
   const cart = document.querySelector(".cart__items");
+  const cart__checkout = document.querySelector(".cart__checkout--container");
   const findProducts = getProductFromLocal.map((product) => {
     const exitsProduct = products?.find(
       (productLocal) => toInt(productLocal.id) == toInt(product.id)
@@ -21,7 +22,8 @@ export const showCart = () => {
   });
   console.log(findProducts);
   const renderedProduct = findProducts.map((product, index) => {
-    return `<div class="cart__item">
+    return `
+    <div class="cart__item">
 						<div class="cart__item--info">
 							<div class="sub__spin sub__spin-${index}"></div>
 
@@ -49,10 +51,52 @@ export const showCart = () => {
 							<i class="fa-solid fa-xmark"></i>
 						</div>
 			
-					</div>`;
+          </div>
+          
+          `;
   });
-
+  console.log(findProducts);
+  const renderedCartCheckout =
+    findProducts?.length > 0
+      ? `
+						<div class="cart__checkout--info">
+							<div class="cart__checkout-sub">
+								<p>SUBTOTAL</p>
+								<p class="sub__total">$0</p>
+							</div>
+							<div class="cart__checkout-sub">
+								<p>SHIPPING</p>
+								<p>$0</p>
+							</div>
+							<div class="cart__checkout-sub">
+								<p>TAXES</p>
+								<p>$0</p>
+							</div>
+							<div class="cart__checkout-sub total">
+								<p>TOTAL</p>
+								<b class="total__price">$0.00</b>
+							</div>
+						</div>
+						<div class="cart__checkout-btns">
+							<div class="cart__checkout--btn cart__checkout--btn-view">
+								VIEW CART
+							</div>
+							<div class="cart__checkout--btn cart__checkout--btn-checkout">
+								CHECKOUT
+							</div>
+						</div>
+					</div>
+						`
+      : `<div style="padding-top: 20px" class="cart__checkout-btns">
+							<div class="cart__checkout--btn cart__checkout--btn-view">
+								VIEW CART
+							</div>
+							<div class="cart__checkout--btn cart__checkout--btn-checkout">
+								CHECKOUT
+							</div>
+					`;
   cart.innerHTML = renderedProduct.join(" ");
+  cart__checkout.innerHTML = renderedCartCheckout;
   handleIncrement();
   handleDecrement();
   handleUpdateQuantity();
