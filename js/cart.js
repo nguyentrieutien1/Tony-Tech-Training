@@ -5,22 +5,27 @@ import { toInt } from "../utils/coverToInt.js";
 import { handleIncrement } from "./increaseProduct.js";
 import { handleDecrement } from "./decreaseProduct.js";
 import { handleUpdateQuantity } from "./updateQuantity.js";
+import { deleteProduct } from "./deleteProduct.js";
 
 export const showCart = () => {
   const getProductFromLocal = getFromLocalStorage(PRODUCT_NAME);
   const cart = document.querySelector(".cart__items");
-  const findProducts = products.filter((product) => {
-    const exitsProduct = getProductFromLocal?.find(
+  const findProducts = getProductFromLocal.map((product) => {
+    const exitsProduct = products?.find(
       (productLocal) => toInt(productLocal.id) == toInt(product.id)
     );
     if (exitsProduct) {
-      product.quantity = exitsProduct.quantity;
-      return product;
+      exitsProduct.quantity = product.quantity;
+      return exitsProduct;
     }
   });
-  const renderedProduct = findProducts.map((product) => {
+  console.log(findProducts);
+  const renderedProduct = findProducts.map((product, index) => {
     return `<div class="cart__item">
 						<div class="cart__item--info">
+							<div class="sub__spin sub__spin-${index}"></div>
+
+						<i class="fa-solid fa-spinner fa-spin fa-spin-item ${`fa-spin-item-${index}`}"></i>
 							<img src="${product.image}" alt="">
 							<div class="cart__item--content">
 								<div class="cart__item--title">
@@ -31,14 +36,16 @@ export const showCart = () => {
 								</div>
 								<div class="cart__item--quantity">
 									<p  data-id="${product.id}" class="decrease__product--btn">-</p>
-									<input  class="update__quantity-input" value="${product.quantity}" data-id="${product.id}">
+									<input  class="update__quantity-input" value="${product.quantity}" data-id="${
+      product.id
+    }">
 									<p class="increase__product--btn" data-id="${product.id}">+</p>
 			
 								</div>
 							</div>
 			
 						</div>
-						<div class="cart__item--delete-btn">
+						<div class="cart__item--delete-btn" data-id="${product.id}">
 							<i class="fa-solid fa-xmark"></i>
 						</div>
 			
@@ -49,5 +56,6 @@ export const showCart = () => {
   handleIncrement();
   handleDecrement();
   handleUpdateQuantity();
+  deleteProduct();
 };
 showCart();

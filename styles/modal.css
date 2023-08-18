@@ -3,12 +3,36 @@
      top: 20px;
      left: 50%;
      width: 1120px;
-     transform: translateX(-50%);
+     transform: translate(-50%, -10%);
      background-color: var(--white);
-
+     transition: .5s ease;
+     opacity: 0;
+     visibility: hidden;
+}
+.modal__body {
+     position: fixed;
+     top:0;
+     left: 0;
+     width: 100%;
+     height: 100%;
+     background-color: rgba(0, 0, 0, 0.434);
+     display: none;
+     visibility: hidden;
+     opacity: 0;
+     transition: .5s ease;
+}
+.show__modal--body {
+     display: block;
+     visibility: visible;
+     opacity: 1;
+}
+.show__modal {
+     opacity: 1;
+     visibility: visible;
+     transform: translate(-50%, 0%);
 }
 .modal__container h4 {
-     text-align: center;  background-color: #4CBB6C;
+     text-align: center;  background-color: var(--green-50);
      color: var(--white);
      padding: 20px 0;
      display: flex;

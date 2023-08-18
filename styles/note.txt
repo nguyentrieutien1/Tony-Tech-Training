@@ -1,3 +1,10 @@
 - Apply container class for application (done)
 - Change number responsive to variable
 - Create input for toggle sidebar 
+ const sub__spin = document.querySelector(`.sub__spin-${i}`);
+       const fa__spin__item = document.querySelector(`.fa-spin-item-${i}`);
+       
+sub__spin.classList.add("show__fa-spin-item");
+   fa__spin__item.classList.add("show__fa-spin-item");
+sub__spin.classList.remove("show__fa-spin-item");
+fa__spin__item.classList.remove("show__fa-spin-item")

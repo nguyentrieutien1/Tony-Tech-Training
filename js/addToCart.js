@@ -6,13 +6,23 @@ import {
 } from "../contains/number__setTimeOut.js";
 import { PRODUCT_NAME } from "../contains/key_name.js";
 import { showCart } from "./cart.js";
+import { checkout } from "./checkout.js";
+import { totalPrice } from "../helpers/total_price.js";
+import { findProductById } from "./findProductById.js";
+import { showQuantityProduct } from "./showQuantityProduct.js";
+import { deleteProduct } from "./deleteProduct.js";
 
 export const handleAddToCart = () => {
   setTimeout(() => {
     const products = getFromLocalStorage(PRODUCT_NAME) || [];
     const shopping_btns = document.querySelectorAll(".fa-cart-shopping");
+    const modal__container = document.querySelector(".modal__container");
+    const modal__checkout = document.querySelector(".modal__checkout--total");
+    const modal__content = document.querySelector(".modal__content");
+    const modal__body = document.querySelector(".modal__body");
     shopping_btns.forEach((btn, index) => {
       btn.addEventListener("click", function () {
+        console.log(1);
         const spin = document.querySelector(`.fa-spin-${index}`);
         spin.style.display = "block";
         setTimeout(() => {
@@ -27,7 +37,16 @@ export const handleAddToCart = () => {
           }
           saveToLocalStorage(PRODUCT_NAME, products);
           showCart();
+          deleteProduct();
+          checkout();
+          showQuantityProduct();
+          modal__container.classList.add("show__modal");
           spin.style.display = "none";
+          modal__checkout.innerHTML = `
+							Subtotal: $ ${totalPrice({ id: product_id })}
+						`;
+          modal__content.innerHTML = findProductById(product_id);
+          modal__body.classList.add("show__modal--body");
         }, LOADING_SET_TIME_OUT);
       });
     });
