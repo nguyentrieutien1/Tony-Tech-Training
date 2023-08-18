@@ -6,6 +6,7 @@ import { handleIncrement } from "./increaseProduct.js";
 import { handleDecrement } from "./decreaseProduct.js";
 import { handleUpdateQuantity } from "./updateQuantity.js";
 import { deleteProduct } from "./deleteProduct.js";
+import { totalPrice } from "../helpers/total_price.js";
 
 export const showCart = () => {
   const getProductFromLocal = getFromLocalStorage(PRODUCT_NAME);
@@ -62,7 +63,7 @@ export const showCart = () => {
 						<div class="cart__checkout--info">
 							<div class="cart__checkout-sub">
 								<p>SUBTOTAL</p>
-								<p class="sub__total">$0</p>
+								<p class="sub__total">$ ${totalPrice()}</p>
 							</div>
 							<div class="cart__checkout-sub">
 								<p>SHIPPING</p>
@@ -74,7 +75,7 @@ export const showCart = () => {
 							</div>
 							<div class="cart__checkout-sub total">
 								<p>TOTAL</p>
-								<b class="total__price">$0.00</b>
+								<b class="total__price">$ ${totalPrice()}</b>
 							</div>
 						</div>
 						<div class="cart__checkout-btns">

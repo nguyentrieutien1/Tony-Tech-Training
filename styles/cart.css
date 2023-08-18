@@ -24,12 +24,17 @@
   display: flex;
   overflow-x: scroll;
   flex-wrap: nowrap;
+  width: 75%;
 }
 .cart__container .cart__items .cart__item {
   display: flex;
   border-right: 1px solid var(--black-600);
   height: auto;
   position: relative;
+}
+.total__price {
+  font-size: 16px;
+  font-size: 300;
 }
 .cart__container .cart__items .cart__item .cart__item--info{
   display: flex;
