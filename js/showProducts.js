@@ -6,8 +6,9 @@ export const showAllProducts = () => {
     return `<div class="deal__product--item toptreding__product--item">
 							<i class="fa-solid fa-spinner fa-spin ${`fa-spin-${index}`}"></i>
 							<div class="deal__product--item-img">
-								<img src="${product.image}" class="img-2" alt="Image">
-								<img src="${product.image}" class="img-1" alt="Image">
+							<img src="${product.image}" class="img-1" alt="Image">
+								<img src="${product.image}" class="img-2  alt="Image">
+								<img src="${product.image}" class="img-3 img-item-${index}" alt="Image">
 							</div>
 							<div class="deal__product--item-list--icon">
 								<i class="fa-regular fa-heart">

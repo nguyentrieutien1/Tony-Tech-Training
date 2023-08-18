@@ -1,5 +1,5 @@
 import { PRODUCT_NAME } from "../contains/key_name.js";
-import { LOADING_SET_TIME_OUT } from "../contains/number__setTimeOut.js";
+import { LOADING_SET_TIME_OUT } from "../contains/number_setTimeOut.js";
 import { getFromLocalStorage, saveToLocalStorage } from "../helpers/storage.js";
 import { toInt } from "../utils/coverToInt.js";
 import { showCart } from "./cart.js";

@@ -1449,6 +1449,15 @@ transform: translate(-50%,-50%);
 .deal__product--item-img {
   position: absolute;
   top: 0;
+ transition: all 1s ease;
+}
+.deal__product--item-img .img-3{
+  width: 100px;
+  height: 100px;
+  transition: all 1s ease;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 199999999999;
 }
 .deal__product--meta {
   position: absolute;
@@ -1463,6 +1472,8 @@ transform: translate(-50%,-50%);
 
 .deal__product--item:hover .img-2 {
   display: block;
+  width: 100%;
+  height: 100%;
 }
 .deal__product--item:hover .img-1 {
   display: none;
@@ -2869,4 +2880,23 @@ transform: translate(-50%,-50%);
 .hidden__header {
   z-index: -1 !important;
   opacity: 0;
+}
+#myImage {
+  transition: all 1s ease;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+.small {
+  position: fixed;
+  display: block;
+  bottom:100px;
+  left: 100px;
+  width: 100px;
+  height: 200px;
+  z-index: 99999999999;
+  transform: translate(-100%, 100%);
+  background-color: red;
+  opacity: 1;
+  visibility: visible;
 }
