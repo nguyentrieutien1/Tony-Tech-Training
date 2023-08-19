@@ -1,28 +1,27 @@
-import { PRODUCT_NAME } from "../contains/key_name.js";
 import { products } from "../data/products.js";
-import { getFromLocalStorage } from "../helpers/storage.js";
 import { toInt } from "../utils/coverToInt.js";
 import { handleIncrement } from "./increaseProduct.js";
 import { handleDecrement } from "./decreaseProduct.js";
-import { handleUpdateQuantity } from "./updateQuantity.js";
+import { handleUpdateQuantity } from "./focusToChangeQuantity.js";
 import { deleteProduct } from "./deleteProduct.js";
-import { totalPrice } from "../helpers/total_price.js";
+import { totalPrice } from "../helpers/total_price.helper.js";
+import { cart } from "../global/state.js";
+import { checkout } from "./checkout.js";
+import { showQuantityProduct } from "./showQuantityProduct.js";
 
 export const showCart = () => {
-  const getProductFromLocal = getFromLocalStorage(PRODUCT_NAME);
-  const cart = document.querySelector(".cart__items");
+  const cart__element = document.querySelector(".cart__items");
   const cart__checkout = document.querySelector(".cart__checkout--container");
-  const findProducts = getProductFromLocal.map((product) => {
+  const findProducts = cart?.map((product) => {
     const exitsProduct = products?.find(
-      (productLocal) => toInt(productLocal.id) == toInt(product.id)
+      (productLocal) => toInt(productLocal?.id) == toInt(product?.id)
     );
     if (exitsProduct) {
-      exitsProduct.quantity = product.quantity;
+      exitsProduct.quantity = product?.quantity;
       return exitsProduct;
     }
   });
-  console.log(findProducts);
-  const renderedProduct = findProducts.map((product, index) => {
+  const renderedProduct = findProducts?.map((product, index) => {
     return `
     <div class="cart__item">
 						<div class="cart__item--info">
@@ -39,9 +38,9 @@ export const showCart = () => {
 								</div>
 								<div class="cart__item--quantity">
 									<p  data-id="${product.id}" class="decrease__product--btn">-</p>
-									<input  class="update__quantity-input" value="${product.quantity}" data-id="${
-      product.id
-    }">
+									<input type="number" class="update__quantity-input" value="${
+                    product.quantity
+                  }" data-id="${product.id}">
 									<p class="increase__product--btn" data-id="${product.id}">+</p>
 			
 								</div>
@@ -56,7 +55,6 @@ export const showCart = () => {
           
           `;
   });
-  console.log(findProducts);
   const renderedCartCheckout =
     findProducts?.length > 0
       ? `
@@ -89,18 +87,20 @@ export const showCart = () => {
 					</div>
 						`
       : `<div style="padding-top: 20px" class="cart__checkout-btns">
-							<div class="cart__checkout--btn cart__checkout--btn-view">
+						<div class="cart__checkout--btn cart__checkout--btn-view">
 								VIEW CART
 							</div>
 							<div class="cart__checkout--btn cart__checkout--btn-checkout">
 								CHECKOUT
 							</div>
 					`;
-  cart.innerHTML = renderedProduct.join(" ");
+  cart__element.innerHTML = renderedProduct.join(" ");
   cart__checkout.innerHTML = renderedCartCheckout;
   handleIncrement();
   handleDecrement();
   handleUpdateQuantity();
   deleteProduct();
+  checkout();
+  showQuantityProduct();
 };
 showCart();

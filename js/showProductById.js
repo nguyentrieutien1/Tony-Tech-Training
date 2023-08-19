@@ -1,22 +1,19 @@
-import { PRODUCT_NAME } from "../contains/key_name.js";
 import { products } from "../data/products.js";
-import { getFromLocalStorage } from "../helpers/storage.js";
-import { totalPrice } from "../helpers/total_price.js";
+import { cart } from "../global/state.js";
+import { totalPrice } from "../helpers/total_price.helper.js";
 import { toInt } from "../utils/coverToInt.js";
 
 export const findProductById = (id) => {
-  const productLocal = getFromLocalStorage(PRODUCT_NAME);
   const find_product_by_id = products.find(
-    (product) => toInt(product.id) == toInt(id)
+    (product) => toInt(product?.id) == toInt(id)
   );
-  const find_quantity_by_id = productLocal.find(
-    (product) => toInt(product.id) == toInt(id)
+  const find_quantity_by_id = cart?.find(
+    (product) => toInt(product?.id) == toInt(id)
   );
-  const quantities = productLocal.reduce((prevItem, currentIem) => {
-    prevItem += currentIem.quantity;
+  const quantities = cart?.reduce((prevItem, currentIem) => {
+    prevItem += currentIem?.quantity;
     return prevItem;
   }, 0);
-  console.log("quantities", quantities);
   const renderProduct = `
   <div class="modal__product">
 						<img src="${find_product_by_id.image}" alt="">

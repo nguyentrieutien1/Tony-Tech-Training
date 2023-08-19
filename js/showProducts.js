@@ -1,4 +1,6 @@
 import { products } from "../data/products.js";
+import { handleAddToCart } from "./addToCart.js";
+import { showQuantityProduct } from "./showQuantityProduct.js";
 console.log(products);
 const items = document.querySelector(".trending__product--items");
 export const showAllProducts = () => {
@@ -23,7 +25,7 @@ export const showAllProducts = () => {
 							</div>
 							<div class="deal__product--meta">
 								<div class="deal__product--item-des">
-									<div>${product.product_name}</div>
+									<div>${product.product_title}</div>
 								</div>
 								<div class="deal__product--item-name">
 									<div>${product.product_title}</div>
@@ -41,4 +43,6 @@ export const showAllProducts = () => {
 						</div>`;
   });
   items.innerHTML = mapProducts.join(" ");
+  handleAddToCart();
+  showQuantityProduct();
 };

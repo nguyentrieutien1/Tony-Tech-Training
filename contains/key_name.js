@@ -1,1 +1,1 @@
-export const PRODUCT_NAME = "products";
+export const PRODUCT_KEY = "products";

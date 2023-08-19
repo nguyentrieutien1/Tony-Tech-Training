@@ -1,17 +1,18 @@
 import { cart } from "../global/state.js";
 import { updateQuantity } from "../helpers/updateQuantity.helper.js";
 import { toInt } from "../utils/coverToInt.js";
-export const handleDecrement = () => {
+export const handleUpdateQuantity = () => {
   const increase_quantity_buttons = document.querySelectorAll(
-    ".decrease__product--btn"
+    ".update__quantity-input"
   );
   increase_quantity_buttons.forEach((btn, i) => {
-    btn.addEventListener("click", function () {
+    btn.addEventListener("blur", function () {
       const id = this.getAttribute("data-id");
+      const value = toInt(this.value);
       const index = cart.findIndex(
         (product) => toInt(product?.id) == toInt(id)
       );
-      updateQuantity(index, i, { type: 0 });
+      updateQuantity(index, i, { type: 2, value });
     });
   });
 };
