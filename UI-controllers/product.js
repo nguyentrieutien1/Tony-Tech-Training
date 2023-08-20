@@ -1,6 +1,6 @@
 import { products } from "../data/products.js";
 import { showQuantityProduct } from "../js/showQuantityProduct.js";
-import { createCartItem } from "./cart.js";
+import { createCartItem, getCartItems } from "./cart.js";
 
 export const showAllProducts = () => {
   const items = document.querySelector(".trending__product--items");
@@ -45,4 +45,5 @@ export const showAllProducts = () => {
   items.innerHTML = mapProducts.join(" ");
   showQuantityProduct();
   createCartItem();
+  getCartItems();
 };

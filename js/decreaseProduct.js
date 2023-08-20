@@ -1,6 +1,7 @@
 import { updateCartItem } from "../UI-controllers/cart.js";
 import { cart } from "../global/state.js";
 import { toInt } from "../utils/covertToInt.js";
+import {updateQuantity} from "../helpers/updateQuantity.helper.js"
 export const handleDecrement = () => {
   const increase_quantity_buttons = document.querySelectorAll(
     ".decrease__product--btn"
@@ -11,7 +12,7 @@ export const handleDecrement = () => {
       const index = cart.findIndex(
         (product) => toInt(product?.id) == toInt(id)
       );
-      updateCartItem(index, i, { type: 0 });
+      updateQuantity(index, i, { type: 0 });
     });
   });
 };

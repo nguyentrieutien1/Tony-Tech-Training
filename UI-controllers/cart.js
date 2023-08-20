@@ -48,32 +48,10 @@ export const createCartItem = () => {
     });
   });
 };
-export const updateCartItem = (index_product, index_spin, { type, value }) => {
-  console.log(index_product, index_spin, type, value);
-  const quantity = cart__state[index_product]?.quantity;
-  let payload = type === 0 ? quantity - 1 : type === 1 ? quantity + 1 : value;
-  if (payload <= 1) {
-    payload = 1;
-  }
-  const { cart } = ProductService.findOneAndUpdate(index_product, payload);
-  saveToLocalStorage(PRODUCT_KEY, cart);
-  loading(
-    [
-      [`sub__spin-${index_spin}`, `show__fa-spin-item`],
-      [`fa-spin-item-${index_spin}`, `show__fa-spin-item`],
-    ],
-    { status: true }
-  );
-  setTimeout(() => {
-    getCartItems();
-    loading(
-      [
-        [`sub__spin-${index_spin}`, `show__fa-spin-item`],
-        [`fa-spin-item-${index_spin}`, `show__fa-spin-item`],
-      ],
-      { status: false }
-    );
-  }, LOADING_SET_TIME_OUT);
+export const updateCartItem = () => {
+  handleDecrement();
+  handleIncrement();
+  handleUpdateQuantity();
 };
 export const deleteCartItem = () => {
   const del__btns = document.querySelectorAll(".cart__item--delete-btn");
@@ -193,13 +171,12 @@ export const getCartItems = () => {
 					`;
   cart__element.innerHTML = renderedProduct.join(" ");
   cart__checkout.innerHTML = renderedCartCheckout;
-  handleIncrement();
-  handleDecrement();
-  handleUpdateQuantity();
+  updateCartItem();
   deleteCartItem();
   checkout();
   showQuantityProduct();
 };
+
 export const getCartItemById = (id) => {
   const find_product_by_id = products.find(
     (product) => toInt(product?.id) == toInt(id)
