@@ -1,9 +1,9 @@
 import { products } from "../data/products.js";
-import { handleAddToCart } from "./addToCart.js";
-import { showQuantityProduct } from "./showQuantityProduct.js";
-console.log(products);
-const items = document.querySelector(".trending__product--items");
+import { showQuantityProduct } from "../js/showQuantityProduct.js";
+import { createCartItem } from "./cart.js";
+
 export const showAllProducts = () => {
+  const items = document.querySelector(".trending__product--items");
   const mapProducts = products.map((product, index) => {
     return `<div class="deal__product--item toptreding__product--item">
 							<i class="fa-solid fa-spinner fa-spin ${`fa-spin-${index}`}"></i>
@@ -43,6 +43,6 @@ export const showAllProducts = () => {
 						</div>`;
   });
   items.innerHTML = mapProducts.join(" ");
-  handleAddToCart();
   showQuantityProduct();
+  createCartItem();
 };

@@ -1,7 +1,6 @@
-import { PRODUCT_KEY } from "../contains/key_name.js";
+import { updateCartItem } from "../UI-controllers/cart.js";
 import { cart } from "../global/state.js";
-import { updateQuantity } from "../helpers/updateQuantity.helper.js";
-import { toInt } from "../utils/coverToInt.js";
+import { toInt } from "../utils/covertToInt.js";
 export const handleIncrement = () => {
   const increase_quantity_buttons = document.querySelectorAll(
     ".increase__product--btn"
@@ -12,7 +11,7 @@ export const handleIncrement = () => {
       const index = cart?.findIndex(
         (product) => toInt(product?.id) == toInt(id)
       );
-      updateQuantity(index, i, { type: 1 });
+      updateCartItem(index, i, { type: 1 });
     });
   });
 };

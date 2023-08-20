@@ -1,5 +1,5 @@
 import { products } from "../data/products.js";
-import { toInt } from "../utils/coverToInt.js";
+import { toInt } from "../utils/covertToInt.js";
 import { cart } from "../global/state.js";
 export const totalPrice = (option) => {
   const id = option?.id ? option?.id : undefined;
