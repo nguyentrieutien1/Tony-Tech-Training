@@ -4,7 +4,7 @@ import { cart as cart__state } from "../global/state.js";
 
 import { loading } from "./loading.helper.js";
 import { saveToLocalStorage } from "./storage.helper.js";
-import ProductService from "./../services/ProductServices.js";
+import ProductService from "../services/cart.service.js";
 import { getCartItems } from "../UI-controllers/cart.js";
 export const updateQuantity = (index_product, index_spin, { type, value }) => {
   // type == 0 => (-); type == 1 (+) else = type.value

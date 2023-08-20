@@ -7,7 +7,7 @@ import { totalPrice } from "../helpers/total_price.helper.js";
 import { cart } from "../global/state.js";
 import { cart as cart__state } from "../global/state.js";
 import { loading } from "../helpers/loading.helper.js";
-import ProductService from "./../services/ProductServices.js";
+import ProductService from "../services/cart.service.js";
 import { products } from "../data/products.js";
 import { handleIncrement } from "../js/increaseProduct.js";
 import { handleDecrement } from "../js/decreaseProduct.js";

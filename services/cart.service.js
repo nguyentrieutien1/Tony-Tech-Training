@@ -1,5 +1,5 @@
 import { cart } from "../global/state.js";
-class Product {
+class Cart {
   findOneAndUpdate = (index, payload) => {
     cart[index].quantity = payload;
     return { cart };
@@ -9,4 +9,4 @@ class Product {
     return { cart };
   };
 }
-export default new Product();
+export default new Cart();
