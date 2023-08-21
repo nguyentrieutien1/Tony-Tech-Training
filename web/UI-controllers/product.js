@@ -43,7 +43,5 @@ export const showAllProducts = async () => {
 						</div>`;
   });
   items.innerHTML = mapProducts.join(" ");
-  showQuantityProduct();
-  createCartItem();
   getCartItems();
 };

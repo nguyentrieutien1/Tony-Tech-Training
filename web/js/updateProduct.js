@@ -1,9 +1,10 @@
 import { updateQuantity } from "../helpers/updateQuantity.helper.js";
-export const updateProduct = async (buttonList, type, value) => {
+export const updateProduct = async (buttonList) => {
   buttonList.forEach((btn, i) => {
     btn.addEventListener("click", function () {
       const id = this.getAttribute("data-id");
-      updateQuantity(id, i, { type, value });
+      const type = this.getAttribute("data-type");
+      updateQuantity(id, { type });
     });
   });
 };

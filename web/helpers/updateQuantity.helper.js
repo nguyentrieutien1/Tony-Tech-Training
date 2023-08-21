@@ -2,10 +2,12 @@ import { LOADING_SET_TIME_OUT } from "../constants/number_setTimeOut.js";
 import { loading } from "./loading.helper.js";
 import { getCartItems } from "../UI-controllers/cart.js";
 import cartService from "../services/cart.service.js";
-export const updateQuantity = async (id, index_spin, { type, value }) => {
+export const updateQuantity = async (id, { type, value }) => {
   const product = await cartService.findOneById(id);
+  const findAllProducts = await cartService.getAll();
+  const index_spin = findAllProducts.findIndex(p => p.id == id)
   const quantity = product?.quantity;
-  let payload = type === 0 ? quantity - 1 : type === 1 ? quantity + 1 : value;
+  let payload = type == 0 ? quantity - 1 : type == 1 ? quantity + 1 : value;
   if (payload <= 1) {
     payload = 1;
   }

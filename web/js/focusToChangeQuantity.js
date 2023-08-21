@@ -4,11 +4,11 @@ export const handleUpdateQuantity = () => {
   const increase_quantity_buttons = document.querySelectorAll(
     ".update__quantity-input"
   );
-  increase_quantity_buttons.forEach((btn, i) => {
+  increase_quantity_buttons.forEach((btn) => {
     btn.addEventListener("blur", function () {
       const id = this.getAttribute("data-id");
       const value = toInt(this.value);
-      updateQuantity(id, i, { type: 2, value });
+      updateQuantity(id, { type: 2, value });
     });
   });
 };

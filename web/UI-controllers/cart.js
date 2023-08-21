@@ -1,16 +1,12 @@
-import { saveToLocalStorage } from "../helpers/storage.helper.js";
 import { toInt } from "../utils/covertToInt.js";
 import { LOADING_SET_TIME_OUT } from "../constants/number_setTimeOut.js";
-import { PRODUCT_KEY } from "../constants/key_name.js";
 import { handleUpdateQuantity } from "./../js/focusToChangeQuantity.js";
 import { totalPrice } from "../helpers/total_price.helper.js";
 import { cart } from "../global/state.js";
-import { cart as cart__state } from "../global/state.js";
 import { loading } from "../helpers/loading.helper.js";
 import cartService from "../services/cart.service.js";
 import { products } from "../data/products.js";
-import { handleIncrement } from "../js/increaseProduct.js";
-import { handleDecrement } from "../js/decreaseProduct.js";
+import { clickToUpdate } from "../js/clickToUpdate.js";
 import { checkout } from "../js/checkout.js";
 import { showQuantityProduct } from "../js/showQuantityProduct.js";
 export const createCartItem = () => {
@@ -37,9 +33,8 @@ export const createCartItem = () => {
   });
 };
 export const updateCartItem = () => {
-  handleDecrement();
-  handleIncrement();
   handleUpdateQuantity();
+  clickToUpdate();
 };
 export const deleteCartItem = () => {
   const del__btns = document.querySelectorAll(".cart__item--delete-btn");
@@ -98,11 +93,15 @@ export const getCartItems = async () => {
 									<span>$ ${product?.product_price}</span>
 								</div>
 								<div class="cart__item--quantity">
-									<p  data-id="${product?.id}" class="decrease__product--btn">-</p>
+									<p   data-id="${
+                    product?.id
+                  }" class="decrease__product--btn update__quantity--btn" data-type="0">-</p>
 									<input type="number" class="update__quantity-input" value="${
                     product?.quantity
-                  }" data-id="${product?.id}">
-									<p class="increase__product--btn" data-id="${product?.id}">+</p>
+                  }" data-id="${product?.id}" >
+									<p data-type="1" class="increase__product--btn update__quantity--btn" data-id="${
+                    product?.id
+                  }">+</p>
 			
 								</div>
 							</div>
@@ -161,6 +160,7 @@ export const getCartItems = async () => {
   deleteCartItem();
   checkout();
   showQuantityProduct();
+  createCartItem();
 };
 export const getCartItemById = async (id) => {
   const find_product_by_id = products.find(
