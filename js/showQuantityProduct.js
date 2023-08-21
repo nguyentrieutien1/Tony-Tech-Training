@@ -1,9 +1,8 @@
-import { PRODUCT_KEY } from "../contains/key_name.js";
-import { getFromLocalStorage } from "../helpers/storage.helper.js";
+import cartService from "../services/cart.service.js";
 
-export const showQuantityProduct = () => {
+export const showQuantityProduct = async () => {
   const quantityElement = document.querySelector(".cart__icon .amount");
-  const products = getFromLocalStorage(PRODUCT_KEY) || [];
+  const products = await cartService.getAll();
   const quantities = products?.reduce((prevItem, currentIem) => {
     prevItem += currentIem?.quantity;
     return prevItem;

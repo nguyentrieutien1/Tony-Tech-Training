@@ -1,4 +1,3 @@
-import { cart } from "../global/state.js";
 import { updateQuantity } from "../helpers/updateQuantity.helper.js";
 import { toInt } from "../utils/covertToInt.js";
 export const handleUpdateQuantity = () => {
@@ -9,10 +8,7 @@ export const handleUpdateQuantity = () => {
     btn.addEventListener("blur", function () {
       const id = this.getAttribute("data-id");
       const value = toInt(this.value);
-      const index = cart.findIndex(
-        (product) => toInt(product?.id) == toInt(id)
-      );
-      updateQuantity(index, i, { type: 2, value });
+      updateQuantity(id, i, { type: 2, value });
     });
   });
 };

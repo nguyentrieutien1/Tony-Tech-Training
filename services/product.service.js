@@ -1,8 +1,8 @@
-import { products } from "../data/products.js";
+import { products } from "./../data/products.js";
 
 class Product {
-  getAllProducts = () => {
-    return products;
+  getAllProducts = async () => {
+    return [...products];
   };
 }
 export default new Product();

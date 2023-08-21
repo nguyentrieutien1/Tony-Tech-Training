@@ -1,13 +1,13 @@
 import { saveToLocalStorage } from "../helpers/storage.helper.js";
 import { toInt } from "../utils/covertToInt.js";
-import { LOADING_SET_TIME_OUT } from "../contains/number_setTimeOut.js";
-import { PRODUCT_KEY } from "../contains/key_name.js";
+import { LOADING_SET_TIME_OUT } from "../constants/number_setTimeOut.js";
+import { PRODUCT_KEY } from "../constants/key_name.js";
 import { handleUpdateQuantity } from "./../js/focusToChangeQuantity.js";
 import { totalPrice } from "../helpers/total_price.helper.js";
 import { cart } from "../global/state.js";
 import { cart as cart__state } from "../global/state.js";
 import { loading } from "../helpers/loading.helper.js";
-import ProductService from "../services/cart.service.js";
+import cartService from "../services/cart.service.js";
 import { products } from "../data/products.js";
 import { handleIncrement } from "../js/increaseProduct.js";
 import { handleDecrement } from "../js/decreaseProduct.js";
@@ -20,31 +20,19 @@ export const createCartItem = () => {
   const modal__content = document.querySelector(".modal__content");
   const modal__body = document.querySelector(".modal__body");
   shopping_btns.forEach((btn, index) => {
-    btn.addEventListener("click", function () {
-      console.log("NGUYEN THANH TUNG");
+    btn.addEventListener("click", async function (e) {
       const spin = document.querySelector(`.fa-spin-${index}`);
-      console.log(spin);
       spin.style.display = "block";
-      setTimeout(() => {
-        const product_id = toInt(this?.getAttribute("data-id"));
-        const product = cart?.find(
-          (product) => toInt(product?.id) == toInt(product_id)
-        );
-        if (product) {
-          product.quantity += 1;
-        } else {
-          cart?.push({ id: product_id, quantity: 1 });
-        }
-        saveToLocalStorage(PRODUCT_KEY, cart);
-        getCartItems();
-        modal__container?.classList?.add("show__modal");
-        spin.style.display = "none";
-        modal__checkout.innerHTML = `
+      const product_id = toInt(this?.getAttribute("data-id"));
+      await cartService.createOrUpdte(product_id);
+      await getCartItems();
+      modal__container?.classList?.add("show__modal");
+      spin.style.display = "none";
+      modal__checkout.innerHTML = `
 							Subtotal: $ ${totalPrice({ id: product_id })}
 						`;
-        modal__content.innerHTML = getCartItemById(product_id);
-        modal__body.classList?.add("show__modal--body");
-      }, LOADING_SET_TIME_OUT);
+      modal__content.innerHTML = await getCartItemById(product_id);
+      modal__body.classList?.add("show__modal--body");
     });
   });
 };
@@ -57,12 +45,9 @@ export const deleteCartItem = () => {
   const del__btns = document.querySelectorAll(".cart__item--delete-btn");
 
   del__btns.forEach((btn, i) => {
-    btn.addEventListener("click", function () {
+    btn.addEventListener("click", async function () {
       const id = this.getAttribute("data-id");
-      const index = cart__state?.findIndex(
-        (product) => toInt(product?.id) == toInt(id)
-      );
-      const { cart } = ProductService.findOneAndDelete(index);
+      await cartService.findOneAndDelete(id);
       loading(
         [
           [`sub__spin-${i}`, `show__fa-spin-item`],
@@ -71,7 +56,6 @@ export const deleteCartItem = () => {
         { status: true }
       );
       setTimeout(() => {
-        saveToLocalStorage(PRODUCT_KEY, cart);
         getCartItems();
         loading(
           [
@@ -84,10 +68,12 @@ export const deleteCartItem = () => {
     });
   });
 };
-export const getCartItems = () => {
+export const getCartItems = async () => {
   const cart__element = document.querySelector(".cart__items");
   const cart__checkout = document.querySelector(".cart__checkout--container");
-  const findProducts = cart__state?.map((product) => {
+  const cart = await cartService.getAll();
+  console.log(cart);
+  const findProducts = cart?.map((product) => {
     const exitsProduct = products?.find(
       (productLocal) => toInt(productLocal?.id) == toInt(product?.id)
     );
@@ -103,26 +89,26 @@ export const getCartItems = () => {
 							<div class="sub__spin sub__spin-${index}"></div>
 
 						<i class="fa-solid fa-spinner fa-spin fa-spin-item ${`fa-spin-item-${index}`}"></i>
-							<img src="${product.image}" alt="">
+							<img src="${product?.image}" alt="">
 							<div class="cart__item--content">
 								<div class="cart__item--title">
 									<span>Rockstar XD775...</span>
 								</div>
 								<div class="cart__item--price">
-									<span>$ ${product.product_price}</span>
+									<span>$ ${product?.product_price}</span>
 								</div>
 								<div class="cart__item--quantity">
-									<p  data-id="${product.id}" class="decrease__product--btn">-</p>
+									<p  data-id="${product?.id}" class="decrease__product--btn">-</p>
 									<input type="number" class="update__quantity-input" value="${
-                    product.quantity
-                  }" data-id="${product.id}">
-									<p class="increase__product--btn" data-id="${product.id}">+</p>
+                    product?.quantity
+                  }" data-id="${product?.id}">
+									<p class="increase__product--btn" data-id="${product?.id}">+</p>
 			
 								</div>
 							</div>
 			
 						</div>
-						<div class="cart__item--delete-btn" data-id="${product.id}">
+						<div class="cart__item--delete-btn" data-id="${product?.id}">
 							<i class="fa-solid fa-xmark"></i>
 						</div>
 			
@@ -136,7 +122,7 @@ export const getCartItems = () => {
 						<div class="cart__checkout--info">
 							<div class="cart__checkout-sub">
 								<p>SUBTOTAL</p>
-								<p class="sub__total">$ ${totalPrice()}</p>
+								<p class="sub__total">$ ${await totalPrice()}</p>
 							</div>
 							<div class="cart__checkout-sub">
 								<p>SHIPPING</p>
@@ -148,7 +134,7 @@ export const getCartItems = () => {
 							</div>
 							<div class="cart__checkout-sub total">
 								<p>TOTAL</p>
-								<b class="total__price">$ ${totalPrice()}</b>
+								<b class="total__price">$ ${await totalPrice()}</b>
 							</div>
 						</div>
 						<div class="cart__checkout-btns">
@@ -176,14 +162,12 @@ export const getCartItems = () => {
   checkout();
   showQuantityProduct();
 };
-
-export const getCartItemById = (id) => {
+export const getCartItemById = async (id) => {
   const find_product_by_id = products.find(
     (product) => toInt(product?.id) == toInt(id)
   );
-  const find_quantity_by_id = cart?.find(
-    (product) => toInt(product?.id) == toInt(id)
-  );
+  const find_quantity_by_id = await cartService.findOneById(id);
+  console.log(find_quantity_by_id);
   const quantities = cart?.reduce((prevItem, currentIem) => {
     prevItem += currentIem?.quantity;
     return prevItem;
