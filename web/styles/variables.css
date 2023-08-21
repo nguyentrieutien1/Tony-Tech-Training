@@ -1,0 +1,46 @@
+:root {
+  /*  SIZE */
+  --font--size-sub: 14px;
+  --font-size-large: 24px;
+  --container-padding: 252px;
+  --section-padding: 60px;
+  --container-tablet--padding: 10px;
+  /* COLOR */
+  --black-50: #999;
+  --black-70: #666;
+  --black-100: #999999; 
+  --black-150: #1a1818;
+  --black-200: rgba(0, 0, 0, 0.052);
+  --black-250: rgba(0, 0, 0, 0.5);
+  --black-300: rgba(0, 0, 0, 0.071);
+  --black-350: rgb(29, 28, 28);
+  --black-400: #000000;
+  --black-500: #333;
+  --black-550: #333333;
+  --black-600: #00000027;
+  --black-900: #000000;
+  --gray-100: #777777;
+  --gray-200: #777;
+  --gray-300: rgb(113, 91, 91);
+  --gray-400: rgba(0, 0, 0, 0.5);
+  --white: #fff;
+  --white-200: #f8f8f8;
+  --white-250: #e6e6e6;
+  --white-300: #d9d9d9;
+  --white-400: #cecece;
+  --white-600:#f9f9f9;
+  --white-500: #e5e5e5;
+  --blue-100: #0062bd;
+  --blue-150:rgba(0, 0, 255, 0.402);
+  --blue-200: #0099FF;
+  --blue-250: #2e73ba;
+  --blue-700: rgba(0, 0, 255, 0.402);
+  --yellow-50: rgb(228, 228, 10);
+  --yellow-100: #fdc02d;
+  --red-900: red;
+  --green-50: #5faf4b;
+  /* DEVICES SIZE */
+  --device-lg: 1024px;
+  --device-md: 678px;
+  --device-sm: 380px;
+}

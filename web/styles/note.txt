@@ -1,0 +1,1 @@
+- Tạo helper dùng chung cho phần loading item
