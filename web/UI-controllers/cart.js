@@ -28,7 +28,6 @@ export const createCartItem = () => {
 							Subtotal: $ ${await totalPrice({ id: product_id })}
 						`;
 	    
-     //  modal__content.innerHTML = await getCartItemById(product_id);
       modal__body.classList?.add("show__modal--body");
     });
   });
@@ -64,6 +63,7 @@ export const deleteCartItem = () => {
     });
   });
 };
+// 
 export const getCartItems = async (product_id, element) => {
   const cart__element = document.querySelector(".cart__items");
   const cart__checkout = document.querySelector(".cart__checkout--container");
