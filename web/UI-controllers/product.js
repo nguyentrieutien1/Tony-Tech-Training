@@ -1,7 +1,7 @@
 import { createCartItem, getCartItems } from "./cart.js";
 import productService from "../services/product.service.js";
 export const showAllProducts = async () => {
-  const items = document.querySelector(".trending__product--items");
+	const items = document.querySelector(".trending__product--items");
   const products = await productService.getAllProducts();
   const mapProducts = products?.map((product, index) => {
     return `<div class="deal__product--item toptreding__product--item">

@@ -21,13 +21,14 @@ export const createCartItem = () => {
       spin.style.display = "block";
       const product_id = toInt(this?.getAttribute("data-id"));
       await cartService.createOrUpdte(product_id);
-      await getCartItems();
+      await getCartItems(product_id, modal__content);
       modal__container?.classList?.add("show__modal");
       spin.style.display = "none";
       modal__checkout.innerHTML = `
 							Subtotal: $ ${await totalPrice({ id: product_id })}
 						`;
-      modal__content.innerHTML = await getCartItemById(product_id);
+	    
+     //  modal__content.innerHTML = await getCartItemById(product_id);
       modal__body.classList?.add("show__modal--body");
     });
   });
@@ -63,7 +64,7 @@ export const deleteCartItem = () => {
     });
   });
 };
-export const getCartItems = async () => {
+export const getCartItems = async (product_id, element) => {
   const cart__element = document.querySelector(".cart__items");
   const cart__checkout = document.querySelector(".cart__checkout--container");
   const cart = await cartService.getAll();
@@ -154,13 +155,16 @@ export const getCartItems = async () => {
 							</div>
 					`;
   cart__element.innerHTML = renderedProduct.join(" ");
-  cart__checkout.innerHTML = renderedCartCheckout;
+	cart__checkout.innerHTML = renderedCartCheckout;
+	if (product_id) {
+		element.innerHTML = await getCartItemById(product_id, cart);
+	}
   updateCartItem(cart);
   deleteCartItem(cart);
   checkout(cart);
-	showQuantityProduct(cart);
+  showQuantityProduct(cart);
 };
-export const getCartItemById = async (id) => {
+export const getCartItemById = async (id, cart) => {
   const find_product_by_id = products.find(
     (product) => toInt(product?.id) == toInt(id)
   );
@@ -190,7 +194,7 @@ export const getCartItemById = async (id) => {
 							There are ${quantities} items in your cart.
 						</div>
 						<div class="modal__checkout--total">
-							Subtotal: $ ${await totalPrice()}
+							Subtotal: $ ${await totalPrice(null, cart)}
 						</div>
 						<div class="modal__checkout--quantity">
 							Shipping: $0.00
