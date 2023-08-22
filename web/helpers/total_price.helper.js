@@ -1,5 +1,4 @@
 import { products } from "../data/products.js";
-import cartService from "../services/cart.service.js";
 import { toInt } from "../utils/covertToInt.js";
 export const totalPrice = async (option, cart) => {
   const id = option?.id ? option?.id : undefined;

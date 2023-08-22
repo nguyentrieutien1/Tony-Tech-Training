@@ -25,7 +25,7 @@ export const createCartItem = () => {
       modal__container?.classList?.add("show__modal");
       spin.style.display = "none";
       modal__checkout.innerHTML = `
-							Subtotal: $ ${totalPrice({ id: product_id })}
+							Subtotal: $ ${await totalPrice({ id: product_id })}
 						`;
       modal__content.innerHTML = await getCartItemById(product_id);
       modal__body.classList?.add("show__modal--body");
@@ -158,7 +158,7 @@ export const getCartItems = async () => {
   updateCartItem(cart);
   deleteCartItem(cart);
   checkout(cart);
-  showQuantityProduct(cart);
+	showQuantityProduct(cart);
 };
 export const getCartItemById = async (id) => {
   const find_product_by_id = products.find(
