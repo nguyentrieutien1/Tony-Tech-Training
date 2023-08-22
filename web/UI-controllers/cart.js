@@ -1,6 +1,6 @@
 import { toInt } from "../utils/covertToInt.js";
 import { LOADING_SET_TIME_OUT } from "../constants/number_setTimeOut.js";
-import { handleUpdateQuantity } from "./../js/focusToChangeQuantity.js";
+import { focusToChangeQuantity } from "./../js/focusToChangeQuantity.js";
 import { totalPrice } from "../helpers/total_price.helper.js";
 import { cart } from "../global/state.js";
 import { loading } from "../helpers/loading.helper.js";
@@ -32,9 +32,9 @@ export const createCartItem = () => {
     });
   });
 };
-export const updateCartItem = () => {
-  handleUpdateQuantity();
-  clickToUpdate();
+export const updateCartItem = (cart) => {
+  focusToChangeQuantity(cart);
+  clickToUpdate(cart);
 };
 export const deleteCartItem = () => {
   const del__btns = document.querySelectorAll(".cart__item--delete-btn");
@@ -67,7 +67,6 @@ export const getCartItems = async () => {
   const cart__element = document.querySelector(".cart__items");
   const cart__checkout = document.querySelector(".cart__checkout--container");
   const cart = await cartService.getAll();
-  console.log(cart);
   const findProducts = cart?.map((product) => {
     const exitsProduct = products?.find(
       (productLocal) => toInt(productLocal?.id) == toInt(product?.id)
@@ -156,11 +155,10 @@ export const getCartItems = async () => {
 					`;
   cart__element.innerHTML = renderedProduct.join(" ");
   cart__checkout.innerHTML = renderedCartCheckout;
-  updateCartItem();
-  deleteCartItem();
-  checkout();
-  showQuantityProduct();
-  createCartItem();
+  updateCartItem(cart);
+  deleteCartItem(cart);
+  checkout(cart);
+  showQuantityProduct(cart);
 };
 export const getCartItemById = async (id) => {
   const find_product_by_id = products.find(

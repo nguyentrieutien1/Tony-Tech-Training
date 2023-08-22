@@ -1,9 +1,6 @@
-import cartService from "../services/cart.service.js";
-
-export const showQuantityProduct = async () => {
+export const showQuantityProduct = async (cart) => {
   const quantityElement = document.querySelector(".cart__icon .amount");
-  const products = await cartService.getAll();
-  const quantities = products?.reduce((prevItem, currentIem) => {
+  const quantities = cart?.reduce((prevItem, currentIem) => {
     prevItem += currentIem?.quantity;
     return prevItem;
   }, 0);

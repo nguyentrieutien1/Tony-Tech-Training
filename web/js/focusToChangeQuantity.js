@@ -1,6 +1,6 @@
 import { updateQuantity } from "../helpers/updateQuantity.helper.js";
 import { toInt } from "../utils/covertToInt.js";
-export const handleUpdateQuantity = () => {
+export const focusToChangeQuantity = (cart) => {
   const increase_quantity_buttons = document.querySelectorAll(
     ".update__quantity-input"
   );
@@ -8,7 +8,7 @@ export const handleUpdateQuantity = () => {
     btn.addEventListener("blur", function () {
       const id = this.getAttribute("data-id");
       const value = toInt(this.value);
-      updateQuantity(id, { type: 2, value });
+      updateQuantity(id, { type: 2, value }, cart);
     });
   });
 };

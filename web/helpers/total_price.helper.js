@@ -1,11 +1,10 @@
 import { products } from "../data/products.js";
 import cartService from "../services/cart.service.js";
 import { toInt } from "../utils/covertToInt.js";
-export const totalPrice = async (option) => {
+export const totalPrice = async (option, cart) => {
   const id = option?.id ? option?.id : undefined;
   const other_price = option?.other_price ? option?.other_price : [];
   let total__price = 0;
-  const cart = await cartService.getAll();
   if (id) {
     const find_product_data = products?.find(
       (product) => toInt(product?.id) == toInt(id)

@@ -17,7 +17,6 @@ class Cart {
   getAll = async () => {
     const result = await fetch(`${LINK}/cart`);
     const cart = await result.json();
-    console.log(cart);
     return cart;
   };
   createOrUpdte = async (cart_id) => {

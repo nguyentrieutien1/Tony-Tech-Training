@@ -1,4 +1,3 @@
-import { showQuantityProduct } from "../js/showQuantityProduct.js";
 import { createCartItem, getCartItems } from "./cart.js";
 import productService from "../services/product.service.js";
 export const showAllProducts = async () => {
@@ -43,5 +42,6 @@ export const showAllProducts = async () => {
 						</div>`;
   });
   items.innerHTML = mapProducts.join(" ");
-  getCartItems();
+	getCartItems();
+	createCartItem()
 };
