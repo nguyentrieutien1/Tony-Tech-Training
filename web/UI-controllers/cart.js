@@ -187,7 +187,7 @@ export const getCartItemById = async (id, cart) => {
 								<span>$ ${find_product_by_id.product_price}</span> <span>Size: </span><b>S</b>
 							</div>
 							<div class="modal__product--quantity"><span>Quantity:</span><b>${
-                find_quantity_by_id?.quantity
+                find_quantity_by_id?.quantity || 1
               }</b></div>
 						</div>
 						</div>
