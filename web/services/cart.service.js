@@ -2,18 +2,13 @@ import { LINK } from "../constants/url_link.js";
 import { cartState } from "../global/state.js";
 class Cart {
   findOneAndUpdate = async (index, payload) => {
-    try {
-      const result = await fetch(`${LINK}/cart/${index}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ quantity: payload }),
-      });
-      console.log(result);
-    } catch (error) {
-      console.log(error);
-    }
+    await fetch(`${LINK}/cart/${index}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ quantity: payload }),
+    });
   };
 
   findOneAndDelete = async (index) => {

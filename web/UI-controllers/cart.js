@@ -19,7 +19,6 @@ export const createCartItem = () => {
       const spin = document.querySelector(`.fa-spin-${index}`);
       spin.style.display = "block";
       const product_id = toInt(this?.getAttribute("data-id"));
-      //
       await cartService.createOrUpdte(product_id);
       await getCartItems(product_id, modal__content);
       modal__container?.classList?.add("show__modal");
@@ -44,8 +43,7 @@ export const deleteCartItem = () => {
   del__btns.forEach((btn, i) => {
     btn.addEventListener("click", async function () {
       const id = this.getAttribute("data-id");
-      const index = cartState.findIndex((cartItem) => cartItem.id == id);
-      cartState.splice(index, 1);
+
       loading(
         [
           [`sub__spin-${i}`, `show__fa-spin-item`],
@@ -53,6 +51,9 @@ export const deleteCartItem = () => {
         ],
         { status: true }
       );
+      await cartService.findOneAndDelete(id);
+      const index = cartState.findIndex((cartItem) => cartItem.id == id);
+      cartState.splice(index, 1);
       getCartItems();
       loading(
         [
@@ -61,8 +62,6 @@ export const deleteCartItem = () => {
         ],
         { status: false }
       );
-
-      await cartService.findOneAndDelete(id);
     });
   });
 };
