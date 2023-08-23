@@ -1,8 +1,10 @@
-import { products } from "../data/products.js";
+import { LINK } from "../constants/url_link.js";
 
 class Product {
   getAllProducts = async () => {
-    return [...products];
+    const products = await fetch(`${LINK}/products`);
+    const { metadata } = await products.json();
+    return metadata;
   };
 }
 export default new Product();

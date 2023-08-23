@@ -1,14 +1,13 @@
 import { toInt } from "../utils/covertToInt.js";
-import { LOADING_SET_TIME_OUT } from "../constants/number_setTimeOut.js";
 import { focusToChangeQuantity } from "./../js/focusToChangeQuantity.js";
 import { totalPrice } from "../helpers/total_price.helper.js";
-import { cart } from "../global/state.js";
-import { loading } from "../helpers/loading.helper.js";
 import cartService from "../services/cart.service.js";
-import { products } from "../data/products.js";
 import { clickToUpdate } from "../js/clickToUpdate.js";
 import { checkout } from "../js/checkout.js";
 import { showQuantityProduct } from "../js/showQuantityProduct.js";
+import { cartState, productState } from "../global/state.js";
+import { loading } from "../helpers/loading.helper.js";
+
 export const createCartItem = () => {
   const shopping_btns = document.querySelectorAll(".fa-cart-shopping");
   const modal__container = document.querySelector(".modal__container");
@@ -20,6 +19,7 @@ export const createCartItem = () => {
       const spin = document.querySelector(`.fa-spin-${index}`);
       spin.style.display = "block";
       const product_id = toInt(this?.getAttribute("data-id"));
+      //
       await cartService.createOrUpdte(product_id);
       await getCartItems(product_id, modal__content);
       modal__container?.classList?.add("show__modal");
@@ -27,22 +27,25 @@ export const createCartItem = () => {
       modal__checkout.innerHTML = `
 							Subtotal: $ ${await totalPrice({ id: product_id })}
 						`;
-	    
+
       modal__body.classList?.add("show__modal--body");
     });
   });
 };
+
 export const updateCartItem = (cart) => {
   focusToChangeQuantity(cart);
   clickToUpdate(cart);
 };
+
 export const deleteCartItem = () => {
   const del__btns = document.querySelectorAll(".cart__item--delete-btn");
 
   del__btns.forEach((btn, i) => {
     btn.addEventListener("click", async function () {
       const id = this.getAttribute("data-id");
-      await cartService.findOneAndDelete(id);
+      const index = cartState.findIndex((cartItem) => cartItem.id == id);
+      cartState.splice(index, 1);
       loading(
         [
           [`sub__spin-${i}`, `show__fa-spin-item`],
@@ -50,26 +53,26 @@ export const deleteCartItem = () => {
         ],
         { status: true }
       );
-      setTimeout(() => {
-        getCartItems();
-        loading(
-          [
-            [`sub__spin-${i}`, `show__fa-spin-item`],
-            [`fa-spin-item-${i}`, `show__fa-spin-item`],
-          ],
-          { status: false }
-        );
-      }, LOADING_SET_TIME_OUT);
+      getCartItems();
+      loading(
+        [
+          [`sub__spin-${i}`, `show__fa-spin-item`],
+          [`fa-spin-item-${i}`, `show__fa-spin-item`],
+        ],
+        { status: false }
+      );
+
+      await cartService.findOneAndDelete(id);
     });
   });
 };
-// 
+
 export const getCartItems = async (product_id, element) => {
   const cart__element = document.querySelector(".cart__items");
   const cart__checkout = document.querySelector(".cart__checkout--container");
-  const cart = await cartService.getAll();
+  const cart = cartState;
   const findProducts = cart?.map((product) => {
-    const exitsProduct = products?.find(
+    const exitsProduct = productState?.find(
       (productLocal) => toInt(productLocal?.id) == toInt(product?.id)
     );
     if (exitsProduct) {
@@ -155,21 +158,21 @@ export const getCartItems = async (product_id, element) => {
 							</div>
 					`;
   cart__element.innerHTML = renderedProduct.join(" ");
-	cart__checkout.innerHTML = renderedCartCheckout;
-	if (product_id) {
-		element.innerHTML = await getCartItemById(product_id, cart);
-	}
+  cart__checkout.innerHTML = renderedCartCheckout;
+  if (product_id) {
+    element.innerHTML = await getCartItemById(product_id, cart);
+  }
   updateCartItem(cart);
   deleteCartItem(cart);
   checkout(cart);
   showQuantityProduct(cart);
 };
+
 export const getCartItemById = async (id, cart) => {
-  const find_product_by_id = products.find(
+  const find_product_by_id = productState.find(
     (product) => toInt(product?.id) == toInt(id)
   );
-  const find_quantity_by_id = await cartService.findOneById(id);
-  console.log(find_quantity_by_id);
+  const find_quantity_by_id = cartState.find((cartItem) => cartItem.id == id);
   const quantities = cart?.reduce((prevItem, currentIem) => {
     prevItem += currentIem?.quantity;
     return prevItem;

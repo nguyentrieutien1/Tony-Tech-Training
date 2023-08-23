@@ -1,4 +1,12 @@
-import { PRODUCT_KEY } from "../constants/key_name.js";
-import { getFromLocalStorage } from "../helpers/storage.helper.js";
+import cartService from "../services/cart.service.js";
+import productService from "../services/product.service.js";
 
-export const cart = getFromLocalStorage(PRODUCT_KEY) || [];
+let cartState = [];
+let productState = [];
+export const initCartState = async () => {
+  cartState = await cartService.getAll();
+};
+export const initProductState = async () => {
+  productState = await productService.getAllProducts();
+};
+export { cartState, productState };
