@@ -15,13 +15,13 @@ export const createCartItem = () => {
       btn.addEventListener("click", async function (e) {
         const spin = document.querySelector(`.fa-spin-${index}`);
         spin.style.display = "block";
-        const product_id = toInt(this?.getAttribute("data-id"));
-        await cartService.createOrUpdte(product_id);
-        await getCartItems(product_id, modal__content);
+        const productid = toInt(this?.getAttribute("data-id"));
+        await cartService.createOrUpdte(productid);
+        await getCartItems(productid, modal__content);
         modal__container?.classList?.add("show__modal");
         spin.style.display = "none";
         modal__checkout.innerHTML = `
-							Subtotal: $ ${await totalPrice({ id: product_id })}
+							Subtotal: $ ${await totalPrice({ id: productid })}
 						`;
 
         modal__body.classList?.add("show__modal--body");
@@ -43,7 +43,6 @@ export const deleteCartItem = () => {
   del__btns.forEach((btn, i) => {
     btn.addEventListener("click", async function () {
       const id = this.getAttribute("data-id");
-
       loading(
         [
           [`sub__spin-${i}`, `show__fa-spin-item`],
@@ -51,8 +50,10 @@ export const deleteCartItem = () => {
         ],
         { status: true }
       );
+      console.log(id);
       await cartService.findOneAndDelete(id);
       const index = cartState.findIndex((cartItem) => cartItem.id == id);
+      console.log(index);
       cartState.splice(index, 1);
       getCartItems();
       loading(
@@ -66,7 +67,7 @@ export const deleteCartItem = () => {
   });
 };
 
-export const getCartItems = async (product_id, element) => {
+export const getCartItems = async (productid, element) => {
   const cart__element = document.querySelector(".cart__items");
   const cart__checkout = document.querySelector(".cart__checkout--container");
   const cart = cartState;
@@ -158,8 +159,8 @@ export const getCartItems = async (product_id, element) => {
 					`;
   cart__element.innerHTML = renderedProduct.join(" ");
   cart__checkout.innerHTML = renderedCartCheckout;
-  if (product_id) {
-    element.innerHTML = await getCartItemById(product_id, cart);
+  if (productid) {
+    element.innerHTML = await getCartItemById(productid, cart);
   }
   updateCartItem(cart);
   deleteCartItem(cart);
@@ -168,26 +169,26 @@ export const getCartItems = async (product_id, element) => {
 };
 
 export const getCartItemById = async (id, cart) => {
-  const find_product_by_id = productState.find(
+  const find_product_byid = productState.find(
     (product) => toInt(product?.id) == toInt(id)
   );
-  const find_quantity_by_id = cartState.find((cartItem) => cartItem.id == id);
+  const find_quantity_byid = cartState.find((cartItem) => cartItem.id == id);
   const quantities = cart?.reduce((prevItem, currentIem) => {
     prevItem += currentIem?.quantity;
     return prevItem;
   }, 0);
   const renderProduct = `
   <div class="modal__product">
-						<img src="${find_product_by_id.image}" alt="">
+						<img src="${find_product_byid.image}" alt="">
 						<div class="modal__product--p">
 							<div class="modal__product--title">
-								${find_product_by_id?.product_title}
+								${find_product_byid?.product_title}
 							</div>
 							<div class="modal__product--price">
-								<span>$ ${find_product_by_id.product_price}</span> <span>Size: </span><b>S</b>
+								<span>$ ${find_product_byid.product_price}</span> <span>Size: </span><b>S</b>
 							</div>
 							<div class="modal__product--quantity"><span>Quantity:</span><b>${
-                find_quantity_by_id?.quantity || 1
+                find_quantity_byid?.quantity || 1
               }</b></div>
 						</div>
 						</div>

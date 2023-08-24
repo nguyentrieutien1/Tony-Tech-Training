@@ -23,7 +23,8 @@ class Cart {
     return data;
   };
 
-  createOrUpdte = async (cart_id) => {
+  createOrUpdte = async (cartid) => {
+    console.log(cartid);
     try {
       if (cartState.length === 0) {
         await fetch(`${API_URL}/cart`, {
@@ -31,15 +32,15 @@ class Cart {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ id: cart_id, quantity: 1 }),
+          body: JSON.stringify({ id: cartid, quantity: 1 }),
         });
-        cartState.push({ id: cart_id, quantity: 1 });
+        cartState.push({ id: cartid, quantity: 1 });
       } else {
-        const index = cartState.findIndex((p) => p.id == cart_id);
+        const index = cartState.findIndex((p) => p.id == cartid);
         if (index > -1) {
           const quantity = cartState[index].quantity + 1;
           cartState[index].quantity = quantity;
-          await fetch(`${API_URL}/cart/${cart_id}`, {
+          await fetch(`${API_URL}/cart/${cartid}`, {
             method: "PUT",
             headers: {
               "Content-Type": "application/json",
@@ -47,13 +48,13 @@ class Cart {
             body: JSON.stringify({ quantity }),
           });
         } else {
-          cartState.push({ id: cart_id, quantity: 1 });
+          cartState.push({ id: cartid, quantity: 1 });
           await fetch(`${API_URL}/cart`, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
             },
-            body: JSON.stringify({ id: cart_id, quantity: 1 }),
+            body: JSON.stringify({ id: cartid, quantity: 1 }),
           });
         }
       }
@@ -62,8 +63,8 @@ class Cart {
     }
   };
 
-  findOneById = async (cart_id) => {
-    const result = await fetch(`${API_URL}/cart/${cart_id}`);
+  findOneById = async (cartid) => {
+    const result = await fetch(`${API_URL}/cart/${cartid}`);
     return await result.json();
   };
 }
