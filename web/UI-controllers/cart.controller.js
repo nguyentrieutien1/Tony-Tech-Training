@@ -1,35 +1,35 @@
 import { toInt } from "../utils/covertToInt.js";
-import { focusToChangeQuantity } from "./../js/focusToChangeQuantity.js";
-import { totalPrice } from "../helpers/total_price.helper.js";
+import { totalPrice } from "../utils/totalPrice.js";
 import cartService from "../services/cart.service.js";
-import { clickToUpdate } from "../js/clickToUpdate.js";
-import { checkout } from "../js/checkout.js";
-import { showQuantityProduct } from "../js/showQuantityProduct.js";
 import { cartState, productState } from "../global/state.js";
-import { loading } from "../helpers/loading.helper.js";
+import { loading } from "./common.controller.js";
 
 export const createCartItem = () => {
-  const shopping_btns = document.querySelectorAll(".fa-cart-shopping");
-  const modal__container = document.querySelector(".modal__container");
-  const modal__checkout = document.querySelector(".modal__checkout--total");
-  const modal__content = document.querySelector(".modal__content");
-  const modal__body = document.querySelector(".modal__body");
-  shopping_btns.forEach((btn, index) => {
-    btn.addEventListener("click", async function (e) {
-      const spin = document.querySelector(`.fa-spin-${index}`);
-      spin.style.display = "block";
-      const product_id = toInt(this?.getAttribute("data-id"));
-      await cartService.createOrUpdte(product_id);
-      await getCartItems(product_id, modal__content);
-      modal__container?.classList?.add("show__modal");
-      spin.style.display = "none";
-      modal__checkout.innerHTML = `
+  try {
+    const shopping_btns = document.querySelectorAll(".fa-cart-shopping");
+    const modal__container = document.querySelector(".modal__container");
+    const modal__checkout = document.querySelector(".modal__checkout--total");
+    const modal__content = document.querySelector(".modal__content");
+    const modal__body = document.querySelector(".modal__body");
+    shopping_btns.forEach((btn, index) => {
+      btn.addEventListener("click", async function (e) {
+        const spin = document.querySelector(`.fa-spin-${index}`);
+        spin.style.display = "block";
+        const product_id = toInt(this?.getAttribute("data-id"));
+        await cartService.createOrUpdte(product_id);
+        await getCartItems(product_id, modal__content);
+        modal__container?.classList?.add("show__modal");
+        spin.style.display = "none";
+        modal__checkout.innerHTML = `
 							Subtotal: $ ${await totalPrice({ id: product_id })}
 						`;
 
-      modal__body.classList?.add("show__modal--body");
+        modal__body.classList?.add("show__modal--body");
+      });
     });
-  });
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 export const updateCartItem = (cart) => {
@@ -218,4 +218,78 @@ export const getCartItemById = async (id, cart) => {
 					</div>
 					`;
   return renderProduct;
+};
+
+const checkout = async (cart) => {
+  const total = await totalPrice(null, cart);
+  const total__price = document.querySelector(".total__price");
+  const sub__total = document.querySelector(".sub__total");
+  sub__total ? (sub__total.textContent = `$ ${total}`) : null;
+  total__price ? (total__price.textContent = `$ ${total}`) : null;
+};
+
+const clickToUpdate = (cart) => {
+  const update_quantity_buttons = document.querySelectorAll(
+    ".update__quantity--btn"
+  );
+  updateProduct(update_quantity_buttons, cart);
+};
+const focusToChangeQuantity = (cart) => {
+  const increase_quantity_buttons = document.querySelectorAll(
+    ".update__quantity-input"
+  );
+  increase_quantity_buttons.forEach((btn) => {
+    btn.addEventListener("blur", function () {
+      const id = this.getAttribute("data-id");
+      const value = toInt(this.value);
+      updateQuantity(id, { type: 2, value }, cart);
+    });
+  });
+};
+
+const updateProduct = async (buttonList, cart) => {
+  buttonList.forEach((btn) => {
+    btn.addEventListener("click", function () {
+      const id = this.getAttribute("data-id");
+      const type = this.getAttribute("data-type");
+      updateQuantity(id, { type }, cart);
+    });
+  });
+};
+const showQuantityProduct = async (cart) => {
+  const quantityElement = document.querySelector(".cart__icon .amount");
+  const quantities = cart?.reduce((prevItem, currentIem) => {
+    prevItem += currentIem?.quantity;
+    return prevItem;
+  }, 0);
+  quantityElement.textContent = quantities;
+};
+
+const updateQuantity = async (id, { type, value }, cart) => {
+  const product = cart.find((cart) => cart.id == id);
+  const index_spin = cart.findIndex((p) => p.id == id);
+  const quantity = product?.quantity;
+  let payload = type == 0 ? quantity - 1 : type == 1 ? quantity + 1 : value;
+  if (payload <= 1) {
+    payload = 1;
+  }
+  const index = cart.findIndex((cart) => cart.id == id);
+  cartState[index].quantity = payload;
+
+  loading(
+    [
+      [`sub__spin-${index_spin}`, `show__fa-spin-item`],
+      [`fa-spin-item-${index_spin}`, `show__fa-spin-item`],
+    ],
+    { status: true }
+  );
+  await cartService.findOneAndUpdate(id, payload);
+  getCartItems();
+  loading(
+    [
+      [`sub__spin-${index_spin}`, `show__fa-spin-item`],
+      [`fa-spin-item-${index_spin}`, `show__fa-spin-item`],
+    ],
+    { status: false }
+  );
 };

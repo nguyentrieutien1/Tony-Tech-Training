@@ -1,8 +1,8 @@
-import { createCartItem, getCartItems } from "./cart.js";
+import { createCartItem, getCartItems } from "./cart.controller.js";
 import productService from "../services/product.service.js";
 import { productState } from "../global/state.js";
 export const showAllProducts = async () => {
-	const items = document.querySelector(".trending__product--items");
+  const items = document.querySelector(".trending__product--items");
   const mapProducts = productState?.map((product, index) => {
     return `<div class="deal__product--item toptreding__product--item">
 							<i class="fa-solid fa-spinner fa-spin ${`fa-spin-${index}`}"></i>
@@ -42,6 +42,6 @@ export const showAllProducts = async () => {
 						</div>`;
   });
   items.innerHTML = mapProducts.join(" ");
-	getCartItems();
-	createCartItem()
+  getCartItems();
+  createCartItem();
 };

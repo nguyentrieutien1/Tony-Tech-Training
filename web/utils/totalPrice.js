@@ -1,6 +1,6 @@
 import { products } from "../data/products.js";
 import { productState } from "../global/state.js";
-import { toInt } from "../utils/covertToInt.js";
+import { toInt } from "./covertToInt.js";
 export const totalPrice = async (option, cart) => {
   const id = option?.id ? option?.id : undefined;
   const other_price = option?.other_price ? option?.other_price : [];

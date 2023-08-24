@@ -1,6 +1,6 @@
-import { showAllProducts } from "../UI-controllers/product.js";
-import { initCartState, initProductState } from "../global/state.js";
-import "./../UI-controllers/cart.js";
+import { showAllProducts } from "./UI-controllers/product.controller.js";
+import { initCartState, initProductState } from "./global/state.js";
+import "./UI-controllers/cart.controller.js";
 const startApp = async () => {
   //Initial Product  State
   await initProductState();
