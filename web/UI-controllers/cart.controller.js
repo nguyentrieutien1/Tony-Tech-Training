@@ -15,7 +15,7 @@ export const createCartItem = () => {
       btn.addEventListener("click", async function (e) {
         const spin = document.querySelector(`.fa-spin-${index}`);
         spin.style.display = "block";
-        const productid = toInt(this?.getAttribute("data-id"));
+        const productid = this?.getAttribute("data-id");
         await cartService.createOrUpdte(productid);
         await getCartItems(productid, modal__content);
         modal__container?.classList?.add("show__modal");
@@ -50,10 +50,10 @@ export const deleteCartItem = () => {
         ],
         { status: true }
       );
-      console.log(id);
       await cartService.findOneAndDelete(id);
-      const index = cartState.findIndex((cartItem) => cartItem.id == id);
-      console.log(index);
+      const index = cartState.findIndex(
+        (cartItem) => cartItem?.product._id == id
+      );
       cartState.splice(index, 1);
       getCartItems();
       loading(
@@ -71,46 +71,37 @@ export const getCartItems = async (productid, element) => {
   const cart__element = document.querySelector(".cart__items");
   const cart__checkout = document.querySelector(".cart__checkout--container");
   const cart = cartState;
-  const findProducts = cart?.map((product) => {
-    const exitsProduct = productState?.find(
-      (productLocal) => toInt(productLocal?.id) == toInt(product?.id)
-    );
-    if (exitsProduct) {
-      exitsProduct.quantity = product?.quantity;
-      return exitsProduct;
-    }
-  });
-  const renderedProduct = findProducts?.map((product, index) => {
+  const renderedProduct = cart?.map((cartItem, index) => {
     return `
     <div class="cart__item">
 						<div class="cart__item--info">
 							<div class="sub__spin sub__spin-${index}"></div>
 
 						<i class="fa-solid fa-spinner fa-spin fa-spin-item ${`fa-spin-item-${index}`}"></i>
-							<img src="${product?.image}" alt="">
+							<img src="${cartItem?.product?.image}" alt="">
 							<div class="cart__item--content">
 								<div class="cart__item--title">
 									<span>Rockstar XD775...</span>
 								</div>
 								<div class="cart__item--price">
-									<span>$ ${product?.product_price}</span>
+									<span>$ ${cartItem?.product?.product_price}</span>
 								</div>
 								<div class="cart__item--quantity">
 									<p   data-id="${
-                    product?.id
+                    cartItem?.product?._id
                   }" class="decrease__product--btn update__quantity--btn" data-type="0">-</p>
 									<input type="number" class="update__quantity-input" value="${
-                    product?.quantity
-                  }" data-id="${product?.id}" >
+                    cartItem?.quantity
+                  }" data-id="${cartItem?.product?._id}" >
 									<p data-type="1" class="increase__product--btn update__quantity--btn" data-id="${
-                    product?.id
+                    cartItem?.product?._id
                   }">+</p>
 			
 								</div>
 							</div>
 			
 						</div>
-						<div class="cart__item--delete-btn" data-id="${product?.id}">
+						<div class="cart__item--delete-btn" data-id="${cartItem?.product._id}">
 							<i class="fa-solid fa-xmark"></i>
 						</div>
 			
@@ -119,7 +110,7 @@ export const getCartItems = async (productid, element) => {
           `;
   });
   const renderedCartCheckout =
-    findProducts?.length > 0
+    cart?.length > 0
       ? `
 						<div class="cart__checkout--info">
 							<div class="cart__checkout-sub">
@@ -157,7 +148,7 @@ export const getCartItems = async (productid, element) => {
 								CHECKOUT
 							</div>
 					`;
-  cart__element.innerHTML = renderedProduct.join(" ");
+  cart__element.innerHTML = renderedProduct?.join(" ");
   cart__checkout.innerHTML = renderedCartCheckout;
   if (productid) {
     element.innerHTML = await getCartItemById(productid, cart);
@@ -169,9 +160,8 @@ export const getCartItems = async (productid, element) => {
 };
 
 export const getCartItemById = async (id, cart) => {
-  const find_product_byid = productState.find(
-    (product) => toInt(product?.id) == toInt(id)
-  );
+  const find_product_byid = productState.find((product) => product?._id == id);
+  console.log(find_product_byid);
   const find_quantity_byid = cartState.find((cartItem) => cartItem.id == id);
   const quantities = cart?.reduce((prevItem, currentIem) => {
     prevItem += currentIem?.quantity;
@@ -179,13 +169,13 @@ export const getCartItemById = async (id, cart) => {
   }, 0);
   const renderProduct = `
   <div class="modal__product">
-						<img src="${find_product_byid.image}" alt="">
+						<img src="${find_product_byid?.image}" alt="">
 						<div class="modal__product--p">
 							<div class="modal__product--title">
 								${find_product_byid?.product_title}
 							</div>
 							<div class="modal__product--price">
-								<span>$ ${find_product_byid.product_price}</span> <span>Size: </span><b>S</b>
+								<span>$ ${find_product_byid?.product_price}</span> <span>Size: </span><b>S</b>
 							</div>
 							<div class="modal__product--quantity"><span>Quantity:</span><b>${
                 find_quantity_byid?.quantity || 1
@@ -228,7 +218,6 @@ const checkout = async (cart) => {
   sub__total ? (sub__total.textContent = `$ ${total}`) : null;
   total__price ? (total__price.textContent = `$ ${total}`) : null;
 };
-
 const clickToUpdate = (cart) => {
   const update_quantity_buttons = document.querySelectorAll(
     ".update__quantity--btn"
@@ -267,16 +256,14 @@ const showQuantityProduct = async (cart) => {
 };
 
 const updateQuantity = async (id, { type, value }, cart) => {
-  const product = cart.find((cart) => cart.id == id);
-  const index_spin = cart.findIndex((p) => p.id == id);
+  const product = cart.find((cart) => cart?.product?._id == id);
+  const index_spin = cart.findIndex((p) => p?.product?._id == id);
   const quantity = product?.quantity;
   let payload = type == 0 ? quantity - 1 : type == 1 ? quantity + 1 : value;
   if (payload <= 1) {
     payload = 1;
   }
-  const index = cart.findIndex((cart) => cart.id == id);
-  cartState[index].quantity = payload;
-
+  cartState[index_spin].quantity = payload;
   loading(
     [
       [`sub__spin-${index_spin}`, `show__fa-spin-item`],

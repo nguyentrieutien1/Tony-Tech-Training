@@ -1,5 +1,4 @@
 import { createCartItem, getCartItems } from "./cart.controller.js";
-import productService from "../services/product.service.js";
 import { productState } from "../global/state.js";
 export const showAllProducts = async () => {
   const items = document.querySelector(".trending__product--items");
@@ -36,12 +35,12 @@ export const showAllProducts = async () => {
 								</div>
 								<div class="deal__product--item-price-2">
 									<div>$ ${product?.product_price}</div>
-									<i class="fa-solid fa-cart-shopping shopping-btn" data-id="${product.id}"></i>
+									<i class="fa-solid fa-cart-shopping shopping-btn" data-id="${product._id}"></i>
 								</div>
 							</div>
 						</div>`;
   });
-  items.innerHTML = mapProducts.join(" ");
+  items.innerHTML = mapProducts?.join(" ");
   getCartItems();
   createCartItem();
 };

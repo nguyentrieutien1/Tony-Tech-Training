@@ -3,8 +3,8 @@ export function saveToLocalStorage(key, value) {
 }
 
 export function getFromLocalStorage(key) {
-  const value = localStorage.getItem(key) || [];
-  return [];
+  const value = localStorage.getItem(key) || undefined;
+  return value;
 }
 
 export function removeFromLocalStorage(key) {
