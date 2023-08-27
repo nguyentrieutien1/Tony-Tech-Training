@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+     <!-- Latest compiled and minified CSS & JS -->
+     <link rel="stylesheet" media="screen" href="//netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+     <script src="//code.jquery.com/jquery.js"></script>
+     <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+     <title>Sign In</title>
+</head>
+
+<body>
+     <div class="row" style="display: flex; justify-content: center;">
+          <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 mx-5">
+               <div class="signin__form">
+                    <legend>Form Sign in</legend>
+                    <div class="form-group">
+                         <label for="">Email</label>
+                         <input type="text" class="form-control" id="email" placeholder="Enter email">
+                    </div>
+                    <div class="form-group">
+                         <label for="">Password</label>
+                         <input type="password" class="form-control" id="password" placeholder="Enter password">
+                    </div>
+                    <div style="display: flex; align-items: center; justify-content: space-between"
+                         class="footer__form">
+                         <a href="./signup.html">Sign up</a>
+                         <button class="btn btn-success btn-signin">Sign In</button>
+                    </div>
+               </div>
+          </div>
+     </div>
+
+
+</body>
+<script type="module" src="./UI-controllers/access.controller.js"></script>
+
+</html>
