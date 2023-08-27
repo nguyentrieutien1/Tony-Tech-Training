@@ -9,8 +9,7 @@ const signIn = async () => {
   const email__element = document.querySelector(".signin__form  #email");
   const password__element = document.querySelector(".signin__form  #password");
   const submit__btn = document.querySelector(".signin__form  .btn-signin");
-  console.log(submit__btn);
-  submit__btn.addEventListener("click", async function (e) {
+  submit__btn?.addEventListener("click", async function (e) {
     e.preventDefault();
     const result = await fetch(`${API_URL}/signin`, {
       method: "POST",
@@ -24,14 +23,18 @@ const signIn = async () => {
     });
     const { status } = result;
     const json = await result.json();
-    const { accessToken, refreshToken, user_id } = json.data;
     if (status === 201) {
+      const { accessToken, refreshToken, user_id } = json.data;
       saveToLocalStorage("accessToken", accessToken);
       saveToLocalStorage("refreshToken", refreshToken);
       saveToLocalStorage("user_id", user_id);
       saveToLocalStorage("status", 1);
       window.location.href = "./index.html";
+      return void 0;
     }
+    console.log(json);
+    const { message } = json;
+    alert(message);
   });
 };
 const signUp = async () => {
@@ -52,7 +55,7 @@ const signUp = async () => {
     });
     const { status } = result;
     if (status == 201) {
-      return (window.location.href = "./login.html");
+      return (window.location.href = "./signin.html");
     }
     const data = await result.json();
     const { message } = data;
