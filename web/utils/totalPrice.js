@@ -1,7 +1,6 @@
-import { products } from "../data/products.js";
-import { productState } from "../global/state.js";
+import { cartState, productState } from "../global/state.js";
 import { toInt } from "./covertToInt.js";
-export const totalPrice = async (option, cart) => {
+export const totalPrice = async (option) => {
   const id = option?._id ? option?._id : undefined;
   const other_price = option?.other_price ? option?.other_price : [];
   let total__price = 0;
@@ -9,7 +8,7 @@ export const totalPrice = async (option, cart) => {
     const find_product_data = productState?.find(
       (product) => toInt(product?._id) == toInt(id)
     );
-    const find_product_local = cart?.find(
+    const find_product_local = cartState?.find(
       (product) => toInt(product?._id) == toInt(id)
     );
     total__price = other_price?.reduce((prevPrice, currentPrice) => {
@@ -17,7 +16,7 @@ export const totalPrice = async (option, cart) => {
       return prevPrice;
     }, find_product_data?.product_price * find_product_local?.quantity);
   } else {
-    total__price = cart?.reduce((prevItem, currentItem) => {
+    total__price = cartState?.reduce((prevItem, currentItem) => {
       prevItem +=
         toInt(currentItem?.quantity) *
         toInt(currentItem?.product?.product_price);

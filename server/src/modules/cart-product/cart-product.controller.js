@@ -1,13 +1,17 @@
 const { Success, Ok } = require("../../core/success.response");
 const { errorHandler } = require("../../helpers/handleError");
-const cartProductService = require("./cartProduct.service");
+const { CartProductSerice } = require("./cart-product.service");
 
 class CartProductController {
-  create = async (req, res) => {
+  static create = async (req, res) => {
     try {
-      const payload = req.body;
+      const { productId, quantity } = req.body;
       const { _id } = req.user;
-      const product = await cartProductService.create({ payload, userId: _id });
+      const product = await CartProductSerice.create({
+        productId,
+        quantity,
+        userId: _id,
+      });
       return new Success({
         message: "Cart item has been created !",
         data: product,
@@ -16,23 +20,14 @@ class CartProductController {
       errorHandler(error, res);
     }
   };
-  findOne = async (req, res) => {
-    try {
-      const { _id } = req.user;
-      const product = await cartProductService.findOne({ userId: _id });
-      return new Ok({ data: product }).send(res);
-    } catch (error) {
-      errorHandler(error, res);
-    }
-  };
-  findOneAndUpdate = async (req, res) => {
+  static findOneAndUpdate = async (req, res) => {
     try {
       const { _id } = req.user;
       const { id } = req.params;
-      const payload = req.body;
-      const product = await cartProductService.findOneAndUpdate({
+      const { quantity } = req.body;
+      const product = await CartProductSerice.findOneAndUpdate({
         userId: _id,
-        payload,
+        quantity,
         productId: id,
       });
       return new Ok({ data: product }).send(res);
@@ -40,11 +35,13 @@ class CartProductController {
       errorHandler(error, res);
     }
   };
-  findOneAndDelete = async (req, res) => {
+  static findOneAndDelete = async (req, res) => {
     try {
+      const { _id } = req.user;
       const { id } = req.params;
-      const result = await cartProductService.findOneAndDelete({
+      const result = await CartProductSerice.findOneAndDelete({
         itemId: id,
+        userId: _id,
       });
       return new Ok({ data: result }).send(res);
     } catch (error) {
@@ -52,4 +49,6 @@ class CartProductController {
     }
   };
 }
-module.exports = new CartProductController();
+module.exports = {
+  CartProductController,
+};

@@ -1,7 +1,8 @@
+const { logger } = require("../configs/logger");
 const { ErrorResponse } = require("../core/error.response");
 
 function errorHandler(err, req, res, next) {
-  console.log(err);
+  logger.error(err);
   let statusCode = 500;
   let message = "Internal Server Error";
 
@@ -13,5 +14,5 @@ function errorHandler(err, req, res, next) {
   res.status(statusCode).json({ message, statusCode });
 }
 module.exports = {
-     errorHandler
-}
+  errorHandler,
+};

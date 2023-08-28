@@ -15,13 +15,13 @@ export const createCartItem = () => {
       btn.addEventListener("click", async function (e) {
         const spin = document.querySelector(`.fa-spin-${index}`);
         spin.style.display = "block";
-        const productid = this?.getAttribute("data-id");
-        await cartService.createOrUpdte(productid);
-        await getCartItems(productid, modal__content);
+        const productId = this?.getAttribute("data-id");
+        await cartService.createOrUpdte(productId);
+        await getCartItems(productId, modal__content);
         modal__container?.classList?.add("show__modal");
         spin.style.display = "none";
         modal__checkout.innerHTML = `
-							Subtotal: $ ${await totalPrice({ id: productid })}
+							Subtotal: $ ${await totalPrice({ id: productId })}
 						`;
 
         modal__body.classList?.add("show__modal--body");
@@ -32,12 +32,12 @@ export const createCartItem = () => {
   }
 };
 
-export const updateCartItem = (cart) => {
-  focusToChangeQuantity(cart);
-  clickToUpdate(cart);
+export const listenUpdateCartItem = () => {
+  focusToUpdate();
+  clickToUpdate();
 };
 
-export const deleteCartItem = () => {
+export const listenDeleteCartItem = () => {
   const del__btns = document.querySelectorAll(".cart__item--delete-btn");
 
   del__btns.forEach((btn, i) => {
@@ -67,7 +67,7 @@ export const deleteCartItem = () => {
   });
 };
 
-export const getCartItems = async (productid, element) => {
+export const getCartItems = async (productId, element) => {
   const cart__element = document.querySelector(".cart__items");
   const cart__checkout = document.querySelector(".cart__checkout--container");
   const cart = cartState;
@@ -150,21 +150,22 @@ export const getCartItems = async (productid, element) => {
 					`;
   cart__element.innerHTML = renderedProduct?.join(" ");
   cart__checkout.innerHTML = renderedCartCheckout;
-  if (productid) {
-    element.innerHTML = await getCartItemById(productid, cart);
+  if (productId) {
+    element.innerHTML = await getCartItemById(productId);
   }
-  updateCartItem(cart);
-  deleteCartItem(cart);
-  checkout(cart);
-  showQuantityProduct(cart);
+  listenUpdateCartItem();
+  listenDeleteCartItem();
+  listenCheckout();
+  listenQuantityCartItem();
 };
 
-export const getCartItemById = async (id, cart) => {
+export const getCartItemById = async (id) => {
   const find_product_byid = productState.find((product) => product?._id == id);
-  console.log(find_product_byid);
-  const find_quantity_byid = cartState.find((cartItem) => cartItem.id == id);
-  const quantities = cart?.reduce((prevItem, currentIem) => {
-    prevItem += currentIem?.quantity;
+  const find_quantity_byid = cartState.find(
+    (cartItem) => cartItem?.product?._id == id
+  );
+  const quantities = cartState?.reduce((prevItem, currentItem) => {
+    prevItem += currentItem?.quantity;
     return prevItem;
   }, 0);
   const renderProduct = `
@@ -187,7 +188,7 @@ export const getCartItemById = async (id, cart) => {
 							There are ${quantities} items in your cart.
 						</div>
 						<div class="modal__checkout--total">
-							Subtotal: $ ${await totalPrice(null, cart)}
+							Subtotal: $ ${await totalPrice(null)}
 						</div>
 						<div class="modal__checkout--quantity">
 							Shipping: $0.00
@@ -211,20 +212,26 @@ export const getCartItemById = async (id, cart) => {
   return renderProduct;
 };
 
-const checkout = async (cart) => {
-  const total = await totalPrice(null, cart);
+const listenCheckout = async () => {
+  const total = await totalPrice(null);
   const total__price = document.querySelector(".total__price");
   const sub__total = document.querySelector(".sub__total");
   sub__total ? (sub__total.textContent = `$ ${total}`) : null;
   total__price ? (total__price.textContent = `$ ${total}`) : null;
 };
-const clickToUpdate = (cart) => {
+const clickToUpdate = () => {
   const update_quantity_buttons = document.querySelectorAll(
     ".update__quantity--btn"
   );
-  updateProduct(update_quantity_buttons, cart);
+  update_quantity_buttons.forEach((btn) => {
+    btn.addEventListener("click", function () {
+      const id = this.getAttribute("data-id");
+      const type = this.getAttribute("data-type");
+      updateQuantityCartItem(id, { type });
+    });
+  });
 };
-const focusToChangeQuantity = (cart) => {
+const focusToUpdate = () => {
   const increase_quantity_buttons = document.querySelectorAll(
     ".update__quantity-input"
   );
@@ -232,32 +239,23 @@ const focusToChangeQuantity = (cart) => {
     btn.addEventListener("blur", function () {
       const id = this.getAttribute("data-id");
       const value = toInt(this.value);
-      updateQuantity(id, { type: 2, value }, cart);
+      updateQuantityCartItem(id, { type: 2, value });
     });
   });
 };
 
-const updateProduct = async (buttonList, cart) => {
-  buttonList.forEach((btn) => {
-    btn.addEventListener("click", function () {
-      const id = this.getAttribute("data-id");
-      const type = this.getAttribute("data-type");
-      updateQuantity(id, { type }, cart);
-    });
-  });
-};
-const showQuantityProduct = async (cart) => {
+const listenQuantityCartItem = async () => {
   const quantityElement = document.querySelector(".cart__icon .amount");
-  const quantities = cart?.reduce((prevItem, currentIem) => {
+  const quantities = cartState?.reduce((prevItem, currentIem) => {
     prevItem += currentIem?.quantity;
     return prevItem;
   }, 0);
   quantityElement.textContent = quantities;
 };
 
-const updateQuantity = async (id, { type, value }, cart) => {
-  const product = cart.find((cart) => cart?.product?._id == id);
-  const index_spin = cart.findIndex((p) => p?.product?._id == id);
+const updateQuantityCartItem = async (id, { type, value }) => {
+  const product = cartState.find((cart) => cart?.product?._id == id);
+  const index_spin = cartState.findIndex((p) => p?.product?._id == id);
   const quantity = product?.quantity;
   let payload = type == 0 ? quantity - 1 : type == 1 ? quantity + 1 : value;
   if (payload <= 1) {

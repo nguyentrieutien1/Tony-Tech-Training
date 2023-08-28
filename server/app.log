@@ -1,0 +1,408 @@
+2023-08-28T02:43:28.126Z info: App is running on link http://localhost:5000
+2023-08-28T02:53:27.912Z info: App is running on link http://localhost:5000
+2023-08-28T02:53:29.067Z info: App is running on link http://localhost:5000
+2023-08-28T03:51:27.663Z info: App is running on link http://localhost:5000
+2023-08-28T04:08:41.635Z info: App is running on link http://localhost:5000
+2023-08-28T04:11:08.427Z error: invalid signature
+2023-08-28T04:11:09.514Z error: invalid signature
+2023-08-28T04:11:22.028Z error: invalid signature
+2023-08-28T04:11:23.127Z error: invalid signature
+2023-08-28T04:11:30.121Z error: invalid signature
+2023-08-28T04:11:31.244Z error: invalid signature
+2023-08-28T04:11:34.165Z error: invalid signature
+2023-08-28T04:11:35.210Z error: invalid signature
+2023-08-28T04:11:39.454Z error: invalid signature
+2023-08-28T04:11:40.557Z error: invalid signature
+2023-08-28T04:11:42.185Z error: invalid signature
+2023-08-28T04:11:43.236Z error: invalid signature
+2023-08-28T04:11:47.994Z error: invalid signature
+2023-08-28T04:11:49.072Z error: invalid signature
+2023-08-28T04:11:58.678Z error: invalid signature
+2023-08-28T04:11:59.689Z error: invalid signature
+2023-08-28T04:12:15.502Z error: invalid signature
+2023-08-28T04:12:16.598Z error: invalid signature
+2023-08-28T04:12:19.665Z error: invalid signature
+2023-08-28T04:12:20.713Z error: invalid signature
+2023-08-28T04:12:24.837Z error: invalid signature
+2023-08-28T04:12:25.863Z error: invalid signature
+2023-08-28T04:12:29.827Z error: invalid signature
+2023-08-28T04:12:30.858Z error: invalid signature
+2023-08-28T04:12:31.472Z error: invalid signature
+2023-08-28T04:12:32.569Z error: invalid signature
+2023-08-28T04:12:35.150Z error: invalid signature
+2023-08-28T04:12:36.194Z error: invalid signature
+2023-08-28T04:12:47.355Z error: invalid signature
+2023-08-28T04:12:48.396Z error: invalid signature
+2023-08-28T04:14:37.668Z info: App is running on link http://localhost:5000
+2023-08-28T04:16:03.624Z info: App is running on link http://localhost:5000
+2023-08-28T04:16:22.262Z info: App is running on link http://localhost:5000
+2023-08-28T04:16:23.338Z info: App is running on link http://localhost:5000
+2023-08-28T04:16:24.826Z info: App is running on link http://localhost:5000
+2023-08-28T04:16:42.627Z info: App is running on link http://localhost:5000
+2023-08-28T04:16:52.072Z info: App is running on link http://localhost:5000
+2023-08-28T04:16:56.365Z info: App is running on link http://localhost:5000
+2023-08-28T04:16:58.916Z info: App is running on link http://localhost:5000
+2023-08-28T04:17:03.379Z info: App is running on link http://localhost:5000
+2023-08-28T04:17:10.023Z info: App is running on link http://localhost:5000
+2023-08-28T04:17:13.918Z info: App is running on link http://localhost:5000
+2023-08-28T04:17:19.639Z info: App is running on link http://localhost:5000
+2023-08-28T04:17:23.415Z info: App is running on link http://localhost:5000
+2023-08-28T04:17:41.712Z info: App is running on link http://localhost:5000
+2023-08-28T04:17:41.776Z error: userId is not defined
+2023-08-28T04:17:42.736Z error: userId is not defined
+2023-08-28T04:17:46.554Z info: App is running on link http://localhost:5000
+2023-08-28T04:17:46.736Z error: userId is not defined
+2023-08-28T04:17:48.245Z info: App is running on link http://localhost:5000
+2023-08-28T04:17:48.405Z error: userId is not defined
+2023-08-28T04:17:49.713Z error: userId is not defined
+2023-08-28T04:17:58.194Z info: App is running on link http://localhost:5000
+2023-08-28T04:17:58.389Z error: userId is not defined
+2023-08-28T04:17:59.198Z error: userId is not defined
+2023-08-28T04:18:01.761Z info: App is running on link http://localhost:5000
+2023-08-28T04:18:01.932Z error: token is not defined
+2023-08-28T04:18:02.814Z error: token is not defined
+2023-08-28T04:18:06.444Z info: App is running on link http://localhost:5000
+2023-08-28T04:18:07.461Z info: App is running on link http://localhost:5000
+2023-08-28T04:18:07.685Z error: token is not defined
+2023-08-28T04:18:09.567Z info: App is running on link http://localhost:5000
+2023-08-28T04:18:09.758Z error: invalid algorithm
+2023-08-28T04:18:11.441Z error: invalid algorithm
+2023-08-28T04:18:41.775Z error: invalid algorithm
+2023-08-28T04:18:43.162Z error: invalid algorithm
+2023-08-28T04:18:43.731Z error: invalid algorithm
+2023-08-28T04:18:45.056Z error: invalid algorithm
+2023-08-28T04:18:48.102Z error: invalid algorithm
+2023-08-28T04:18:49.404Z error: invalid algorithm
+2023-08-28T04:19:25.885Z info: App is running on link http://localhost:5000
+2023-08-28T04:20:02.639Z info: App is running on link http://localhost:5000
+2023-08-28T04:23:20.756Z info: App is running on link http://localhost:5000
+2023-08-28T04:23:24.369Z info: App is running on link http://localhost:5000
+2023-08-28T04:23:25.567Z info: App is running on link http://localhost:5000
+2023-08-28T04:23:27.286Z info: App is running on link http://localhost:5000
+2023-08-28T04:23:47.816Z info: App is running on link http://localhost:5000
+2023-08-28T04:24:08.927Z info: App is running on link http://localhost:5000
+2023-08-28T04:24:11.750Z info: App is running on link http://localhost:5000
+2023-08-28T04:24:25.857Z info: App is running on link http://localhost:5000
+2023-08-28T04:24:31.890Z info: App is running on link http://localhost:5000
+2023-08-28T04:25:12.371Z info: App is running on link http://localhost:5000
+2023-08-28T04:25:30.287Z info: App is running on link http://localhost:5000
+2023-08-28T04:25:59.494Z info: App is running on link http://localhost:5000
+2023-08-28T04:26:20.079Z info: App is running on link http://localhost:5000
+2023-08-28T04:26:55.209Z info: App is running on link http://localhost:5000
+2023-08-28T04:26:58.016Z info: App is running on link http://localhost:5000
+2023-08-28T04:27:01.708Z info: App is running on link http://localhost:5000
+2023-08-28T04:27:01.807Z error: app.use is not a function
+2023-08-28T04:27:02.124Z error: app.use is not a function
+2023-08-28T04:27:09.384Z info: App is running on link http://localhost:5000
+2023-08-28T04:27:09.440Z error: app.use is not a function
+2023-08-28T04:27:09.874Z error: app.use is not a function
+2023-08-28T04:27:15.161Z info: App is running on link http://localhost:5000
+2023-08-28T04:27:15.223Z error: app.use is not a function
+2023-08-28T04:27:15.843Z error: app.use is not a function
+2023-08-28T04:27:46.944Z info: App is running on link http://localhost:5000
+2023-08-28T04:27:47.146Z error: app.use is not a function
+2023-08-28T04:27:47.536Z error: app.use is not a function
+2023-08-28T04:27:51.581Z info: App is running on link http://localhost:5000
+2023-08-28T04:27:55.729Z info: App is running on link http://localhost:5000
+2023-08-28T04:27:59.059Z info: App is running on link http://localhost:5000
+2023-08-28T04:28:00.155Z info: App is running on link http://localhost:5000
+2023-08-28T04:28:26.625Z info: App is running on link http://localhost:5000
+2023-08-28T04:28:29.469Z info: App is running on link http://localhost:5000
+2023-08-28T04:28:34.301Z info: App is running on link http://localhost:5000
+2023-08-28T04:29:03.070Z info: App is running on link http://localhost:5000
+2023-08-28T04:29:11.191Z info: App is running on link http://localhost:5000
+2023-08-28T04:29:19.551Z info: App is running on link http://localhost:5000
+2023-08-28T04:31:33.656Z info: App is running on link http://localhost:5000
+2023-08-28T04:31:43.678Z info: App is running on link http://localhost:5000
+2023-08-28T04:36:56.807Z info: App is running on link http://localhost:5000
+2023-08-28T04:39:08.161Z info: App is running on link http://localhost:5000
+2023-08-28T04:39:30.225Z info: App is running on link http://localhost:5000
+2023-08-28T04:39:31.906Z info: App is running on link http://localhost:5000
+2023-08-28T04:39:33.427Z info: App is running on link http://localhost:5000
+2023-08-28T04:39:41.229Z info: App is running on link http://localhost:5000
+2023-08-28T04:39:44.297Z info: App is running on link http://localhost:5000
+2023-08-28T04:40:00.461Z info: App is running on link http://localhost:5000
+2023-08-28T04:40:23.315Z info: App is running on link http://localhost:5000
+2023-08-28T04:40:41.856Z info: App is running on link http://localhost:5000
+2023-08-28T04:40:48.861Z info: App is running on link http://localhost:5000
+2023-08-28T04:40:50.903Z info: App is running on link http://localhost:5000
+2023-08-28T04:41:04.375Z info: App is running on link http://localhost:5000
+2023-08-28T04:41:15.644Z info: App is running on link http://localhost:5000
+2023-08-28T04:41:33.203Z info: App is running on link http://localhost:5000
+2023-08-28T04:41:40.095Z info: App is running on link http://localhost:5000
+2023-08-28T04:41:49.604Z info: App is running on link http://localhost:5000
+2023-08-28T04:41:57.149Z info: App is running on link http://localhost:5000
+2023-08-28T04:42:12.828Z info: App is running on link http://localhost:5000
+2023-08-28T04:42:26.745Z info: App is running on link http://localhost:5000
+2023-08-28T04:42:40.038Z info: App is running on link http://localhost:5000
+2023-08-28T04:42:42.470Z info: App is running on link http://localhost:5000
+2023-08-28T04:42:46.298Z error: Unauthorized !
+2023-08-28T04:42:51.998Z error: Unauthorized !
+2023-08-28T04:43:43.770Z info: App is running on link http://localhost:5000
+2023-08-28T04:43:50.784Z info: App is running on link http://localhost:5000
+2023-08-28T04:43:55.224Z info: App is running on link http://localhost:5000
+2023-08-28T04:43:58.724Z info: App is running on link http://localhost:5000
+2023-08-28T04:44:04.961Z info: App is running on link http://localhost:5000
+2023-08-28T04:44:18.424Z info: App is running on link http://localhost:5000
+2023-08-28T04:44:27.745Z info: App is running on link http://localhost:5000
+2023-08-28T04:45:13.670Z info: App is running on link http://localhost:5000
+2023-08-28T04:45:27.877Z info: App is running on link http://localhost:5000
+2023-08-28T04:45:36.814Z info: App is running on link http://localhost:5000
+2023-08-28T04:45:55.592Z info: App is running on link http://localhost:5000
+2023-08-28T04:46:22.492Z info: App is running on link http://localhost:5000
+2023-08-28T04:46:42.320Z info: App is running on link http://localhost:5000
+2023-08-28T04:49:38.515Z info: App is running on link http://localhost:5000
+2023-08-28T04:50:05.552Z info: App is running on link http://localhost:5000
+2023-08-28T04:50:09.936Z info: App is running on link http://localhost:5000
+2023-08-28T04:50:13.741Z info: App is running on link http://localhost:5000
+2023-08-28T04:50:32.132Z info: App is running on link http://localhost:5000
+2023-08-28T04:50:39.291Z info: App is running on link http://localhost:5000
+2023-08-28T04:50:42.084Z info: App is running on link http://localhost:5000
+2023-08-28T04:50:43.125Z info: App is running on link http://localhost:5000
+2023-08-28T04:50:45.683Z info: App is running on link http://localhost:5000
+2023-08-28T04:50:46.911Z info: App is running on link http://localhost:5000
+2023-08-28T04:50:49.121Z info: App is running on link http://localhost:5000
+2023-08-28T04:51:01.477Z info: App is running on link http://localhost:5000
+2023-08-28T04:51:06.753Z info: App is running on link http://localhost:5000
+2023-08-28T04:51:10.526Z info: App is running on link http://localhost:5000
+2023-08-28T04:51:13.334Z info: App is running on link http://localhost:5000
+2023-08-28T04:51:24.648Z info: App is running on link http://localhost:5000
+2023-08-28T04:51:35.885Z info: App is running on link http://localhost:5000
+2023-08-28T04:51:43.680Z info: App is running on link http://localhost:5000
+2023-08-28T04:51:52.534Z info: App is running on link http://localhost:5000
+2023-08-28T04:52:36.703Z info: App is running on link http://localhost:5000
+2023-08-28T04:52:40.110Z error: Unauthorized !
+2023-08-28T04:53:13.067Z info: App is running on link http://localhost:5000
+2023-08-28T04:53:22.546Z info: App is running on link http://localhost:5000
+2023-08-28T04:53:29.810Z info: App is running on link http://localhost:5000
+2023-08-28T04:53:34.978Z info: App is running on link http://localhost:5000
+2023-08-28T04:53:41.026Z info: App is running on link http://localhost:5000
+2023-08-28T04:54:59.398Z info: App is running on link http://localhost:5000
+2023-08-28T04:55:08.727Z info: App is running on link http://localhost:5000
+2023-08-28T04:55:13.976Z info: App is running on link http://localhost:5000
+2023-08-28T04:55:22.179Z info: App is running on link http://localhost:5000
+2023-08-28T04:59:53.250Z info: App is running on link http://localhost:5000
+2023-08-28T06:05:13.603Z info: App is running on link http://localhost:5000
+2023-08-28T06:15:03.675Z info: App is running on link http://localhost:5000
+2023-08-28T06:15:46.473Z info: App is running on link http://localhost:5000
+2023-08-28T06:15:48.124Z info: App is running on link http://localhost:5000
+2023-08-28T06:15:50.140Z info: App is running on link http://localhost:5000
+2023-08-28T06:16:13.110Z info: App is running on link http://localhost:5000
+2023-08-28T06:16:16.528Z info: App is running on link http://localhost:5000
+2023-08-28T06:16:18.248Z info: App is running on link http://localhost:5000
+2023-08-28T06:16:36.537Z info: App is running on link http://localhost:5000
+2023-08-28T06:16:38.588Z info: App is running on link http://localhost:5000
+2023-08-28T06:16:40.238Z info: App is running on link http://localhost:5000
+2023-08-28T06:21:07.650Z info: App is running on link http://localhost:5000
+2023-08-28T06:21:11.214Z info: App is running on link http://localhost:5000
+2023-08-28T06:21:16.578Z info: App is running on link http://localhost:5000
+2023-08-28T06:21:23.929Z info: App is running on link http://localhost:5000
+2023-08-28T06:25:21.127Z info: App is running on link http://localhost:5000
+2023-08-28T06:25:30.103Z info: App is running on link http://localhost:5000
+2023-08-28T06:29:05.474Z info: App is running on link http://localhost:5000
+2023-08-28T06:30:00.065Z info: App is running on link http://localhost:5000
+2023-08-28T06:31:19.374Z info: App is running on link http://localhost:5000
+2023-08-28T06:31:28.503Z info: App is running on link http://localhost:5000
+2023-08-28T06:31:48.342Z info: App is running on link http://localhost:5000
+2023-08-28T06:32:14.905Z info: App is running on link http://localhost:5000
+2023-08-28T06:32:17.404Z info: App is running on link http://localhost:5000
+2023-08-28T06:32:22.036Z info: App is running on link http://localhost:5000
+2023-08-28T06:32:38.704Z info: App is running on link http://localhost:5000
+2023-08-28T06:32:45.408Z info: App is running on link http://localhost:5000
+2023-08-28T06:32:52.213Z info: App is running on link http://localhost:5000
+2023-08-28T06:33:36.360Z info: App is running on link http://localhost:5000
+2023-08-28T06:33:50.615Z info: App is running on link http://localhost:5000
+2023-08-28T06:45:41.335Z info: App is running on link http://localhost:5000
+2023-08-28T06:45:45.038Z info: App is running on link http://localhost:5000
+2023-08-28T06:45:54.428Z info: App is running on link http://localhost:5000
+2023-08-28T06:46:25.272Z info: App is running on link http://localhost:5000
+2023-08-28T06:46:58.520Z info: App is running on link http://localhost:5000
+2023-08-28T06:47:04.950Z info: App is running on link http://localhost:5000
+2023-08-28T06:47:08.962Z info: App is running on link http://localhost:5000
+2023-08-28T06:47:34.980Z info: App is running on link http://localhost:5000
+2023-08-28T06:47:43.420Z info: App is running on link http://localhost:5000
+2023-08-28T06:47:53.580Z info: App is running on link http://localhost:5000
+2023-08-28T06:47:55.386Z info: App is running on link http://localhost:5000
+2023-08-28T06:48:03.718Z info: App is running on link http://localhost:5000
+2023-08-28T06:48:52.402Z info: App is running on link http://localhost:5000
+2023-08-28T06:48:55.830Z info: App is running on link http://localhost:5000
+2023-08-28T06:48:57.218Z info: App is running on link http://localhost:5000
+2023-08-28T06:49:00.202Z info: App is running on link http://localhost:5000
+2023-08-28T06:49:12.890Z info: App is running on link http://localhost:5000
+2023-08-28T06:49:19.164Z info: App is running on link http://localhost:5000
+2023-08-28T06:49:28.190Z info: App is running on link http://localhost:5000
+2023-08-28T06:49:33.196Z info: App is running on link http://localhost:5000
+2023-08-28T06:49:35.257Z info: App is running on link http://localhost:5000
+2023-08-28T06:49:41.848Z info: App is running on link http://localhost:5000
+2023-08-28T06:49:48.729Z info: App is running on link http://localhost:5000
+2023-08-28T06:55:30.596Z info: App is running on link http://localhost:5000
+2023-08-28T06:55:34.911Z info: App is running on link http://localhost:5000
+2023-08-28T06:55:46.069Z info: App is running on link http://localhost:5000
+2023-08-28T06:55:49.563Z info: App is running on link http://localhost:5000
+2023-08-28T06:55:50.795Z info: App is running on link http://localhost:5000
+2023-08-28T06:55:55.172Z info: App is running on link http://localhost:5000
+2023-08-28T06:55:58.303Z info: App is running on link http://localhost:5000
+2023-08-28T06:57:22.084Z info: App is running on link http://localhost:5000
+2023-08-28T06:57:29.983Z info: App is running on link http://localhost:5000
+2023-08-28T06:57:39.909Z info: App is running on link http://localhost:5000
+2023-08-28T06:57:41.615Z info: App is running on link http://localhost:5000
+2023-08-28T06:57:43.744Z info: App is running on link http://localhost:5000
+2023-08-28T06:57:57.417Z info: App is running on link http://localhost:5000
+2023-08-28T06:58:00.037Z info: App is running on link http://localhost:5000
+2023-08-28T06:58:03.096Z info: App is running on link http://localhost:5000
+2023-08-28T06:58:28.955Z info: App is running on link http://localhost:5000
+2023-08-28T06:58:50.047Z info: App is running on link http://localhost:5000
+2023-08-28T06:58:51.094Z info: App is running on link http://localhost:5000
+2023-08-28T06:58:57.866Z info: App is running on link http://localhost:5000
+2023-08-28T06:59:00.710Z info: App is running on link http://localhost:5000
+2023-08-28T06:59:02.860Z info: App is running on link http://localhost:5000
+2023-08-28T06:59:12.273Z info: App is running on link http://localhost:5000
+2023-08-28T06:59:14.955Z info: App is running on link http://localhost:5000
+2023-08-28T06:59:20.497Z info: App is running on link http://localhost:5000
+2023-08-28T06:59:25.445Z info: App is running on link http://localhost:5000
+2023-08-28T06:59:35.537Z info: App is running on link http://localhost:5000
+2023-08-28T06:59:44.607Z info: App is running on link http://localhost:5000
+2023-08-28T06:59:46.250Z info: App is running on link http://localhost:5000
+2023-08-28T07:00:02.052Z info: App is running on link http://localhost:5000
+2023-08-28T07:00:05.548Z info: App is running on link http://localhost:5000
+2023-08-28T07:00:16.944Z info: App is running on link http://localhost:5000
+2023-08-28T07:00:19.237Z info: App is running on link http://localhost:5000
+2023-08-28T07:00:22.216Z info: App is running on link http://localhost:5000
+2023-08-28T07:00:29.778Z info: App is running on link http://localhost:5000
+2023-08-28T07:00:41.849Z info: App is running on link http://localhost:5000
+2023-08-28T07:00:51.733Z info: App is running on link http://localhost:5000
+2023-08-28T07:00:56.331Z info: App is running on link http://localhost:5000
+2023-08-28T07:00:59.257Z info: App is running on link http://localhost:5000
+2023-08-28T07:01:02.677Z info: App is running on link http://localhost:5000
+2023-08-28T07:01:06.818Z info: App is running on link http://localhost:5000
+2023-08-28T07:01:09.665Z info: App is running on link http://localhost:5000
+2023-08-28T07:02:20.320Z info: App is running on link http://localhost:5000
+2023-08-28T07:15:05.180Z info: App is running on link http://localhost:5000
+2023-08-28T07:15:09.158Z info: App is running on link http://localhost:5000
+2023-08-28T07:15:13.393Z info: App is running on link http://localhost:5000
+2023-08-28T07:15:15.637Z info: App is running on link http://localhost:5000
+2023-08-28T07:15:19.079Z info: App is running on link http://localhost:5000
+2023-08-28T07:15:31.389Z info: App is running on link http://localhost:5000
+2023-08-28T07:15:39.192Z info: App is running on link http://localhost:5000
+2023-08-28T07:16:14.344Z info: App is running on link http://localhost:5000
+2023-08-28T07:16:19.659Z info: App is running on link http://localhost:5000
+2023-08-28T07:16:25.317Z info: App is running on link http://localhost:5000
+2023-08-28T07:16:29.170Z info: App is running on link http://localhost:5000
+2023-08-28T07:16:31.836Z info: App is running on link http://localhost:5000
+2023-08-28T07:37:43.212Z info: App is running on link http://localhost:5000
+2023-08-28T07:38:31.336Z info: App is running on link http://localhost:5000
+2023-08-28T07:38:34.897Z info: App is running on link http://localhost:5000
+2023-08-28T07:39:35.409Z info: App is running on link http://localhost:5000
+2023-08-28T07:41:53.471Z info: App is running on link http://localhost:5000
+2023-08-28T07:51:58.259Z info: App is running on link http://localhost:5000
+2023-08-28T07:52:00.817Z info: App is running on link http://localhost:5000
+2023-08-28T07:52:21.890Z info: App is running on link http://localhost:5000
+2023-08-28T07:52:26.436Z info: App is running on link http://localhost:5000
+2023-08-28T07:52:26.481Z error: app.use is not a function
+2023-08-28T07:52:26.943Z error: app.use is not a function
+2023-08-28T07:52:28.484Z error: app.use is not a function
+2023-08-28T07:52:32.997Z info: App is running on link http://localhost:5000
+2023-08-28T07:52:33.054Z error: app is not defined
+2023-08-28T07:52:34.269Z error: app is not defined
+2023-08-28T07:53:04.845Z info: App is running on link http://localhost:5000
+2023-08-28T07:53:14.253Z info: App is running on link http://localhost:5000
+2023-08-28T07:53:17.961Z info: App is running on link http://localhost:5000
+2023-08-28T07:53:36.803Z info: App is running on link http://localhost:5000
+2023-08-28T07:54:41.031Z info: App is running on link http://localhost:5000
+2023-08-28T07:54:54.141Z info: App is running on link http://localhost:5000
+2023-08-28T07:54:58.295Z info: App is running on link http://localhost:5000
+2023-08-28T07:54:58.481Z error: Cannot read properties of undefined (reading 'use')
+2023-08-28T07:54:59.461Z error: Cannot read properties of undefined (reading 'use')
+2023-08-28T07:55:01.860Z info: App is running on link http://localhost:5000
+2023-08-28T07:55:08.595Z info: App is running on link http://localhost:5000
+2023-08-28T07:55:08.629Z error: route is not defined
+2023-08-28T07:55:10.161Z info: App is running on link http://localhost:5000
+2023-08-28T07:55:10.584Z error: router.use is not a function
+2023-08-28T07:55:12.019Z error: router.use is not a function
+2023-08-28T07:55:14.992Z info: App is running on link http://localhost:5000
+2023-08-28T07:55:15.020Z error: router.al is not a function
+2023-08-28T07:55:16.276Z error: router.al is not a function
+2023-08-28T07:55:17.329Z info: App is running on link http://localhost:5000
+2023-08-28T07:55:17.379Z error: router.all is not a function
+2023-08-28T07:55:19.430Z info: App is running on link http://localhost:5000
+2023-08-28T07:55:19.458Z error: Maximum call stack size exceeded
+2023-08-28T07:55:20.680Z error: Maximum call stack size exceeded
+2023-08-28T07:55:22.695Z info: App is running on link http://localhost:5000
+2023-08-28T07:55:27.374Z info: App is running on link http://localhost:5000
+2023-08-28T07:55:31.420Z info: App is running on link http://localhost:5000
+2023-08-28T07:55:37.464Z info: App is running on link http://localhost:5000
+2023-08-28T07:55:42.625Z info: App is running on link http://localhost:5000
+2023-08-28T07:55:48.232Z info: App is running on link http://localhost:5000
+2023-08-28T07:55:52.220Z info: App is running on link http://localhost:5000
+2023-08-28T07:55:54.474Z info: App is running on link http://localhost:5000
+2023-08-28T07:55:59.379Z info: App is running on link http://localhost:5000
+2023-08-28T07:56:27.621Z info: App is running on link http://localhost:5000
+2023-08-28T07:56:27.657Z error: next is not defined
+2023-08-28T07:56:29.215Z info: App is running on link http://localhost:5000
+2023-08-28T07:56:58.243Z info: App is running on link http://localhost:5000
+2023-08-28T07:57:01.648Z info: App is running on link http://localhost:5000
+2023-08-28T07:57:41.342Z info: App is running on link http://localhost:5000
+2023-08-28T07:57:49.624Z info: App is running on link http://localhost:5000
+2023-08-28T07:57:52.064Z info: App is running on link http://localhost:5000
+2023-08-28T08:03:41.097Z info: App is running on link http://localhost:5000
+2023-08-28T08:03:46.556Z info: App is running on link http://localhost:5000
+2023-08-28T08:03:58.987Z info: App is running on link http://localhost:5000
+2023-08-28T08:04:07.113Z info: App is running on link http://localhost:5000
+2023-08-28T08:04:40.779Z info: App is running on link http://localhost:5000
+2023-08-28T08:04:51.663Z info: App is running on link http://localhost:5000
+2023-08-28T08:05:05.216Z info: App is running on link http://localhost:5000
+2023-08-28T08:05:07.534Z info: App is running on link http://localhost:5000
+2023-08-28T08:06:40.619Z info: App is running on link http://localhost:5000
+2023-08-28T08:06:45.906Z info: App is running on link http://localhost:5000
+2023-08-28T08:06:54.675Z info: App is running on link http://localhost:5000
+2023-08-28T08:06:58.137Z info: App is running on link http://localhost:5000
+2023-08-28T08:07:02.499Z info: App is running on link http://localhost:5000
+2023-08-28T08:07:18.388Z info: App is running on link http://localhost:5000
+2023-08-28T08:07:45.333Z info: App is running on link http://localhost:5000
+2023-08-28T08:08:16.570Z info: App is running on link http://localhost:5000
+2023-08-28T08:08:41.713Z info: App is running on link http://localhost:5000
+2023-08-28T08:09:12.752Z info: App is running on link http://localhost:5000
+2023-08-28T08:09:34.518Z info: App is running on link http://localhost:5000
+2023-08-28T08:09:53.561Z info: App is running on link http://localhost:5000
+2023-08-28T08:10:06.467Z info: App is running on link http://localhost:5000
+2023-08-28T08:10:21.415Z info: App is running on link http://localhost:5000
+2023-08-28T08:10:41.181Z info: App is running on link http://localhost:5000
+2023-08-28T08:10:48.081Z info: App is running on link http://localhost:5000
+2023-08-28T08:10:50.111Z info: App is running on link http://localhost:5000
+2023-08-28T08:10:51.664Z info: App is running on link http://localhost:5000
+2023-08-28T08:11:25.846Z info: App is running on link http://localhost:5000
+2023-08-28T08:11:29.357Z info: App is running on link http://localhost:5000
+2023-08-28T08:11:35.429Z info: App is running on link http://localhost:5000
+2023-08-28T08:11:51.372Z info: App is running on link http://localhost:5000
+2023-08-28T08:12:00.308Z info: App is running on link http://localhost:5000
+2023-08-28T08:12:12.953Z info: App is running on link http://localhost:5000
+2023-08-28T08:12:15.030Z info: App is running on link http://localhost:5000
+2023-08-28T08:13:19.471Z info: App is running on link http://localhost:5000
+2023-08-28T08:13:19.618Z error: app.use is not a function
+2023-08-28T08:13:21.075Z error: app.use is not a function
+2023-08-28T08:13:39.407Z info: App is running on link http://localhost:5000
+2023-08-28T08:13:39.508Z error: app is not defined
+2023-08-28T08:13:39.887Z error: app is not defined
+2023-08-28T08:13:41.239Z error: app is not defined
+2023-08-28T08:14:06.685Z info: App is running on link http://localhost:5000
+2023-08-28T08:14:06.754Z error: app.use is not a function
+2023-08-28T08:14:07.784Z error: app.use is not a function
+2023-08-28T08:14:28.727Z info: App is running on link http://localhost:5000
+2023-08-28T08:24:09.587Z info: App is running on link http://localhost:5000
+2023-08-28T08:24:31.026Z info: App is running on link http://localhost:5000
+2023-08-28T08:24:55.018Z info: App is running on link http://localhost:5000
+2023-08-28T08:25:12.924Z info: App is running on link http://localhost:5000
+2023-08-28T08:25:22.518Z info: App is running on link http://localhost:5000
+2023-08-28T08:25:24.751Z info: App is running on link http://localhost:5000
+2023-08-28T08:25:29.672Z info: App is running on link http://localhost:5000
+2023-08-28T08:25:36.087Z info: App is running on link http://localhost:5000
+2023-08-28T08:26:02.890Z info: App is running on link http://localhost:5000
+2023-08-28T08:26:13.093Z info: App is running on link http://localhost:5000
+2023-08-28T08:26:32.490Z info: App is running on link http://localhost:5000
+2023-08-28T08:26:48.734Z info: App is running on link http://localhost:5000
+2023-08-28T08:26:51.584Z info: App is running on link http://localhost:5000
+2023-08-28T08:26:57.987Z info: App is running on link http://localhost:5000
+2023-08-28T08:27:04.378Z info: App is running on link http://localhost:5000
+2023-08-28T08:27:07.508Z info: App is running on link http://localhost:5000
+2023-08-28T08:27:08.858Z info: App is running on link http://localhost:5000
+2023-08-28T08:27:11.471Z info: App is running on link http://localhost:5000

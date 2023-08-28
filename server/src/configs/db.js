@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 class ConnectDatabase {
-  connect = async () => {
+  static connect = async () => {
     try {
       await mongoose.connect(process.env.MONGODB_CONNECT_STRING_LOCAL);
       console.log("Connect successful to mongodb");
@@ -10,5 +10,4 @@ class ConnectDatabase {
     }
   };
 }
-const mongoDbInstance = new ConnectDatabase();
-module.exports = { mongoDbInstance };
+module.exports = { ConnectDatabase };

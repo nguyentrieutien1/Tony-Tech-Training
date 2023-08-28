@@ -44,7 +44,6 @@ export const loading = (array, { status }) => {
 
   // DISABLE THE MODAL
   modal__body.addEventListener("click", () => {
-    console.log(123);
     modal__body.classList.remove("show__modal--body");
     modal__container.classList.remove("show__modal");
   });
@@ -63,22 +62,14 @@ export const loading = (array, { status }) => {
     cart.classList.remove("position__cart--icon");
   });
 })();
+
+
 const logout = () => {
   const logout__btn = document.querySelector(".header__nav--top-right__auth");
-  console.log(logout__btn);
   logout__btn.addEventListener("click", async () => {
-    const result = await fetch(`${API_URL}/logout`, {
-      method: "POST",
-      headers: headersInfo(),
-    });
-    const { status } = result;
-    if (status === 200) {
-      removeFromLocalStorage("accessToken");
-      removeFromLocalStorage("refreshToken");
-      removeFromLocalStorage("user_id");
-      removeFromLocalStorage("status");
-      window.location.href = "./signin.html";
-    }
+    removeFromLocalStorage("accessToken");
+    removeFromLocalStorage("status");
+    window.location.href = "./signin.html";
   });
 };
 

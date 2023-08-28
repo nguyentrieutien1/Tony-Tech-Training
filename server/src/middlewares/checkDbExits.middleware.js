@@ -1,5 +1,5 @@
 const fs = require("fs");
-const { cartdbPath, productdbPath } = require("../helpers/db_path");
+const { cartdbPath, productdbPath } = require("../helpers/dbPath");
 function checkDbFile(req, res, next) {
   if (!fs.existsSync(cartdbPath)) {
     fs.writeFileSync(cartdbPath, JSON.stringify({ cart: [] }));
