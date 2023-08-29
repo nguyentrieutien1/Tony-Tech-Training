@@ -2,7 +2,6 @@ const { Ok } = require("../../core/success.response");
 const productService = require("./product.service");
 class ProductController {
   static findAll = async (req, res) => {
-    console.log("log");
     const products = await productService.findAll();
     return new Ok({
       data: products,
