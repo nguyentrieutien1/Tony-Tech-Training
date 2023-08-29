@@ -26,16 +26,19 @@ class SuccessResponse {
   };
 }
 class Ok extends SuccessResponse {
-  constructor({ data, message }: { data: any; message: any }) {
+  constructor({ data, message }: { data: any; message?: string }) {
     super({ message, data });
   }
 }
 class Success extends SuccessResponse {
   constructor({
     message = reasonStatusCode.OK,
-    data = [],
+    data,
     status = statusCode.CREATED,
-    reasonStatus = reasonStatusCode.CREATED,
+  }: {
+    message: string;
+    data: any;
+    status?: number;
   }) {
     super({ message, status, data });
   }

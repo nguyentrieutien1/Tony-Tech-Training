@@ -1,5 +1,11 @@
-import productRouter from "./products.route";
+import productsRouter from "./products.route";
+import cartRouter from "./cart.route";
+import cartProductRouter from "./cart-products.route";
+import userRouter from "./user.route";
 import { Router } from "express";
 const router = Router();
-router.use("/products", productRouter);
+router.use("/products", productsRouter);
+router.use("/cart", cartRouter);
+router.use("/cart-products", cartProductRouter);
+router.use("/user", userRouter);
 export default router;
