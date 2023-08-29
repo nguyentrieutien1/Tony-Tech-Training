@@ -11,7 +11,6 @@ const cartProductSchema = new mongoose.Schema({
   },
   quantity: Number,
 });
-//Export the model
 const CartProducts = mongoose.model<CartProductsDTO>(
   "CartProduct",
   cartProductSchema

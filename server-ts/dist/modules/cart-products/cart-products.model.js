@@ -16,6 +16,5 @@ const cartProductSchema = new mongoose_1.default.Schema({
     },
     quantity: Number,
 });
-//Export the model
 const CartProducts = mongoose_1.default.model("CartProduct", cartProductSchema);
 exports.CartProducts = CartProducts;

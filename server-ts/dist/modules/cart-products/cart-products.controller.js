@@ -23,19 +23,18 @@ CartProductsController.create = (req, res) => __awaiter(void 0, void 0, void 0, 
     try {
         const { productId, quantity } = req.body;
         const cartId = req.cartId;
-        const order = yield cart_products_service_1.CartProductsService.create({
+        const cartItem = yield cart_products_service_1.CartProductsService.create({
             product: productId,
             quantity,
             cart: cartId,
         });
         return new success_response_1.Success({
             message: "Cart item has been created !",
-            data: order,
+            data: cartItem,
         }).send(res);
     }
     catch (error) {
         (0, helpError_helper_1.HelpError)(error, res);
-        throw error;
     }
 });
 CartProductsController.findByIdAndUpdate = (req, res) => __awaiter(void 0, void 0, void 0, function* () {

@@ -8,7 +8,7 @@ class ProductController {
   static findAll = async (req: Request, res: Response) => {
     try {
       const products: ProductDTO[] = await ProductService.findAll();
-      return new Ok({
+      return new Ok<ProductDTO[]>({
         data: products,
         message: "Get all product successful !",
       }).send(res);

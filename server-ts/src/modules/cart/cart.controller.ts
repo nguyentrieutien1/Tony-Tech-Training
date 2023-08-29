@@ -15,7 +15,7 @@ class CartController {
       const product: CartProductsDTO[] = await CartService.findOneByUserId({
         userId: _id,
       });
-      return new Ok({
+      return new Ok<CartProductsDTO[]>({
         data: product,
         message: "Get product successful !",
       }).send(res);

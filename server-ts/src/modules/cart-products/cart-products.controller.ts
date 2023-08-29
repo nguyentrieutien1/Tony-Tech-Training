@@ -8,25 +8,23 @@ import { CartProductsDTO } from "../../types/cart-products.type";
 import { HelpError } from "../../helpers/helpError.helper";
 
 class CartProductsController {
-  static create = async (
-    req: IGetUserAuthInfoRequest,
-    res: Response
-  ): Promise<Response<Success>> => {
+  static create = async (req: IGetUserAuthInfoRequest, res: Response) => {
     try {
       const { productId, quantity } = req.body;
       const cartId = req.cartId!;
-      const order = await CartProductsService.create({
-        product: productId,
-        quantity,
-        cart: cartId,
-      });
-      return new Success({
+      const cartItem: CartProductsController = await CartProductsService.create(
+        {
+          product: productId,
+          quantity,
+          cart: cartId,
+        }
+      );
+      return new Success<CartProductsController>({
         message: "Cart item has been created !",
-        data: order,
+        data: cartItem,
       }).send(res);
     } catch (error) {
       HelpError(error, res);
-      throw error;
     }
   };
   static findByIdAndUpdate = async (
@@ -36,11 +34,12 @@ class CartProductsController {
     try {
       const { id } = req.params;
       const { quantity } = req.body;
-      const product = await CartProductsService.findByIdAndUpdate({
-        quantity,
-        cartItem: new Types.ObjectId(id),
-      });
-      return new Ok({ data: product }).send(res);
+      const product: CartProductsController =
+        await CartProductsService.findByIdAndUpdate({
+          quantity,
+          cartItem: new Types.ObjectId(id),
+        });
+      return new Ok<CartProductsController>({ data: product }).send(res);
     } catch (error) {
       HelpError(error, res);
     }
@@ -53,7 +52,7 @@ class CartProductsController {
       const { id } = req.params;
       const result: CartProductsDTO =
         await CartProductsService.findOneAndDelete(new Types.ObjectId(id));
-      return new Ok({ data: result }).send(res);
+      return new Ok<CartProductsDTO>({ data: result }).send(res);
     } catch (error) {
       HelpError(error, res);
     }

@@ -10,7 +10,7 @@ const reasonStatusCode = {
     CREATED: "Created !",
 };
 class SuccessResponse {
-    constructor({ message = reasonStatusCode.OK, data = [], status = statusCode.OK, }) {
+    constructor({ message = reasonStatusCode.OK, data, status = statusCode.OK, }) {
         this.send = (res) => {
             return res.status(this.status).json(this);
         };
