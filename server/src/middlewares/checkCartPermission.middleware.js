@@ -9,7 +9,7 @@ const checkCartPermission = async (req, res, next) => {
     const { id } = req.params;
     const cart = await Cart.findOne({ user: _id });
     if (!cart) throw new Unauthorized();
-    const cartItem = await CartProduct.findOne({ product: id, cart: cart._id });
+    const cartItem = await CartProduct.findOne({ _id: id, cart: cart._id });
     if (!cartItem) throw new Unauthorized();
     return next();
   } catch (error) {

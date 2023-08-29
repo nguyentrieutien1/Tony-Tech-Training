@@ -1,8 +1,8 @@
+require("dotenv").config();
 const { ConnectDatabase } = require("../configs/db");
 const { products } = require("../database/products.json");
 const { errorHandler } = require("../middlewares/error.middleware");
 const { Product } = require("../modules/product/product.model");
-require("dotenv").config();
 (async () => {
   try {
     await ConnectDatabase.connect();

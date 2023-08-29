@@ -3,37 +3,28 @@ const { Cart } = require("../cart/cart.model");
 const { CartProduct } = require("./cart-product.model");
 
 class CartProductSerice {
-  static create = async ({ productId, quantity, userId }) => {
+  static create = async ({ productId, quantity, cartId }) => {
+    console.log(cartId);
     if (!productId || !quantity) {
       throw new BadRequestError("Dont't have payload");
     }
-    const findCartUser = await Cart.findOne({ user: userId });
-    const cartUser = new Cart({ user: userId });
-    if (!findCartUser) {
-      await cartUser.save();
-    }
     const cartProduct = await CartProduct.create({
-      cart: !findCartUser ? cartUser?._id : findCartUser?._id,
+      cart: cartId,
       product: productId,
       quantity: quantity,
     });
     return cartProduct;
   };
-  static findOneAndUpdate = async ({ quantity, productId, userId }) => {
-    const { _id } = await Cart.findOne({ user: userId });
+  static findOneAndUpdate = async ({ quantity, cartItem }) => {
     const product = await CartProduct.findOne({
-      product: productId,
-      cart: _id,
+      _id: cartItem,
     });
-    if (!product) throw new NotFound("Item in cart not found !");
     product.quantity = quantity;
     return await product.save();
   };
-  static findOneAndDelete = async ({ itemId, userId }) => {
-    const { _id } = await Cart.findOne({ user: userId });
+  static findOneAndDelete = async ({ cartItemId }) => {
     const product = await CartProduct.findOneAndDelete({
-      product: itemId,
-      cart: _id,
+      _id: cartItemId,
     });
     if (!product) throw new NotFound("Cart item not found in your cart !");
     return product;

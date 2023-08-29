@@ -6,11 +6,11 @@ class CartProductController {
   static create = async (req, res) => {
     try {
       const { productId, quantity } = req.body;
-      const { _id } = req.user;
+      const cartId = req.cartId;
       const product = await CartProductSerice.create({
         productId,
         quantity,
-        userId: _id,
+        cartId,
       });
       return new Success({
         message: "Cart item has been created !",
@@ -22,13 +22,11 @@ class CartProductController {
   };
   static findOneAndUpdate = async (req, res) => {
     try {
-      const { _id } = req.user;
       const { id } = req.params;
       const { quantity } = req.body;
       const product = await CartProductSerice.findOneAndUpdate({
-        userId: _id,
         quantity,
-        productId: id,
+        cartItem: id,
       });
       return new Ok({ data: product }).send(res);
     } catch (error) {
@@ -37,11 +35,9 @@ class CartProductController {
   };
   static findOneAndDelete = async (req, res) => {
     try {
-      const { _id } = req.user;
       const { id } = req.params;
       const result = await CartProductSerice.findOneAndDelete({
-        itemId: id,
-        userId: _id,
+        cartItemId: id,
       });
       return new Ok({ data: result }).send(res);
     } catch (error) {
