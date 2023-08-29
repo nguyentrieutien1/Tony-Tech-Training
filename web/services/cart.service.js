@@ -2,8 +2,8 @@ import { API_URL } from "../constants/apiUrl.js";
 import { cartState, productState } from "../global/state.js";
 import { headersInfo } from "../utils/headerInfo.js";
 class Cart {
-  findOneAndUpdate = async (index, payload) => {
-    await fetch(`${API_URL}/cart-products/${index}`, {
+  findOneAndUpdate = async (_id, payload) => {
+    await fetch(`${API_URL}/cart-products/${_id}`, {
       method: "PUT",
       headers: headersInfo(),
       body: JSON.stringify({ quantity: payload }),
@@ -25,33 +25,40 @@ class Cart {
     const { data } = await result.json();
     return data;
   };
-  createOrUpdte = async (cartId) => {
+  createOrUpdate = async (cartId) => {
     const cartItem = productState.find((product) => product._id == cartId);
     try {
       if (cartState.length === 0) {
-        await fetch(`${API_URL}/cart-products`, {
+        const result = await fetch(`${API_URL}/cart-products`, {
           method: "POST",
           headers: headersInfo(),
           body: JSON.stringify({ productId: cartId, quantity: 1 }),
         });
-        cartState.push({ quantity: 1, product: cartItem });
+        const responseCartItem = await result.json();
+        const { data } = responseCartItem;
+        data.product = cartItem;
+        cartState.push(data);
       } else {
-        const index = cartState.findIndex((p) => p?.product._id == cartId);
+        const index = cartState.findIndex((p) => p?.product?._id == cartId);
         if (index > -1) {
           const quantity = cartState[index].quantity + 1;
           cartState[index].quantity = quantity;
-          await fetch(`${API_URL}/cart-products/${cartId}`, {
+          console.log(cartState[index]);
+          await fetch(`${API_URL}/cart-products/${cartState[index]?._id}`, {
             method: "PUT",
             headers: headersInfo(),
             body: JSON.stringify({ quantity }),
           });
         } else {
-          await fetch(`${API_URL}/cart-products`, {
+          const result = await fetch(`${API_URL}/cart-products`, {
             method: "POST",
             headers: headersInfo(),
             body: JSON.stringify({ productId: cartId, quantity: 1 }),
           });
-          cartState.push({ quantity: 1, product: cartItem });
+          const responseCartItem = await result.json();
+          const { data } = responseCartItem;
+          data.product = cartItem;
+          cartState.push(data);
         }
       }
     } catch (error) {

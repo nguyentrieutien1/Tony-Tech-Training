@@ -26,7 +26,7 @@ class CartProductController {
       const { quantity } = req.body;
       const product = await CartProductSerice.findOneAndUpdate({
         quantity,
-        cartItem: id,
+        cartItemId: id,
       });
       return new Ok({ data: product }).send(res);
     } catch (error) {

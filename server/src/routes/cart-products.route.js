@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const {
-  checkCartUserExits,
-} = require("../middlewares/checkCartUserExits.middleware");
+  checkCartUserExist,
+} = require("../middlewares/checkCartUserExist.middleware");
 const {
   CartProductController,
 } = require("../modules/cart-product/cart-product.controller");
@@ -10,7 +10,7 @@ const {
   checkCartPermission,
 } = require("../middlewares/checkCartPermission.middleware");
 
-router.post("/", checkAuth, checkCartUserExits, CartProductController.create);
+router.post("/", checkAuth, checkCartUserExist, CartProductController.create);
 router.put(
   "/:id",
   checkAuth,

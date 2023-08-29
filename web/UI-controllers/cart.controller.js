@@ -16,7 +16,7 @@ export const createCartItem = () => {
         const spin = document.querySelector(`.fa-spin-${index}`);
         spin.style.display = "block";
         const productId = this?.getAttribute("data-id");
-        await cartService.createOrUpdte(productId);
+        await cartService.createOrUpdate(productId);
         await getCartItems(productId, modal__content);
         modal__container?.classList?.add("show__modal");
         spin.style.display = "none";
@@ -39,7 +39,6 @@ export const listenUpdateCartItem = () => {
 
 export const listenDeleteCartItem = () => {
   const del__btns = document.querySelectorAll(".cart__item--delete-btn");
-
   del__btns.forEach((btn, i) => {
     btn.addEventListener("click", async function () {
       const id = this.getAttribute("data-id");
@@ -51,9 +50,7 @@ export const listenDeleteCartItem = () => {
         { status: true }
       );
       await cartService.findOneAndDelete(id);
-      const index = cartState.findIndex(
-        (cartItem) => cartItem?.product._id == id
-      );
+      const index = cartState.findIndex((cartItem) => cartItem?._id == id);
       cartState.splice(index, 1);
       getCartItems();
       loading(
@@ -88,20 +85,20 @@ export const getCartItems = async (productId, element) => {
 								</div>
 								<div class="cart__item--quantity">
 									<p   data-id="${
-                    cartItem?.product?._id
+                    cartItem?._id
                   }" class="decrease__product--btn update__quantity--btn" data-type="0">-</p>
 									<input type="number" class="update__quantity-input" value="${
                     cartItem?.quantity
-                  }" data-id="${cartItem?.product?._id}" >
+                  }" data-id="${cartItem?._id}" >
 									<p data-type="1" class="increase__product--btn update__quantity--btn" data-id="${
-                    cartItem?.product?._id
+                    cartItem?._id
                   }">+</p>
 			
 								</div>
 							</div>
 			
 						</div>
-						<div class="cart__item--delete-btn" data-id="${cartItem?.product._id}">
+						<div class="cart__item--delete-btn" data-id="${cartItem?._id}">
 							<i class="fa-solid fa-xmark"></i>
 						</div>
 			
@@ -252,10 +249,9 @@ const listenQuantityCartItem = async () => {
   }, 0);
   quantityElement.textContent = quantities;
 };
-
 const updateQuantityCartItem = async (id, { type, value }) => {
-  const product = cartState.find((cart) => cart?.product?._id == id);
-  const index_spin = cartState.findIndex((p) => p?.product?._id == id);
+  const product = cartState.find((cart) => cart?._id == id);
+  const index_spin = cartState.findIndex((p) => p?._id == id);
   const quantity = product?.quantity;
   let payload = type == 0 ? quantity - 1 : type == 1 ? quantity + 1 : value;
   if (payload <= 1) {
