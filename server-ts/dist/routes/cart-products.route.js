@@ -1,0 +1,12 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const auth_middleware_1 = require("../middlewares/auth.middleware");
+const cart_products_controller_1 = require("../modules/cart-products/cart-products.controller");
+const checkCartUserExits_middleware_1 = require("../middlewares/checkCartUserExits.middleware");
+const checkCartPermission_middleware_1 = require("../middlewares/checkCartPermission.middleware");
+const router = (0, express_1.Router)();
+router.post("/", auth_middleware_1.checkAuth, checkCartUserExits_middleware_1.checkCartUserExits, cart_products_controller_1.CartProductsController.create);
+router.put("/:id", auth_middleware_1.checkAuth, checkCartPermission_middleware_1.checkCartPermission, cart_products_controller_1.CartProductsController.findByIdAndUpdate);
+router.delete("/:id", auth_middleware_1.checkAuth, checkCartPermission_middleware_1.checkCartPermission, cart_products_controller_1.CartProductsController.findByIdAndDelete);
+exports.default = router;

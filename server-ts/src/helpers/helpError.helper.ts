@@ -1,7 +1,7 @@
 import { Response } from "express";
 import { ErrorResponse } from "../core/error.response";
 
-function HelpError(err: unknown, res: Response) {
+function HelpError(err: unknown, res?: Response) {
   let message = "Server is wrong, please access later !";
   let statusCode = 500;
   let errors = {};
@@ -10,6 +10,6 @@ function HelpError(err: unknown, res: Response) {
     statusCode = err.status || statusCode;
     errors = err.errors || errors;
   }
-  res.status(statusCode).json({ message, statusCode, errors });
+  res!.status(statusCode).json({ message, statusCode, errors });
 }
 export { HelpError };

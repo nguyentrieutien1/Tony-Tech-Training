@@ -19,7 +19,7 @@ app.use(cors());
 // RUN APP ROUTES
 app.use("/api", appRouters);
 
-// CATCH APP ERROR
+// HANDLE ERROR APP 
 app.use(errorHandler);
 
 app.listen(PORT, () => {
