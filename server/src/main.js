@@ -4,8 +4,8 @@ const app = express();
 const { checkDbFile } = require("./middlewares/checkDbExits.middleware");
 const appRouters = require("./routes/index.route");
 const cors = require("cors");
-const { logger } = require("./configs/logger");
-const { ConnectDatabase } = require("./configs/db");
+// const { logger } = require("./config/logger");
+const { ConnectDatabase } = require("./config/db.js");
 require("dotenv").config();
 const PORT = process.env.PORT || 9000;
 
@@ -23,6 +23,6 @@ app.use("/api", appRouters);
 app.use(errorHandler);
 
 app.listen(PORT, () => {
-  logger.info(`App is running on link http://localhost:${PORT}`);
+  // logger.info(`App is running on link http://localhost:${PORT}`);
   console.log(`App is running on link http://localhost:${PORT}`);
 });
