@@ -1,8 +1,8 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 class ConnectDatabase {
   static connect = async () => {
     try {
-      await mongoose.connect(process.env.MONGODB_CONNECT_STRING_LOCAL);
+      await mongoose.connect(process.env.MONGODB_CONNECT_STRING_LOCAL!);
       console.log("Connect successful to mongodb");
     } catch (error: unknown) {
       if (error instanceof Error) {
@@ -13,4 +13,4 @@ class ConnectDatabase {
     }
   };
 }
-module.exports = { ConnectDatabase };
+export { ConnectDatabase };
