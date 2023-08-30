@@ -1,12 +1,7 @@
 import { Request, Errback, Response, NextFunction } from "express";
 import { ErrorResponse } from "../core/error.response";
 
-function errorHandler(
-  err: Errback,
-  req: Request,
-  res: Response,
-  next: NextFunction
-) {
+function errorHandler(err: Errback, req: Request, res: Response) {
   let statusCode = 500;
   let message = "Internal Server Error";
 

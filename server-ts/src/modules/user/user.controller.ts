@@ -1,15 +1,16 @@
 import { Request, Response } from "express";
 import { UserService } from "./user.service";
-import { Success } from "../../core/success.response";
+import { Ok, Success } from "../../core/success.response";
 import { UserDTO } from "../../types/user.type";
 import { HelpError } from "../../helpers/helpError.helper";
-import { BadRequestError } from "../../core/error.response";
+import { IGetUserAuthInfoRequest } from "../../types/custom.type";
+import { Types } from "mongoose";
 
 class UserController {
-  static signUp = async (req: Request, res: Response) => {
+  static signUp = async (req: IGetUserAuthInfoRequest, res: Response) => {
     const { email, password } = req.body;
     try {
-      const userInfo: UserDTO = await UserService.signUp({ email, password });
+      const userInfo: UserDTO = await UserService.create({ email, password });
       return new Success({
         data: userInfo,
         message: "User has been created !",
@@ -18,7 +19,7 @@ class UserController {
       HelpError(error, res);
     }
   };
-  static signIn = async (req: Request, res: Response) => {
+  static signIn = async (req: IGetUserAuthInfoRequest, res: Response) => {
     const { email, password } = req.body;
     try {
       const accessToken: { accessToken: string } = await UserService.signIn({
@@ -29,6 +30,15 @@ class UserController {
         data: accessToken,
         message: "Login successful !",
       }).send(res);
+    } catch (error) {
+      HelpError(error, res);
+    }
+  };
+  static getById = async (req: IGetUserAuthInfoRequest, res: Response) => {
+    try {
+      const _id = req.user?._id;
+      const user: UserDTO = await UserService.getById(new Types.ObjectId(_id));
+      return new Ok({ data: user });
     } catch (error) {
       HelpError(error, res);
     }

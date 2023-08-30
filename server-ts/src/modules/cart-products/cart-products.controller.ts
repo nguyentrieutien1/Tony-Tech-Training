@@ -37,7 +37,7 @@ class CartProductsController {
       const product: CartProductsController =
         await CartProductsService.findByIdAndUpdate({
           quantity,
-          cartItem: new Types.ObjectId(id),
+          cart: new Types.ObjectId(id),
         });
       return new Ok<CartProductsController>({ data: product }).send(res);
     } catch (error) {

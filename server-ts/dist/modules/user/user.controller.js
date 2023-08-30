@@ -14,6 +14,7 @@ exports.UserController = void 0;
 const user_service_1 = require("./user.service");
 const success_response_1 = require("../../core/success.response");
 const helpError_helper_1 = require("../../helpers/helpError.helper");
+const mongoose_1 = require("mongoose");
 class UserController {
 }
 exports.UserController = UserController;
@@ -21,7 +22,7 @@ _a = UserController;
 UserController.signUp = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { email, password } = req.body;
     try {
-        const userInfo = yield user_service_1.UserService.signUp({ email, password });
+        const userInfo = yield user_service_1.UserService.create({ email, password });
         return new success_response_1.Success({
             data: userInfo,
             message: "User has been created !",
@@ -42,6 +43,17 @@ UserController.signIn = (req, res) => __awaiter(void 0, void 0, void 0, function
             data: accessToken,
             message: "Login successful !",
         }).send(res);
+    }
+    catch (error) {
+        (0, helpError_helper_1.HelpError)(error, res);
+    }
+});
+UserController.getById = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    var _b;
+    try {
+        const _id = (_b = req.user) === null || _b === void 0 ? void 0 : _b._id;
+        const user = yield user_service_1.UserService.getById(new mongoose_1.Types.ObjectId(_id));
+        return new success_response_1.Ok({ data: user });
     }
     catch (error) {
         (0, helpError_helper_1.HelpError)(error, res);

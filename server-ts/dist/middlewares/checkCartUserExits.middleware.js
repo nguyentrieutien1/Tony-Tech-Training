@@ -17,8 +17,8 @@ const checkCartUserExits = (req, res, next) => __awaiter(void 0, void 0, void 0,
     try {
         const _id = (_a = req.user) === null || _a === void 0 ? void 0 : _a._id;
         const findCartUser = yield cart_model_1.Cart.findOne({ user: _id });
-        const cartUser = new cart_model_1.Cart({ user: _id });
         if (!findCartUser) {
+            const cartUser = new cart_model_1.Cart({ user: _id });
             yield cartUser.save();
             req.cartId = cartUser._id;
         }
@@ -28,7 +28,7 @@ const checkCartUserExits = (req, res, next) => __awaiter(void 0, void 0, void 0,
         next();
     }
     catch (error) {
-        (0, helpError_helper_1.HelpError)(error);
+        (0, helpError_helper_1.HelpError)(error, res);
     }
 });
 exports.checkCartUserExits = checkCartUserExits;

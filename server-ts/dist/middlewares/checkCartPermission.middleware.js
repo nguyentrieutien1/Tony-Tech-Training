@@ -13,6 +13,7 @@ exports.checkCartPermission = void 0;
 const error_response_1 = require("../core/error.response");
 const cart_products_model_1 = require("../modules/cart-products/cart-products.model");
 const cart_model_1 = require("../modules/cart/cart.model");
+const helpError_helper_1 = require("../helpers/helpError.helper");
 const checkCartPermission = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     var _a;
     try {
@@ -21,11 +22,16 @@ const checkCartPermission = (req, res, next) => __awaiter(void 0, void 0, void 0
         const cart = yield cart_model_1.Cart.findOne({ user: _id });
         if (!cart)
             throw new error_response_1.Unauthorized();
-        const cartItem = yield cart_products_model_1.CartProducts.findOne({ _id: id, cart: cart._id });
+        const cartItem = yield cart_products_model_1.CartProducts.findOne({
+            _id: id,
+            cart: cart._id,
+        });
         if (!cartItem)
             throw new error_response_1.Unauthorized();
         return next();
     }
-    catch (error) { }
+    catch (error) {
+        (0, helpError_helper_1.HelpError)(error, res);
+    }
 });
 exports.checkCartPermission = checkCartPermission;

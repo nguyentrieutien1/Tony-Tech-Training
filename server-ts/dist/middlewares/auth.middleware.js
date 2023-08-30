@@ -22,7 +22,7 @@ const checkAuth = (req, res, next) => __awaiter(void 0, void 0, void 0, function
         if (!accessToken) {
             throw new error_response_1.Unauthorized("Unauthorized !", { accessToken });
         }
-        const decode = (yield jsonwebtoken_1.default.verify(accessToken, process.env.PRIVATE_KEY));
+        const decode = jsonwebtoken_1.default.verify(accessToken, process.env.PRIVATE_KEY);
         if (!decode)
             throw new error_response_1.Unauthorized("Unauthorized !");
         req.user = decode;

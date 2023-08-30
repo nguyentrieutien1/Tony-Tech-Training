@@ -6,13 +6,10 @@ import { CartProductsDTO } from "../../types/cart-products.type";
 import { HelpError } from "../../helpers/helpError.helper";
 
 class CartController {
-  static findOneByUserId = async (
-    req: IGetUserAuthInfoRequest,
-    res: Response
-  ) => {
+  static findOne = async (req: IGetUserAuthInfoRequest, res: Response) => {
     try {
       const _id = req.user?._id!;
-      const product: CartProductsDTO[] = await CartService.findOneByUserId({
+      const product: CartProductsDTO[] = await CartService.findOne({
         userId: _id,
       });
       return new Ok<CartProductsDTO[]>({

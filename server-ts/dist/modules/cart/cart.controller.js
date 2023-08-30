@@ -18,11 +18,11 @@ class CartController {
 }
 exports.CartController = CartController;
 _a = CartController;
-CartController.findOneByUserId = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+CartController.findOne = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     var _b;
     try {
         const _id = (_b = req.user) === null || _b === void 0 ? void 0 : _b._id;
-        const product = yield cart_service_1.CartService.findOneByUserId({
+        const product = yield cart_service_1.CartService.findOne({
             userId: _id,
         });
         return new success_response_1.Ok({

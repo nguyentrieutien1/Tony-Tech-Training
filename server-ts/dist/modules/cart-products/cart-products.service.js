@@ -13,7 +13,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.CartProductsService = void 0;
 const error_response_1 = require("../../core/error.response");
 const cart_products_model_1 = require("./cart-products.model");
-class CartProductsService {
+const base_service_type_1 = require("../../types/base-service.type");
+class CartProductsService extends base_service_type_1.BaseService {
 }
 exports.CartProductsService = CartProductsService;
 _a = CartProductsService;
@@ -28,8 +29,8 @@ CartProductsService.create = ({ product, quantity, cart }) => __awaiter(void 0, 
     });
     return cartProduct;
 });
-CartProductsService.findByIdAndUpdate = ({ quantity, cartItem, }) => __awaiter(void 0, void 0, void 0, function* () {
-    const product = yield cart_products_model_1.CartProducts.findById(cartItem);
+CartProductsService.findByIdAndUpdate = ({ quantity, cart, }) => __awaiter(void 0, void 0, void 0, function* () {
+    const product = yield cart_products_model_1.CartProducts.findById(cart);
     if (product) {
         product.quantity = quantity;
         return yield product.save();

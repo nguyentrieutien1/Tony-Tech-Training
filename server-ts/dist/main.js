@@ -19,7 +19,7 @@ app.use(express_1.default.json());
 app.use((0, cors_1.default)());
 // RUN APP ROUTES
 app.use("/api", index_route_1.default);
-// HANDLE ERROR APP 
+// HANDLE APP ERRORS  
 app.use(error_middleware_1.errorHandler);
 app.listen(PORT, () => {
     console.log(`Server is listening on port ${PORT}`);

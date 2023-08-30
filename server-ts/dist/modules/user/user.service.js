@@ -18,11 +18,12 @@ const error_response_1 = require("../../core/error.response");
 const user_model_1 = require("./user.model");
 const bcrypt_1 = __importDefault(require("bcrypt"));
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
-class UserService {
+const base_service_type_1 = require("../../types/base-service.type");
+class UserService extends base_service_type_1.BaseService {
 }
 exports.UserService = UserService;
 _a = UserService;
-UserService.signUp = ({ email, password }) => __awaiter(void 0, void 0, void 0, function* () {
+UserService.create = ({ email, password }) => __awaiter(void 0, void 0, void 0, function* () {
     if (!email || !password)
         throw new error_response_1.BadRequestError("Missing data to signup !", {
             email,
@@ -49,4 +50,10 @@ UserService.signIn = ({ email, password, }) => __awaiter(void 0, void 0, void 0,
         throw new error_response_1.BadRequestError("email or password is incorrect !");
     const accessToken = jsonwebtoken_1.default.sign({ _id: user._id }, process.env.PRIVATE_KEY);
     return { accessToken };
+});
+UserService.getById = (_id) => __awaiter(void 0, void 0, void 0, function* () {
+    const user = yield user_model_1.User.findById(_id);
+    if (!user)
+        throw new error_response_1.NotFound();
+    return user;
 });

@@ -1,10 +1,12 @@
+import { Types } from "mongoose";
 import { BadRequestError, Conflict, NotFound } from "../../core/error.response";
 import { UserDTO } from "../../types/user.type";
 import { User } from "./user.model";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-class UserService {
-  static signUp = async ({ email, password }: UserDTO): Promise<UserDTO> => {
+import { BaseService } from "../../types/base-service.type";
+class UserService extends BaseService<UserDTO> {
+  static create = async ({ email, password }: UserDTO): Promise<UserDTO> => {
     if (!email || !password)
       throw new BadRequestError("Missing data to signup !", {
         email,
@@ -35,6 +37,11 @@ class UserService {
       throw new BadRequestError("email or password is incorrect !");
     const accessToken = jwt.sign({ _id: user._id }, process.env.PRIVATE_KEY!);
     return { accessToken };
+  };
+  static getById = async (_id: Types.ObjectId): Promise<UserDTO> => {
+    const user: UserDTO | null = await User.findById(_id);
+    if (!user) throw new NotFound();
+    return user;
   };
 }
 export { UserService };

@@ -2,8 +2,9 @@ import { Types } from "mongoose";
 import { BadRequestError, NotFound } from "../../core/error.response";
 import { CartProductsDTO } from "../../types/cart-products.type";
 import { CartProducts } from "./cart-products.model";
+import { BaseService } from "../../types/base-service.type";
 
-class CartProductsService {
+class CartProductsService extends BaseService<CartProductsDTO> {
   static create = async ({ product, quantity, cart }: CartProductsDTO) => {
     if (!product || !quantity) {
       throw new BadRequestError("Dont't have payload");
@@ -17,12 +18,9 @@ class CartProductsService {
   };
   static findByIdAndUpdate = async ({
     quantity,
-    cartItem,
-  }: {
-    quantity: number;
-    cartItem: Types.ObjectId;
-  }): Promise<CartProductsDTO> => {
-    const product = await CartProducts.findById(cartItem);
+    cart,
+  }: CartProductsDTO): Promise<CartProductsDTO> => {
+    const product = await CartProducts.findById(cart);
     if (product) {
       product.quantity = quantity;
       return await product.save();

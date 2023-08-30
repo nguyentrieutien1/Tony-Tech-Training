@@ -12,7 +12,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const dotenv_1 = require("dotenv");
 (0, dotenv_1.config)();
 const db_1 = require("../config/db");
-const helpError_helper_1 = require("../helpers/helpError.helper");
 const products_model_1 = require("../modules/products/products.model");
 const products_json_1 = require("./../database/products.json");
 (() => __awaiter(void 0, void 0, void 0, function* () {
@@ -20,15 +19,12 @@ const products_json_1 = require("./../database/products.json");
         yield db_1.ConnectDatabase.connect();
         const getAllProduct = yield products_model_1.Product.find();
         if (getAllProduct.length === 0) {
-            for (let i = 0; i < products_json_1.products.length; i++) {
-                yield products_model_1.Product.create(products_json_1.products[i]);
-            }
+            yield products_model_1.Product.insertMany(products_json_1.products);
         }
         console.log("Write the data to product collection successfull !");
         process.exit(0);
     }
     catch (error) {
-        (0, helpError_helper_1.HelpError)(error);
         process.exit(1);
     }
 }))();

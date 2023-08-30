@@ -43,7 +43,7 @@ CartProductsController.findByIdAndUpdate = (req, res) => __awaiter(void 0, void 
         const { quantity } = req.body;
         const product = yield cart_products_service_1.CartProductsService.findByIdAndUpdate({
             quantity,
-            cartItem: new mongoose_1.Types.ObjectId(id),
+            cart: new mongoose_1.Types.ObjectId(id),
         });
         return new success_response_1.Ok({ data: product }).send(res);
     }

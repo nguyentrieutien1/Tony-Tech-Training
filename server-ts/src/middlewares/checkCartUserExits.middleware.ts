@@ -3,7 +3,6 @@ import { Cart } from "../modules/cart/cart.model";
 import { IGetUserAuthInfoRequest } from "../types/custom.type";
 import { CartDTO } from "../types/cart.type";
 import { HelpError } from "../helpers/helpError.helper";
-
 const checkCartUserExits = async (
   req: IGetUserAuthInfoRequest,
   res: Response,
@@ -12,8 +11,8 @@ const checkCartUserExits = async (
   try {
     const _id = req.user?._id;
     const findCartUser: CartDTO | null = await Cart.findOne({ user: _id });
-    const cartUser = new Cart({ user: _id });
     if (!findCartUser) {
+      const cartUser = new Cart({ user: _id });
       await cartUser.save();
       req.cartId = cartUser._id;
     } else {
@@ -21,7 +20,7 @@ const checkCartUserExits = async (
     }
     next();
   } catch (error) {
-    HelpError(error);
+    HelpError(error, res);
   }
 };
 

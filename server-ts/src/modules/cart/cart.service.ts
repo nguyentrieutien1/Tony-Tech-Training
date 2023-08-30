@@ -4,8 +4,9 @@ import { CartProducts } from "./../cart-products/cart-products.model";
 import { Types } from "mongoose";
 import { CartDTO } from "../../types/cart.type";
 import { CartProductsDTO } from "../../types/cart-products.type";
-class CartService {
-  static findOneByUserId = async ({
+import { BaseService } from "../../types/base-service.type";
+class CartService extends BaseService<CartProductsDTO> {
+  static findOne = async ({
     userId,
   }: {
     userId: Types.ObjectId;

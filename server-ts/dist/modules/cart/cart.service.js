@@ -14,11 +14,12 @@ exports.CartService = void 0;
 const error_response_1 = require("../../core/error.response");
 const cart_model_1 = require("./cart.model");
 const cart_products_model_1 = require("./../cart-products/cart-products.model");
-class CartService {
+const base_service_type_1 = require("../../types/base-service.type");
+class CartService extends base_service_type_1.BaseService {
 }
 exports.CartService = CartService;
 _a = CartService;
-CartService.findOneByUserId = ({ userId, }) => __awaiter(void 0, void 0, void 0, function* () {
+CartService.findOne = ({ userId, }) => __awaiter(void 0, void 0, void 0, function* () {
     if (!userId)
         throw new error_response_1.BadRequestError("Missing user id");
     const cartUser = yield cart_model_1.Cart.findOne({ user: userId });

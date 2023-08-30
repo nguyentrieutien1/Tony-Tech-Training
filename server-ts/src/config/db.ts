@@ -4,7 +4,7 @@ class ConnectDatabase {
     try {
       await mongoose.connect(process.env.MONGODB_CONNECT_STRING_LOCAL!);
       console.log("Connect successful to mongodb");
-    } catch (error: unknown) {
+    } catch (error) {
       if (error instanceof Error) {
         console.error("error connect:", error.message);
       } else {

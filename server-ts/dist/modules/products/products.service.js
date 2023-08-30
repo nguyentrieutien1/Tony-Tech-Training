@@ -11,8 +11,9 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 var _a;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ProductService = void 0;
+const base_service_type_1 = require("../../types/base-service.type");
 const products_model_1 = require("./products.model");
-class ProductService {
+class ProductService extends base_service_type_1.BaseService {
 }
 exports.ProductService = ProductService;
 _a = ProductService;
