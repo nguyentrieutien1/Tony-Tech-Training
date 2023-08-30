@@ -2,6 +2,8 @@ import { Response } from "express";
 import { ErrorResponse } from "../core/error.response";
 
 function HelpError(err: unknown, res: Response) {
+  console.log(err);
+  
   let message = "Server is wrong, please access later !";
   let statusCode = 500;
   let errors = {};

@@ -6,25 +6,25 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import { BaseService } from "../../types/base-service.type";
 class UserService extends BaseService<UserDTO> {
-  static create = async ({ email, password }: UserDTO): Promise<UserDTO> => {
+  createUser = async ({ email, password }: UserDTO): Promise<UserDTO> => {
     if (!email || !password)
       throw new BadRequestError("Missing data to signup !", {
         email,
         password,
       });
     //   CHECK USER
-    const checkUser: UserDTO | null = await User.findOne({ email });
+    const checkUser: UserDTO | null = await this.findOne({ email });
     if (checkUser) {
       throw new Conflict("User already exists !", { email });
     }
     // HASH PASSWORD
     password = await bcrypt.hash(password, 10);
     //   CREATE USER
-    const user = await User.create({ email, password });
+    const user = await this.create({ email, password });
     return user;
   };
 
-  static signIn = async ({
+  signIn = async ({
     email,
     password,
   }: UserDTO): Promise<{ accessToken: string }> => {

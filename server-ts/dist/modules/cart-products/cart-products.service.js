@@ -8,38 +8,34 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var _a;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CartProductsService = void 0;
 const error_response_1 = require("../../core/error.response");
-const cart_products_model_1 = require("./cart-products.model");
 const base_service_type_1 = require("../../types/base-service.type");
 class CartProductsService extends base_service_type_1.BaseService {
+    constructor() {
+        super(...arguments);
+        this.addToCart = ({ product, quantity, cart }) => __awaiter(this, void 0, void 0, function* () {
+            if (!product || !quantity) {
+                throw new error_response_1.BadRequestError("Dont't have payload");
+            }
+            const cartProduct = yield this.create({
+                cart,
+                product,
+                quantity,
+            });
+            return cartProduct;
+        });
+        this.updateCartProduct = (_id, quantity) => __awaiter(this, void 0, void 0, function* () {
+            const product = yield this.findByIdAndUpdate(_id, quantity);
+            return product;
+        });
+        this.deleteCartProduct = (cartItemId) => __awaiter(this, void 0, void 0, function* () {
+            yield this.findOneAndDelete(cartItemId);
+        });
+        this.findOneCart = (query) => __awaiter(this, void 0, void 0, function* () {
+            return yield this.find(query, "product");
+        });
+    }
 }
 exports.CartProductsService = CartProductsService;
-_a = CartProductsService;
-CartProductsService.create = ({ product, quantity, cart }) => __awaiter(void 0, void 0, void 0, function* () {
-    if (!product || !quantity) {
-        throw new error_response_1.BadRequestError("Dont't have payload");
-    }
-    const cartProduct = yield cart_products_model_1.CartProducts.create({
-        cart,
-        product,
-        quantity,
-    });
-    return cartProduct;
-});
-CartProductsService.findByIdAndUpdate = (_id, data) => __awaiter(void 0, void 0, void 0, function* () {
-    const product = yield cart_products_model_1.CartProducts.findById(_id);
-    if (product) {
-        product.quantity = data;
-        return yield product.save();
-    }
-    return product;
-});
-CartProductsService.findOneAndDelete = (cartItemId) => __awaiter(void 0, void 0, void 0, function* () {
-    const product = yield cart_products_model_1.CartProducts.findByIdAndDelete(cartItemId);
-    if (!product)
-        throw new error_response_1.NotFound("Cart item not found in your cart !");
-    return product;
-});

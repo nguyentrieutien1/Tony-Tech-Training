@@ -15,6 +15,8 @@ const user_service_1 = require("./user.service");
 const success_response_1 = require("../../core/success.response");
 const helpError_helper_1 = require("../../helpers/helpError.helper");
 const mongoose_1 = require("mongoose");
+const user_model_1 = require("./user.model");
+const userService = new user_service_1.UserService(user_model_1.User);
 class UserController {
 }
 exports.UserController = UserController;
@@ -22,7 +24,10 @@ _a = UserController;
 UserController.signUp = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { email, password } = req.body;
     try {
-        const userInfo = yield user_service_1.UserService.create({ email, password });
+        const userInfo = yield userService.createUser({
+            email,
+            password,
+        });
         return new success_response_1.Success({
             data: userInfo,
             message: "User has been created !",
@@ -35,7 +40,7 @@ UserController.signUp = (req, res) => __awaiter(void 0, void 0, void 0, function
 UserController.signIn = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { email, password } = req.body;
     try {
-        const accessToken = yield user_service_1.UserService.signIn({
+        const accessToken = yield userService.signIn({
             email,
             password,
         });

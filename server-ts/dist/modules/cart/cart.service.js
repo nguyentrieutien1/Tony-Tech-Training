@@ -8,28 +8,27 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var _a;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CartService = void 0;
 const error_response_1 = require("../../core/error.response");
-const cart_model_1 = require("./cart.model");
 const cart_products_model_1 = require("./../cart-products/cart-products.model");
 const base_service_type_1 = require("../../types/base-service.type");
+const cart_products_service_1 = require("../cart-products/cart-products.service");
 class CartService extends base_service_type_1.BaseService {
+    constructor() {
+        super(...arguments);
+        this.findOneCart = ({ userId, }) => __awaiter(this, void 0, void 0, function* () {
+            if (!userId)
+                throw new error_response_1.BadRequestError("Missing user id");
+            const cartUser = yield this.findOne({ user: userId });
+            if (!cartUser)
+                throw new error_response_1.NotFound();
+            const cartProductsService = new cart_products_service_1.CartProductsService(cart_products_model_1.CartProducts);
+            const order = yield cartProductsService.findOneCart({
+                cart: cartUser._id,
+            });
+            return order;
+        });
+    }
 }
 exports.CartService = CartService;
-_a = CartService;
-CartService.findOne = ({ userId, }) => __awaiter(void 0, void 0, void 0, function* () {
-    if (!userId)
-        throw new error_response_1.BadRequestError("Missing user id");
-    const cartUser = yield cart_model_1.Cart.findOne({ user: userId });
-    if (!cartUser) {
-        return [];
-    }
-    const order = yield cart_products_model_1.CartProducts.find({
-        cart: cartUser._id,
-    }).populate({
-        path: "product",
-    });
-    return order;
-});

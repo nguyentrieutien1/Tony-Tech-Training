@@ -14,6 +14,8 @@ exports.CartController = void 0;
 const success_response_1 = require("../../core/success.response");
 const cart_service_1 = require("./cart.service");
 const helpError_helper_1 = require("../../helpers/helpError.helper");
+const cart_model_1 = require("./cart.model");
+const cartService = new cart_service_1.CartService(cart_model_1.Cart);
 class CartController {
 }
 exports.CartController = CartController;
@@ -22,7 +24,7 @@ CartController.findOne = (req, res) => __awaiter(void 0, void 0, void 0, functio
     var _b;
     try {
         const _id = (_b = req.user) === null || _b === void 0 ? void 0 : _b._id;
-        const product = yield cart_service_1.CartService.findOne({
+        const product = yield cartService.findOneCart({
             userId: _id,
         });
         return new success_response_1.Ok({

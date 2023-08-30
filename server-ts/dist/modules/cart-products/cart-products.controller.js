@@ -15,6 +15,8 @@ const cart_products_service_1 = require("./cart-products.service");
 const success_response_1 = require("../../core/success.response");
 const mongoose_1 = require("mongoose");
 const helpError_helper_1 = require("../../helpers/helpError.helper");
+const cart_products_model_1 = require("./cart-products.model");
+const cartProductsService = new cart_products_service_1.CartProductsService(cart_products_model_1.CartProducts);
 class CartProductsController {
 }
 exports.CartProductsController = CartProductsController;
@@ -23,7 +25,7 @@ CartProductsController.create = (req, res) => __awaiter(void 0, void 0, void 0, 
     try {
         const { productId, quantity } = req.body;
         const cartId = req.cartId;
-        const cartItem = yield cart_products_service_1.CartProductsService.create({
+        const cartItem = yield cartProductsService.addToCart({
             product: productId,
             quantity,
             cart: cartId,
@@ -41,7 +43,9 @@ CartProductsController.findByIdAndUpdate = (req, res) => __awaiter(void 0, void 
     try {
         const { id } = req.params;
         const { quantity } = req.body;
-        const product = yield cart_products_service_1.CartProductsService.findByIdAndUpdate(new mongoose_1.Types.ObjectId(id), quantity);
+        const product = yield cartProductsService.updateCartProduct(new mongoose_1.Types.ObjectId(id), {
+            quantity,
+        });
         return new success_response_1.Ok({ data: product }).send(res);
     }
     catch (error) {
@@ -51,8 +55,8 @@ CartProductsController.findByIdAndUpdate = (req, res) => __awaiter(void 0, void 
 CartProductsController.findByIdAndDelete = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { id } = req.params;
-        const result = yield cart_products_service_1.CartProductsService.findOneAndDelete(new mongoose_1.Types.ObjectId(id));
-        return new success_response_1.Ok({ data: result }).send(res);
+        yield cartProductsService.deleteCartProduct(new mongoose_1.Types.ObjectId(id));
+        return new success_response_1.Ok({ data: null }).send(res);
     }
     catch (error) {
         (0, helpError_helper_1.HelpError)(error, res);

@@ -8,16 +8,16 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var _a;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ProductService = void 0;
 const base_service_type_1 = require("../../types/base-service.type");
-const products_model_1 = require("./products.model");
 class ProductService extends base_service_type_1.BaseService {
+    constructor() {
+        super(...arguments);
+        this.findAllProduct = () => __awaiter(this, void 0, void 0, function* () {
+            const products = yield this.find({});
+            return products;
+        });
+    }
 }
 exports.ProductService = ProductService;
-_a = ProductService;
-ProductService.findAll = () => __awaiter(void 0, void 0, void 0, function* () {
-    const products = yield products_model_1.Product.find();
-    return products;
-});
