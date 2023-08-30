@@ -3,19 +3,22 @@ import { MyService } from "./my-service.type";
 
 abstract class BaseService<T> implements MyService<T> {
   create(item: T): Promise<T> {
-    throw new Error("Method not implemented.");
+    return Promise.resolve(item);
   }
   findOne(_id: Types.ObjectId): Promise<T[]> {
-    throw new Error("Method not implemented.");
+    return Promise.resolve([]);
   }
+
   findAll(): Promise<T[]> {
-    throw new Error("Method not implemented.");
+    return Promise.resolve([]);
   }
-  findByIdAndUpdate(item: T): Promise<T> {
-    throw new Error("Method not implemented.");
+
+  findByIdAndUpdate(_id: Types.ObjectId, data: T): Promise<T> {
+    return Promise.resolve(data);
   }
+
   findOneAndDelete(_id: Types.ObjectId): Promise<void> {
-    throw new Error("Method not implemented.");
+    return Promise.resolve();
   }
 }
 export { BaseService };

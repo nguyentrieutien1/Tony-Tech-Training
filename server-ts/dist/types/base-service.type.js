@@ -3,19 +3,19 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.BaseService = void 0;
 class BaseService {
     create(item) {
-        throw new Error("Method not implemented.");
+        return Promise.resolve(item);
     }
     findOne(_id) {
-        throw new Error("Method not implemented.");
+        return Promise.resolve([]);
     }
     findAll() {
-        throw new Error("Method not implemented.");
+        return Promise.resolve([]);
     }
-    findByIdAndUpdate(item) {
-        throw new Error("Method not implemented.");
+    findByIdAndUpdate(_id, data) {
+        return Promise.resolve(data);
     }
     findOneAndDelete(_id) {
-        throw new Error("Method not implemented.");
+        return Promise.resolve();
     }
 }
 exports.BaseService = BaseService;

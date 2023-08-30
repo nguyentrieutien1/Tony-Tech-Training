@@ -35,10 +35,10 @@ class CartProductsController {
       const { id } = req.params;
       const { quantity } = req.body;
       const product: CartProductsController =
-        await CartProductsService.findByIdAndUpdate({
-          quantity,
-          cart: new Types.ObjectId(id),
-        });
+        await CartProductsService.findByIdAndUpdate(
+          new Types.ObjectId(id),
+          quantity
+        );
       return new Ok<CartProductsController>({ data: product }).send(res);
     } catch (error) {
       HelpError(error, res);

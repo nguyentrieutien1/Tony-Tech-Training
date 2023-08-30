@@ -16,13 +16,13 @@ class CartProductsService extends BaseService<CartProductsDTO> {
     });
     return cartProduct;
   };
-  static findByIdAndUpdate = async ({
-    quantity,
-    cart,
-  }: CartProductsDTO): Promise<CartProductsDTO> => {
-    const product = await CartProducts.findById(cart);
+  static findByIdAndUpdate = async (
+    _id: Types.ObjectId,
+    data: number
+  ): Promise<CartProductsDTO> => {
+    const product = await CartProducts.findById(_id);
     if (product) {
-      product.quantity = quantity;
+      product.quantity = data;
       return await product.save();
     }
     return product!;

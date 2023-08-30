@@ -29,10 +29,10 @@ CartProductsService.create = ({ product, quantity, cart }) => __awaiter(void 0, 
     });
     return cartProduct;
 });
-CartProductsService.findByIdAndUpdate = ({ quantity, cart, }) => __awaiter(void 0, void 0, void 0, function* () {
-    const product = yield cart_products_model_1.CartProducts.findById(cart);
+CartProductsService.findByIdAndUpdate = (_id, data) => __awaiter(void 0, void 0, void 0, function* () {
+    const product = yield cart_products_model_1.CartProducts.findById(_id);
     if (product) {
-        product.quantity = quantity;
+        product.quantity = data;
         return yield product.save();
     }
     return product;
