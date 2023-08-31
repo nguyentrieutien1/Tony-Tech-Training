@@ -21,8 +21,9 @@ class CartService extends base_service_type_1.BaseService {
             if (!userId)
                 throw new error_response_1.BadRequestError("Missing user id");
             const cartUser = yield this.findOne({ user: userId });
-            if (!cartUser)
-                throw new error_response_1.NotFound();
+            if (!cartUser) {
+                return [];
+            }
             const cartProductsService = new cart_products_service_1.CartProductsService(cart_products_model_1.CartProducts);
             const order = yield cartProductsService.findOneCart({
                 cart: cartUser._id,

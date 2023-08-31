@@ -15,16 +15,9 @@ class BaseService {
     constructor(model) {
         this.model = model;
     }
-    findByIdAndUpdate(_id, item) {
+    create(item) {
         return __awaiter(this, void 0, void 0, function* () {
-            return (yield this.model
-                .findByIdAndUpdate(_id, item, { new: true })
-                .exec());
-        });
-    }
-    findOne(query) {
-        return __awaiter(this, void 0, void 0, function* () {
-            return yield this.model.findOne(query).exec();
+            return yield this.model.create(item);
         });
     }
     find(query, populateOptions) {
@@ -35,9 +28,21 @@ class BaseService {
             return yield this.model.find(query).exec();
         });
     }
-    create(item) {
+    findOne(query) {
         return __awaiter(this, void 0, void 0, function* () {
-            return yield this.model.create(item);
+            return yield this.model.findOne(query).exec();
+        });
+    }
+    findById(_id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield this.model.findById(_id).exec();
+        });
+    }
+    findByIdAndUpdate(_id, item) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return (yield this.model
+                .findByIdAndUpdate(_id, item, { new: true })
+                .exec());
         });
     }
     findOneAndDelete(_id) {

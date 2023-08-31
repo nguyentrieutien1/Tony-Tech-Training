@@ -13,7 +13,9 @@ class CartService extends BaseService<CartDTO> {
   }): Promise<CartProductsDTO[]> => {
     if (!userId) throw new BadRequestError("Missing user id");
     const cartUser: CartDTO | null = await this.findOne({ user: userId });
-    if (!cartUser) throw new NotFound();
+    if (!cartUser) {
+      return [];
+    }
     const cartProductsService = new CartProductsService(CartProducts);
     const order: CartProductsDTO[] = await cartProductsService.findOneCart({
       cart: cartUser._id,

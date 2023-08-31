@@ -7,6 +7,23 @@ class BaseService<T> implements IRepository<T> {
   constructor(model: Model<T>) {
     this.model = model;
   }
+  async create(item: Partial<T>): Promise<T> {
+    return await this.model.create(item);
+  }
+  async find(query: Partial<T>, populateOptions?: string): Promise<T[]> {
+    if (populateOptions) {
+      return await this.model.find(query).populate(populateOptions);
+    }
+    return await this.model.find(query).exec();
+  }
+
+  async findOne(query: Partial<T>): Promise<T | null> {
+    return await this.model.findOne(query).exec();
+  }
+
+  async findById(_id: Types.ObjectId): Promise<T | null> {
+    return await this.model.findById(_id).exec();
+  }
   async findByIdAndUpdate(
     _id: Types.ObjectId,
     item: Partial<T>
@@ -16,20 +33,6 @@ class BaseService<T> implements IRepository<T> {
       .exec()) as unknown as T | null;
   }
 
-  async findOne(query: Partial<T>): Promise<T | null> {
-    return await this.model.findOne(query).exec();
-  }
-
-  async find(query: Partial<T>, populateOptions?: string): Promise<T[]> {
-    if (populateOptions) {
-      return await this.model.find(query).populate(populateOptions);
-    }
-    return await this.model.find(query).exec();
-  }
-
-  async create(item: Partial<T>): Promise<T> {
-    return await this.model.create(item);
-  }
   async findOneAndDelete(_id: Types.ObjectId): Promise<void> {
     const result = await this.model.findByIdAndDelete(_id).exec();
     if (!result) throw new NotFound();
