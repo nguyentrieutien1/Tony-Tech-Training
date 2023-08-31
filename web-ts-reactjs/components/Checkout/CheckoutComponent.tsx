@@ -4,11 +4,14 @@ import { CartProductsContextType } from "@/types/productCartContextType.type";
 
 function CheckoutComponent(props: CartProductsContextType) {
   const { cart } = props;
-  let total__price: number = cart.reduce((prevState: number, currentState) => {
-    return (prevState +=
-      currentState.quantity *
-      Number.parseFloat(currentState?.product?.product_price));
-  }, 0);
+  let total__price: number =
+    cart?.length > 0
+      ? cart.reduce((prevState: number, currentState) => {
+          return (prevState +=
+            currentState.quantity *
+            Number.parseFloat(currentState?.product!.product_price));
+        }, 0)
+      : 0;
   total__price = Number.parseFloat(total__price.toFixed(2));
   return (
     <div className="cart__checkout">

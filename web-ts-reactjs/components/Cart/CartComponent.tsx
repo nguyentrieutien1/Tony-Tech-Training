@@ -16,17 +16,19 @@ function CartComponent(props: CartProductsContextType) {
       >
         <div className="cart__items">
           {cart.map((item: CartDTO) => {
-            return (
-              <CartListComponent
-                image={item?.product?.image}
-                product_name={item?.product?.product_name}
-                product_price={item?.product?.product_price}
-                product_title={item?.product?.product_title}
-                quantity={item?.quantity}
-                _id={item?._id}
-                key={item?._id}
-              />
-            );
+            if (item.product && item._id) {
+              return (
+                <CartListComponent
+                  image={item?.product?.image}
+                  product_name={item?.product?.product_name}
+                  product_price={item?.product?.product_price}
+                  product_title={item?.product?.product_title}
+                  quantity={item?.quantity}
+                  _id={item?._id}
+                  key={item?._id}
+                />
+              );
+            }
           })}
         </div>
         <CheckoutComponent />

@@ -5,8 +5,9 @@ type CartProductsContextType = {
   products: ProductDTO[];
   cart: CartDTO[];
   isToggleCart: boolean;
+  create: (item: CartDTO) => Promise<CartDTO>;
   setIsToggleCart: React.Dispatch<React.SetStateAction<boolean>>;
   //   setProducts: React.Dispatch<React.SetStateAction<ProductDTO[]>>;
-  //   setCart: React.Dispatch<React.SetStateAction<CartDTO[]>>;
+  setCart: React.Dispatch<React.SetStateAction<CartDTO[]>>;
 };
 export type { CartProductsContextType };

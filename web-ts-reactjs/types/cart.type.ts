@@ -1,8 +1,9 @@
 import { ProductDTO } from "./products.type";
 
 type CartDTO = {
-  _id: string;
+  _id?: string;
   quantity: number;
-  product: ProductDTO;
+  productId: string;
+  product?: ProductDTO;
 };
 export type { CartDTO };

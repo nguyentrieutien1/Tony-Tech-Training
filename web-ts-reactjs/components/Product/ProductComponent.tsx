@@ -1,7 +1,7 @@
 import { WithCartProductsContext } from "@/HOCs/withProductCartContext";
 import { ProductDTO } from "@/types/products.type";
 import React from "react";
-import ProductListComponent from "../ProductList";
+import ProductListComponent from "../ProductList/ProductListComponent";
 import { CartProductsContextType } from "@/types/productCartContextType.type";
 
 function ProductComponent(props: CartProductsContextType) {

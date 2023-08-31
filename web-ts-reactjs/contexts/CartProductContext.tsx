@@ -32,9 +32,18 @@ const CartProductsProvider = ({ children }: CartProductsProviderProps) => {
     };
     getAllProducts();
   }, []);
+  const create = async (item: CartDTO): Promise<CartDTO> => {
+    const response = await fetch(`${API_URL}/cart-products`, {
+      method: "POST",
+      headers: headersInfo(),
+      body: JSON.stringify(item),
+    });
+    const { data } = await response.json();
+    return data;
+  };
   return (
     <CartProductsContext.Provider
-      value={{ products, cart, isToggleCart, setIsToggleCart }}
+      value={{ products, cart, isToggleCart, setIsToggleCart, setCart, create }}
     >
       {children}
     </CartProductsContext.Provider>
