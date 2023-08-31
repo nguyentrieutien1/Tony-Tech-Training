@@ -1,6 +1,6 @@
 import { Model, Types } from "mongoose";
-import { IRepository } from "./my-service.type";
-import { NotFound } from "../core/error.response";
+import { IRepository } from "../types/my-service.type";
+import { NotFound } from "./error.response";
 class BaseService<T> implements IRepository<T> {
   protected model: Model<T>;
 
@@ -33,7 +33,7 @@ class BaseService<T> implements IRepository<T> {
       .exec()) as unknown as T | null;
   }
 
-  async findOneAndDelete(_id: Types.ObjectId): Promise<void> {
+  async findByIdAndDelete(_id: Types.ObjectId): Promise<void> {
     const result = await this.model.findByIdAndDelete(_id).exec();
     if (!result) throw new NotFound();
   }

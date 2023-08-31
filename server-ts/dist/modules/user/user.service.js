@@ -18,42 +18,40 @@ const error_response_1 = require("../../core/error.response");
 const user_model_1 = require("./user.model");
 const bcrypt_1 = __importDefault(require("bcrypt"));
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
-const base_service_type_1 = require("../../types/base-service.type");
-class UserService extends base_service_type_1.BaseService {
-    constructor() {
-        super(...arguments);
-        this.createUser = ({ email, password }) => __awaiter(this, void 0, void 0, function* () {
-            if (!email || !password)
-                throw new error_response_1.BadRequestError("Missing data to signup !", {
-                    email,
-                    password,
-                });
-            //   CHECK USER
-            const checkUser = yield this.findOne({ email });
-            if (checkUser) {
-                throw new error_response_1.Conflict("User already exists !", { email });
-            }
-            // HASH PASSWORD
-            password = yield bcrypt_1.default.hash(password, 10);
-            //   CREATE USER
-            const user = yield this.create({ email, password });
-            return user;
-        });
-        this.signIn = ({ email, password, }) => __awaiter(this, void 0, void 0, function* () {
-            const user = yield user_model_1.User.findOne({ email });
-            if (!user) {
-                throw new error_response_1.NotFound("email or password is incorrect !", { email });
-            }
-            const checkPassword = yield bcrypt_1.default.compare(password, user.password);
-            if (!checkPassword)
-                throw new error_response_1.BadRequestError("email or password is incorrect !");
-            const accessToken = jsonwebtoken_1.default.sign({ _id: user._id }, process.env.PRIVATE_KEY);
-            return { accessToken };
-        });
-    }
+const base_service_repository_1 = require("../../core/base-service.repository");
+class UserService extends base_service_repository_1.BaseService {
 }
 exports.UserService = UserService;
 _a = UserService;
+UserService._instance = new base_service_repository_1.BaseService(user_model_1.User);
+UserService.signUp = ({ email, password }) => __awaiter(void 0, void 0, void 0, function* () {
+    if (!email || !password)
+        throw new error_response_1.BadRequestError("Missing data to signup !", {
+            email,
+            password,
+        });
+    //   CHECK USER
+    const checkUser = yield _a._instance.findOne({ email });
+    if (checkUser) {
+        throw new error_response_1.Conflict("User already exists !", { email });
+    }
+    // HASH PASSWORD
+    password = yield bcrypt_1.default.hash(password, 10);
+    //   CREATE USER
+    const user = yield _a._instance.create({ email, password });
+    return user;
+});
+UserService.signIn = ({ email, password, }) => __awaiter(void 0, void 0, void 0, function* () {
+    const user = yield user_model_1.User.findOne({ email });
+    if (!user) {
+        throw new error_response_1.NotFound("email or password is incorrect !", { email });
+    }
+    const checkPassword = yield bcrypt_1.default.compare(password, user.password);
+    if (!checkPassword)
+        throw new error_response_1.BadRequestError("email or password is incorrect !");
+    const accessToken = jsonwebtoken_1.default.sign({ _id: user._id }, process.env.PRIVATE_KEY);
+    return { accessToken };
+});
 UserService.getById = (_id) => __awaiter(void 0, void 0, void 0, function* () {
     const user = yield user_model_1.User.findById(_id);
     if (!user)

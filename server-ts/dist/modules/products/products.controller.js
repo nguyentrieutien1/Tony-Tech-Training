@@ -14,15 +14,13 @@ exports.ProductController = void 0;
 const success_response_1 = require("../../core/success.response");
 const products_service_1 = require("./products.service");
 const helpError_helper_1 = require("../../helpers/helpError.helper");
-const products_model_1 = require("./products.model");
-const productService = new products_service_1.ProductService(products_model_1.Product);
 class ProductController {
 }
 exports.ProductController = ProductController;
 _a = ProductController;
-ProductController.findAll = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+ProductController.find = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const products = yield productService.findAllProduct();
+        const products = yield products_service_1.ProductService.find();
         return new success_response_1.Ok({
             data: products,
             message: "Get all product successful !",

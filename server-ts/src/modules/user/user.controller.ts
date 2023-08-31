@@ -5,13 +5,11 @@ import { UserDTO } from "../../types/user.type";
 import { HelpError } from "../../helpers/helpError.helper";
 import { IGetUserAuthInfoRequest } from "../../types/custom.type";
 import { Types } from "mongoose";
-import { User } from "./user.model";
-const userService = new UserService(User)
 class UserController {
   static signUp = async (req: IGetUserAuthInfoRequest, res: Response) => {
     const { email, password } = req.body;
     try {
-      const userInfo: UserDTO = await userService.createUser({
+      const userInfo: UserDTO = await UserService.signUp({
         email,
         password,
       });
@@ -26,7 +24,7 @@ class UserController {
   static signIn = async (req: IGetUserAuthInfoRequest, res: Response) => {
     const { email, password } = req.body;
     try {
-      const accessToken: { accessToken: string } = await userService.signIn({
+      const accessToken: { accessToken: string } = await UserService.signIn({
         email,
         password,
       });

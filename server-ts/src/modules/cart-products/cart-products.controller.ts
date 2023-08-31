@@ -6,18 +6,18 @@ import { Types } from "mongoose";
 import { HelpError } from "../../helpers/helpError.helper";
 import { CartProducts } from "./cart-products.model";
 
-const cartProductsService = new CartProductsService(CartProducts);
 class CartProductsController {
   static create = async (req: IGetUserAuthInfoRequest, res: Response) => {
     try {
       const { productId, quantity } = req.body;
       const cartId = req.cartId!;
-      const cartItem: CartProductsController =
-        await cartProductsService.addToCart({
+      const cartItem: CartProductsController = await CartProductsService.create(
+        {
           product: productId,
           quantity,
           cart: cartId,
-        });
+        }
+      );
       return new Success<CartProductsController>({
         message: "Cart item has been created !",
         data: cartItem,
@@ -34,7 +34,7 @@ class CartProductsController {
       const { id } = req.params;
       const { quantity } = req.body;
       const product: CartProductsController =
-        await cartProductsService.updateCartProduct(new Types.ObjectId(id), {
+        await CartProductsService.findByIdAndUpdate(new Types.ObjectId(id), {
           quantity,
         });
       return new Ok<CartProductsController>({ data: product }).send(res);
@@ -48,7 +48,7 @@ class CartProductsController {
   ) => {
     try {
       const { id } = req.params;
-      await cartProductsService.deleteCartProduct(new Types.ObjectId(id));
+      await CartProductsService.findByIdAndDelete(new Types.ObjectId(id));
       return new Ok<unknown>({ data: null }).send(res);
     } catch (error) {
       HelpError(error, res);
