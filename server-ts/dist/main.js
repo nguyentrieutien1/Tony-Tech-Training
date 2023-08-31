@@ -15,8 +15,8 @@ const PORT = parseInt(process.env.PORT) || 3000;
 // CONNECT DB
 db_1.ConnectDatabase.connect();
 // MIDDLEWARES
-app.use(express_1.default.json());
 app.use((0, cors_1.default)());
+app.use(express_1.default.json());
 // RUN APP ROUTES
 app.use("/api", index_route_1.default);
 // HANDLE APP ERRORS  

@@ -21,7 +21,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-  ],
+, "pages/signin/index.jsx", "pages/signup/index.jsx"  ],
   "exclude": [
     "node_modules"
   ]

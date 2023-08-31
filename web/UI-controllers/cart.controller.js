@@ -73,7 +73,6 @@ export const getCartItems = async (productId, element) => {
     <div class="cart__item">
 						<div class="cart__item--info">
 							<div class="sub__spin sub__spin-${index}"></div>
-
 						<i class="fa-solid fa-spinner fa-spin fa-spin-item ${`fa-spin-item-${index}`}"></i>
 							<img src="${cartItem?.product?.image}" alt="">
 							<div class="cart__item--content">

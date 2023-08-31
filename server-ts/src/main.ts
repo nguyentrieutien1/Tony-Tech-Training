@@ -13,8 +13,8 @@ const PORT: number = parseInt(process.env.PORT!) || 3000;
 ConnectDatabase.connect();
 
 // MIDDLEWARES
-app.use(express.json());
 app.use(cors());
+app.use(express.json());
 
 // RUN APP ROUTES
 app.use("/api", appRouters);

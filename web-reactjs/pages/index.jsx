@@ -1,129 +1,68 @@
-import React from "react";
-
+import React, { createContext, useEffect, useState } from "react";
+import ProductComponent from "../components/Product/ProductComponent";
+import CartComponent from "../components/Cart/CartComponent";
+import { API_URL } from "../constants/apiUrl";
+import { headersInfo } from "../utils/headerInfo";
+export const HomeContext = createContext();
 export default function App() {
+  const [cart, setCart] = useState([]);
+  const [products, setProducts] = useState([]);
+  useEffect(() => {
+    const getMyCart = async () => {
+      const response = await fetch(`${API_URL}/cart/my_cart`, {
+        method: "GET",
+        headers: headersInfo(),
+      });
+      const result = await response.json();
+      const { data } = result;
+      setCart([...data]);
+    };
+    getMyCart();
+  }, []);
+  useEffect(() => {
+    const getAllProducts = async () => {
+      const result = await fetch(`${API_URL}/products`);
+      const { data } = await result.json();
+      setProducts(data);
+    };
+    getAllProducts();
+  }, []);
+  const create = async (_id) => {
+    const product = products.find((product) => product._id == _id);
+    const response = await fetch(`${API_URL}/cart-products`, {
+      method: "POST",
+      headers: headersInfo(),
+      body: JSON.stringify({ productId: _id, quantity: 1 }),
+    });
+    const result = await response.json();
+    const { data } = result;
+    data.product = product;
+    setCart((prevState) => [...prevState, data]);
+  };
+  const update = async (index, { quantity }) => {
+    cart[index].quantity = quantity;
+    setCart([...cart]);
+    await fetch(`${API_URL}/cart-products/${cart[index]?._id}`, {
+      method: "PUT",
+      headers: headersInfo(),
+      body: JSON.stringify({ quantity }),
+    });
+  };
+  const remove = async (_id) => {
+    const index = cart.findIndex((item) => item?._id == _id);
+    cart.splice(index, 1);
+    setCart([...cart]);
+    await fetch(`${API_URL}/cart-products/${_id}`, {
+      headers: headersInfo(),
+      method: "DELETE",
+    });
+  };
   return (
-    <section>
-      <div className="">
-        <div className="trending___product--container padding__content">
-          <div className="trending___product--content">
-            <div className="trending__product--title">
-              <div>TOP TRENDING PRODUCTS</div>
-              <span>Go To Trending Products</span>
-            </div>
-            <div className="trending__product--items">
-              {/* <h3 style={{ textAlign: "center", width: "100%" }}>
-                Loading Products . . .
-              </h3> */}
-              <div className="deal__product--item toptreding__product--item">
-                <i className="fa-solid fa-spinner fa-spin fa-spin-1" />
-                <div className="deal__product--item-img">
-                  <img
-                    src="https://movic.b-cdn.net/at_edmart/26-home_default/hummingbird-printed-t-shirt.jpg"
-                    className="img-1"
-                    alt="Image"
-                  />
-                  <img
-                    src="https://movic.b-cdn.net/at_edmart/26-home_default/hummingbird-printed-t-shirt.jpg"
-                    className="img-2"
-                    alt="Image"
-                  />
-                  <img
-                    src="https://movic.b-cdn.net/at_edmart/26-home_default/hummingbird-printed-t-shirt.jpg"
-                    className="img-3 img-item-1"
-                    alt="Image"
-                  />
-                </div>
-                <div className="deal__product--item-list--icon">
-                  <i className="fa-regular fa-heart">
-                    <h4 className="sub-icon">Quick view</h4>
-                  </i>
-                  <i className="fa-regular fa-eye">
-                    <h4 className="sub-icon">Quick view</h4>
-                  </i>
-                  <i className="fa-solid fa-rotate-left">
-                    <h4 className="sub-icon">Quick view</h4>
-                  </i>
-                </div>
-                <div className="deal__product--meta">
-                  <div className="deal__product--item-des">
-                    <div>111</div>
-                  </div>
-                  <div className="deal__product--item-name">
-                    <div>111</div>
-                  </div>
-                  <div className="deal__product--item-start">
-                    <i className="fa-regular fa-star" />
-                    <i className="fa-regular fa-star" />
-                    <i className="fa-regular fa-star" />
-                    <i className="fa-regular fa-star" />
-                    <i className="fa-regular fa-star" />
-                  </div>
-                  <div className="deal__product--item-price-2">
-                    <div>$111</div>
-                    <i
-                      className="fa-solid fa-cart-shopping shopping-btn"
-                      data-id={1}
-                    />
-                  </div>
-                </div>
-              </div>
-              <div className="deal__product--item toptreding__product--item">
-                <i className="fa-solid fa-spinner fa-spin fa-spin-1" />
-                <div className="deal__product--item-img">
-                  <img
-                    src="https://movic.b-cdn.net/at_edmart/26-home_default/hummingbird-printed-t-shirt.jpg"
-                    className="img-1"
-                    alt="Image"
-                  />
-                  <img
-                    src="https://movic.b-cdn.net/at_edmart/26-home_default/hummingbird-printed-t-shirt.jpg"
-                    className="img-2"
-                    alt="Image"
-                  />
-                  <img
-                    src="https://movic.b-cdn.net/at_edmart/26-home_default/hummingbird-printed-t-shirt.jpg"
-                    className="img-3 img-item-1"
-                    alt="Image"
-                  />
-                </div>
-                <div className="deal__product--item-list--icon">
-                  <i className="fa-regular fa-heart">
-                    <h4 className="sub-icon">Quick view</h4>
-                  </i>
-                  <i className="fa-regular fa-eye">
-                    <h4 className="sub-icon">Quick view</h4>
-                  </i>
-                  <i className="fa-solid fa-rotate-left">
-                    <h4 className="sub-icon">Quick view</h4>
-                  </i>
-                </div>
-                <div className="deal__product--meta">
-                  <div className="deal__product--item-des">
-                    <div>111</div>
-                  </div>
-                  <div className="deal__product--item-name">
-                    <div>111</div>
-                  </div>
-                  <div className="deal__product--item-start">
-                    <i className="fa-regular fa-star" />
-                    <i className="fa-regular fa-star" />
-                    <i className="fa-regular fa-star" />
-                    <i className="fa-regular fa-star" />
-                    <i className="fa-regular fa-star" />
-                  </div>
-                  <div className="deal__product--item-price-2">
-                    <div>$111</div>
-                    <i
-                      className="fa-solid fa-cart-shopping shopping-btn"
-                      data-id={1}
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+    <>
+      <HomeContext.Provider value={{ cart, products, create, update, remove }}>
+        <ProductComponent />
+        <CartComponent />
+      </HomeContext.Provider>
+    </>
   );
 }

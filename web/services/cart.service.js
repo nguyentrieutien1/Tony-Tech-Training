@@ -43,7 +43,6 @@ class Cart {
         if (index > -1) {
           const quantity = cartState[index].quantity + 1;
           cartState[index].quantity = quantity;
-          console.log(cartState[index]);
           await fetch(`${API_URL}/cart-products/${cartState[index]?._id}`, {
             method: "PUT",
             headers: headersInfo(),
