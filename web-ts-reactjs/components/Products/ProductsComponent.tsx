@@ -21,9 +21,12 @@ function ProductComponents(props: CartProductsContextType) {
     <div>
       <ProductDetailComponent
         _id={productId}
-        closeModal={closeModal}
         isShowProductDetail={isShowProductDetail}
       />
+      <div
+        onClick={closeModal}
+        className={`modal__body ${isShowProductDetail && "show__modal--body"}`}
+      ></div>
       <div className="trending___product--container padding__content">
         <div className="trending___product--content">
           <div className="trending__product--title">

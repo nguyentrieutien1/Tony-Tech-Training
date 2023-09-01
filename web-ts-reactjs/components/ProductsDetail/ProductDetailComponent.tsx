@@ -14,7 +14,7 @@ class ProductDetailComponent extends Component<
     super(props);
   }
   render() {
-    const { closeModal, _id, isShowProductDetail } = this.props;
+    const { _id, isShowProductDetail } = this.props;
     const { cart } = this.context;
     const cartItem = cart.find((item) => item.product?._id == _id);
     if (cartItem) {
@@ -22,7 +22,7 @@ class ProductDetailComponent extends Component<
       const { product_name, product_price, image } =
         cartItem?.product as ProductDTO;
       return (
-        <div onClick={closeModal}>
+        <div>
           <div
             className={`modal__container ${
               isShowProductDetail && "show__modal"

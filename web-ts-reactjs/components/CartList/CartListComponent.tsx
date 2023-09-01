@@ -11,7 +11,7 @@ function CartListComponent(props: ProductDTO | CartProductsContextType) {
   useEffect(() => {
     setValueInput(quantity!);
   }, [quantity]);
-  const updateQuantityCartItem = async (
+  const helpUpdateQuantityCartItem = async (
     _id: string,
     { type, value }: { type: number; value?: number }
   ) => {
@@ -25,7 +25,6 @@ function CartListComponent(props: ProductDTO | CartProductsContextType) {
     setCart([...cart]);
     update(_id, { quantity: payload! });
   };
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement> | null) => {
     let value = parseInt(e!.target.value);
     if (value == 0) {
@@ -41,9 +40,9 @@ function CartListComponent(props: ProductDTO | CartProductsContextType) {
     if (number == 1) {
       let value = parseInt(e!.target.value);
 
-      updateQuantityCartItem(_id, { type: number, value });
+      helpUpdateQuantityCartItem(_id, { type: number, value });
     } else {
-      updateQuantityCartItem(_id, { type: number });
+      helpUpdateQuantityCartItem(_id, { type: number });
     }
     setTimeout(() => {
       hiddenLoading();

@@ -13,25 +13,27 @@ const CartProductsProvider = ({ children }: CartProductsProviderProps) => {
   const [cart, setCart] = useState<CartDTO[]>([]);
   const [isToggleCart, setIsToggleCart] = useState<boolean>(false);
   useEffect(() => {
-    const getMyCart = async () => {
-      const response = await fetch(`${API_URL}/cart/my_cart`, {
-        method: "GET",
-        headers: headersInfo(),
-      });
-      const result = await response.json();
-      const { data }: { data: CartDTO[] } = result;
+    getAllCartItem().then((data) => {
       setCart([...data]);
-    };
-    getMyCart();
+    });
+    getAllProductItem().then((productItem) => {
+      setProducts(productItem);
+    });
   }, []);
-  useEffect(() => {
-    const getAllProducts = async () => {
-      const result = await fetch(`${API_URL}/products`);
-      const { data }: { data: ProductDTO[] } = await result.json();
-      setProducts(data);
-    };
-    getAllProducts();
-  }, []);
+  const getAllProductItem = async () => {
+    const result = await fetch(`${API_URL}/products`);
+    const { data }: { data: ProductDTO[] } = await result.json();
+    return data;
+  };
+  const getAllCartItem = async () => {
+    const response = await fetch(`${API_URL}/cart/my_cart`, {
+      method: "GET",
+      headers: headersInfo(),
+    });
+    const result = await response.json();
+    const { data }: { data: CartDTO[] } = result;
+    return data;
+  };
   const create = async (item: CartDTO): Promise<CartDTO> => {
     const response = await fetch(`${API_URL}/cart-products`, {
       method: "POST",

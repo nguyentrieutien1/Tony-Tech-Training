@@ -6,6 +6,7 @@ import { CartProductsContextType } from "@/types/productCartContextType.type";
 import { CartDTO } from "@/types/cart.type";
 import { WithCartProductsContext } from "@/HOCs/withProductCartContext";
 
+
 function CartComponent(props: CartProductsContextType) {
   const { cart, isToggleCart } = props;
   return (
