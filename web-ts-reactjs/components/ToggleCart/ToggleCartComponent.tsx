@@ -3,12 +3,11 @@ import { CartProductsContextType } from "@/types/productCartContextType.type";
 import React from "react";
 function ToggleCartComponent(props: CartProductsContextType) {
   const { cart, setIsToggleCart, isToggleCart } = props;
-  const quantity: number =
-    cart.length > 0
-      ? cart.reduce((prevState, currentState) => {
-          return (prevState += currentState.quantity);
-        }, 0)
-      : 0;
+  const quantity: number = !cart
+    ? 0
+    : cart.reduce((prevState, currentState) => {
+        return (prevState += currentState.quantity);
+      }, 0);
   const handleToggleCart = (): void => {
     setIsToggleCart((prevState) => !prevState);
   };

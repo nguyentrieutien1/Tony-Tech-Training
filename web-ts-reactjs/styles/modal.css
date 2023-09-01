@@ -8,6 +8,7 @@
      transition: .5s ease;
      opacity: 0;
      visibility: hidden;
+     z-index:99999999;
 }
 .modal__body {
      position: fixed;
@@ -25,11 +26,13 @@
      display: block;
      visibility: visible;
      opacity: 1;
+     transition: .5s ease;
 }
 .show__modal {
-     opacity: 1;
+       opacity: 1;
      visibility: visible;
      transform: translate(-50%, 0%);
+     transition: .5s ease;
 }
 .modal__container h4 {
      text-align: center;  background-color: var(--green-50);

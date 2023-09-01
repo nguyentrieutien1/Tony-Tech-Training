@@ -41,9 +41,32 @@ const CartProductsProvider = ({ children }: CartProductsProviderProps) => {
     const { data } = await response.json();
     return data;
   };
+  const update = async (_id: string, payload: CartDTO): Promise<void> => {
+    await fetch(`${API_URL}/cart-products/${_id}`, {
+      method: "PUT",
+      headers: headersInfo(),
+      body: JSON.stringify(payload),
+    });
+  };
+  const remove = async (_id: string): Promise<void> => {
+    await fetch(`${API_URL}/cart-products/${_id}`, {
+      headers: headersInfo(),
+      method: "DELETE",
+    });
+  };
   return (
     <CartProductsContext.Provider
-      value={{ products, cart, isToggleCart, setIsToggleCart, setCart, create }}
+      value={{
+        products,
+        cart,
+        isToggleCart,
+        setIsToggleCart,
+        setCart,
+        create,
+        update,
+        remove,
+        setProducts,
+      }}
     >
       {children}
     </CartProductsContext.Provider>

@@ -59,7 +59,9 @@ export default function App() {
   };
   return (
     <>
-      <HomeContext.Provider value={{ cart, products, create, update, remove }}>
+      <HomeContext.Provider
+        value={{ cart, products, create, update, remove, setProducts }}
+      >
         <ProductComponent />
         <CartComponent />
       </HomeContext.Provider>

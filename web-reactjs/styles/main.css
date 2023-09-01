@@ -1688,6 +1688,7 @@ transform: translate(-50%,-50%);
     transform: translateX(-50%);
   }
 }
+
 .trending___product--container .toptreding__product--item {
   width: calc(95% / 5);
   margin-right: 10px;

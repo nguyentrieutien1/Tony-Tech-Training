@@ -29,8 +29,8 @@ export default function CartListComponent(props) {
   return (
     <div className="cart__item">
       <div className="cart__item--info">
-        <div className="sub__spin sub__spin-0" />
-        <i className="fa-solid fa-spinner fa-spin fa-spin-item fa-spin-item-0" />
+        <div className="sub__spin show__sub-spin" />
+        <i className="fa-solid fa-spinner fa-spin fa-spin-item show__fa-spin-item" />
         <img src={image} />
         <div className="cart__item--content">
           <div className="cart__item--title">

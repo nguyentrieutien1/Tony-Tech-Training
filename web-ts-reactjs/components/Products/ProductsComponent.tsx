@@ -1,14 +1,29 @@
 import { WithCartProductsContext } from "@/HOCs/withProductCartContext";
 import { ProductDTO } from "@/types/products.type";
-import React from "react";
-import ProductListComponent from "../ProductList/ProductListComponent";
+import React, { useState } from "react";
+import ProductListComponent from "../ProducstList/ProductsListComponent";
 import { CartProductsContextType } from "@/types/productCartContextType.type";
+import ProductDetailComponent from "../ProductsDetail/ProductDetailComponent";
 
-function ProductComponent(props: CartProductsContextType) {
+function ProductComponents(props: CartProductsContextType) {
   const { products } = props;
-
+  const [isShowProductDetail, setIsShowProductDetail] =
+    useState<boolean>(false);
+  const [productId, setProductId] = useState<string>("");
+  const showModal = (_id: string) => {
+    setProductId(_id);
+    setIsShowProductDetail(true);
+  };
+  const closeModal = () => {
+    setIsShowProductDetail(false);
+  };
   return (
     <div>
+      <ProductDetailComponent
+        _id={productId}
+        closeModal={closeModal}
+        isShowProductDetail={isShowProductDetail}
+      />
       <div className="trending___product--container padding__content">
         <div className="trending___product--content">
           <div className="trending__product--title">
@@ -16,9 +31,6 @@ function ProductComponent(props: CartProductsContextType) {
             <span>Go To Trending Products</span>
           </div>
           <div className="trending__product--items">
-            {/* <h3 style={{ textAlign: "center", width: "100%" }}>
-                Loading Products . . .
-              </h3> */}
             {products.length > 0 ? (
               products.map((product: ProductDTO) => (
                 <ProductListComponent
@@ -28,6 +40,7 @@ function ProductComponent(props: CartProductsContextType) {
                   product_name={product?.product_name}
                   product_price={product?.product_price}
                   product_title={product?.product_title}
+                  showModal={showModal}
                 />
               ))
             ) : (
@@ -41,4 +54,4 @@ function ProductComponent(props: CartProductsContextType) {
     </div>
   );
 }
-export default WithCartProductsContext(ProductComponent);
+export default WithCartProductsContext(ProductComponents);

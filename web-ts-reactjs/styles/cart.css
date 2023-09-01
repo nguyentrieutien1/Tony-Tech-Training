@@ -200,10 +200,10 @@
   left: 50%;
   transform:translate(-50%, -50%);
   color: var(--black-900);
-  display: none;
+  display: none !important;
 }
 .show__fa-spin-item  {
-  display: block;
+  display: block !important;
 }
 
 .cart__items::-webkit-scrollbar {
