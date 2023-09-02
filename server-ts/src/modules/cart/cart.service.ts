@@ -1,6 +1,5 @@
 import { BadRequestError, NotFound } from "../../core/error.response";
 import { Types } from "mongoose";
-import { CartProductsDTO } from "../../types/cart.type";
 import { CartProductsDTO } from "../../types/cart-products.type";
 import { BaseService } from "../../core/base-service.repository";
 import { CartProductsService } from "../cart-products/cart-products.service";

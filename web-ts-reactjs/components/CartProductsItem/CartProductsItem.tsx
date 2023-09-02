@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from "react";
-import { CartProductsContextType } from "@/types/productCartContextType.type";
 import { ProductsDTO } from "@/types/products.type";
 import { CartProductsDTO } from "@/types/cart.type";
 interface CartProductsItemProps {
   remove: (_id: string) => void;
   update: (_id: string, payload: CartProductsDTO) => Promise<void>;
   cart: CartProductsDTO[];
+  cartItem: CartProductsDTO;
 }
-function CartProductItem(props: CartProductsItemProps | ProductsDTO) {
-  const { image, product_name, product_price, quantity, _id } =
-    props as ProductsDTO;
+function CartProductsItem(props: CartProductsItemProps) {
+  const { cartItem } = props;
+  const { quantity, _id } = cartItem;
+  const { image, product_name, product_price } =
+    cartItem.product as ProductsDTO;
+  console.log(cartItem);
   const { remove, cart, update } = props as CartProductsItemProps;
   const [valueInput, setValueInput] = useState<number>(quantity!);
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -34,32 +37,32 @@ function CartProductItem(props: CartProductsItemProps | ProductsDTO) {
     }
     setValueInput(value);
   };
+  const handleUpdate = (e: any, number: number) => {};
+  // // UPDATE FUNCTION
+  // const handleUpdate = (
+  //   e: React.ChangeEvent<HTMLInputElement> | null,
+  //   number: number
+  // ) => {
+  //   showLoading();
+  //   // IF UPDATE BY INPUT TYPE, PASS VALUE TO HELPER UPDATE
+  //   if (number == 1) {
+  //     let value = parseInt(e!.target.value);
 
-  // UPDATE FUNCTION
-  const handleUpdate = (
-    e: React.ChangeEvent<HTMLInputElement> | null,
-    number: number
-  ) => {
-    showLoading();
-    // IF UPDATE BY INPUT TYPE, PASS VALUE TO HELPER UPDATE
-    if (number == 1) {
-      let value = parseInt(e!.target.value);
-
-      helpUpdateQuantityCartItem(_id, { type: number, value });
-      // ELSE +1 or -1 BY BUTTON TYPE
-    } else {
-      helpUpdateQuantityCartItem(_id, { type: number });
-    }
-    setTimeout(() => {
-      hiddenLoading();
-    }, 100);
-  };
-  const hiddenLoading = () => {
-    setIsLoading(false);
-  };
-  const showLoading = () => {
-    setIsLoading(true);
-  };
+  //     helpUpdateQuantityCartItem(_id!, { type: number, value });
+  //     // ELSE +1 or -1 BY BUTTON TYPE
+  //   } else {
+  //     helpUpdateQuantityCartItem(_id!, { type: number });
+  //   }
+  //   setTimeout(() => {
+  //     hiddenLoading();
+  //   }, 100);
+  // };
+  // const hiddenLoading = () => {
+  //   setIsLoading(false);
+  // };
+  // const showLoading = () => {
+  //   setIsLoading(true);
+  // };
 
   useEffect(() => {
     setValueInput(quantity!);
@@ -108,7 +111,7 @@ function CartProductItem(props: CartProductsItemProps | ProductsDTO) {
         </div>
       </div>
       <div
-        onClick={() => remove(_id)}
+        onClick={() => remove(_id!)}
         className="cart__item--delete-btn"
         data-id="64f00a9c11ec7096223c0687"
       >
@@ -117,4 +120,4 @@ function CartProductItem(props: CartProductsItemProps | ProductsDTO) {
     </div>
   );
 }
-export default CartProductItem;
+export default CartProductsItem;

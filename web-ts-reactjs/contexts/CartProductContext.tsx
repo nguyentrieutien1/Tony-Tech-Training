@@ -1,4 +1,4 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
 import { CartProductsContextType } from "@/types/productCartContextType.type";
 import { CartProductsProviderProps } from "@/types/productCartProviderProps.type";
 import { ProductsDTO } from "@/types/products.type";
@@ -13,17 +13,17 @@ const CartProductsProvider = ({ children }: CartProductsProviderProps) => {
   const [cart, setCart] = useState<CartProductsDTO[]>([]);
   const [isToggleCart, setIsToggleCart] = useState<boolean>(false);
 
-  const getAllProduct = async () => {
+  const getAllProducts = async () => {
     const products = await ProductsApi.getAll();
-    return products;
+    setProducts([...products]);
   };
   const getAllCartProducts = async () => {
     const cartProducts = await CartProductsApi.getAll();
-    return cartProducts;
+    setCart([...cartProducts]);
   };
-  const create = async (item: CartProductsDTO): Promise<void> => {
+  const create = async (item: CartProductsDTO): Promise<CartProductsDTO> => {
     const data = await CartProductsApi.create(item);
-    setCart([...cart, data]);
+    return data;
   };
   const update = async (
     _id: string,
@@ -40,6 +40,10 @@ const CartProductsProvider = ({ children }: CartProductsProviderProps) => {
     setCart([...cart]);
     await CartProductsApi.remove(_id);
   };
+  useEffect(() => {
+    getAllCartProducts();
+    getAllProducts();
+  }, []);
   return (
     <CartProductsContext.Provider
       value={{
@@ -52,8 +56,6 @@ const CartProductsProvider = ({ children }: CartProductsProviderProps) => {
         update,
         remove,
         setProducts,
-        getAllProduct,
-        getAllCartProducts,
       }}
     >
       {children}

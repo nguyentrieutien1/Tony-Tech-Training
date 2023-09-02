@@ -1,13 +1,16 @@
 import React, { Component, createContext } from "react";
-import Products from "@/components/Products/Products";
 import { ProductsDTO } from "@/types/products.type";
 import { CartProductsContextType } from "@/types/productCartContextType.type";
 import { withCartProductsContext } from "@/HOCs/withProductCartContext";
 import { CartProductsContext } from "@/contexts/CartProductContext";
 import { CartProductsDTO } from "@/types/cart.type";
+import ProductDetail from "@/components/ProductsDetail/ProductDetail";
+import ProductItem from "@/components/ProductItem/ProductItem";
 export const ProductsContext = createContext([]);
 interface ProductsState {
   products: ProductsDTO[];
+  isShowProductDetail: boolean;
+  productId: string;
 }
 class ProductsModule extends Component<CartProductsContextType, ProductsState> {
   static contextType = CartProductsContext;
@@ -16,39 +19,83 @@ class ProductsModule extends Component<CartProductsContextType, ProductsState> {
     super(props);
     this.state = {
       products: [],
+      isShowProductDetail: false,
+      productId: "",
     };
+
+    // SHOW MODAL
   }
-  // GET ALL PRODUCT
-  getAllProduct = async () => {
-    const { getAllProduct } = this.context;
-    return await getAllProduct();
+  showModal = (_id: string) => {
+    this.setState({
+      isShowProductDetail: true,
+      productId: _id,
+    });
+  };
+
+  // CLOSE MODAL
+  closeModal = () => {
+    this.setState({
+      isShowProductDetail: false,
+    });
   };
   // ADD TO CART
-  create = async (payload: CartProductsDTO) => {
-    const { create } = this.context;
-    await create(payload);
+  onAddToCart = async (_id: string) => {
+    const { cart, create, setCart, update } = this.context;
+    const index = cart.findIndex(
+      (item: CartProductsDTO) => item.product!._id == _id
+    );
+    if (index > -1) {
+      const quantity = cart[index].quantity + 1;
+      await update(cart[index]._id!, { quantity });
+    } else {
+      const cartItem = await create({ productId: _id, quantity: 1 });
+      cart.push(cartItem);
+      setCart([...cart]);
+    }
   };
-  // UPDATE CART ITEM
-  update = async (_id: string, payload: CartProductsDTO) => {
-    const { update } = this.context;
-    await update(_id, payload);
-  };
-  // CALL API TO GET ALL PRODUCTS
-  componentDidMount(): void {
-    const { setProducts } = this.context;
-    this.getAllProduct().then((products: ProductsDTO[]) => {
-      setProducts([...products]);
-    });
-  }
   render() {
     const { products, cart } = this.context;
+    const { productId, isShowProductDetail } = this.state;
     return (
-      <Products
-        products={products}
-        cart={cart}
-        create={this.create}
-        update={this.update}
-      />
+      <div>
+        <ProductDetail
+          cart={cart}
+          _id={productId}
+          isShowProductDetail={isShowProductDetail}
+        />
+        <div
+          onClick={() => this.closeModal}
+          className={`modal__body ${
+            isShowProductDetail && "show__modal--body"
+          }`}
+        ></div>
+        <div className="trending___product--container padding__content">
+          <div className="trending___product--content">
+            <div className="trending__product--title">
+              <div>TOP TRENDING PRODUCTS</div>
+              <span>Go To Trending Products</span>
+            </div>
+            <div className="trending__product--items">
+              {products.length > 0 ? (
+                products.map((product: ProductsDTO) => (
+                  <ProductItem
+                    key={product?._id}
+                    product={product}
+                    onAddToCart={this.onAddToCart}
+                    // showModal={this.showModal}
+                    // cart={cart}
+                    // products={products}
+                  />
+                ))
+              ) : (
+                <h3 style={{ textAlign: "center", width: "100%" }}>
+                  Loading Products . . .
+                </h3>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
     );
   }
 }

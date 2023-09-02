@@ -46,14 +46,7 @@ const AuthForm: React.FC<AuthFormProps> = ({
                 </div>
               );
             })}
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "space-between",
-              }}
-              className="footer__form"
-            >
+            <div className="footer__form">
               {title == "Sign In" && <Link href="/signup">Sign up</Link>}
               <Button
                 className="btn btn-success btn-signin"
