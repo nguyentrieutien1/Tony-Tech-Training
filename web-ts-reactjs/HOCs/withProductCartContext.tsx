@@ -1,5 +1,5 @@
 import { CartProductsContext } from "@/contexts/CartProductContext";
-const WithCartProductsContext = (WrappedComponent: any) => {
+const withCartProductsContext = (WrappedComponent: any) => {
   return (props: any) => {
     return (
       <CartProductsContext.Consumer>
@@ -10,4 +10,4 @@ const WithCartProductsContext = (WrappedComponent: any) => {
     );
   };
 };
-export { WithCartProductsContext };
+export { withCartProductsContext };

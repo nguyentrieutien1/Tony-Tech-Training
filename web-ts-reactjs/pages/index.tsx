@@ -1,14 +1,14 @@
-import { CartProductsProvider } from "@/contexts/CartProductContext";
 import React from "react";
-import ProductComponent from "@/components/Products/ProductsComponent";
-import CartComponent from "@/components/Cart/CartComponent";
+import { CartProductsProvider } from "@/contexts/CartProductContext";
 import { withAuthentication } from "@/HOCs/withAuthentication";
+import ProductsModule from "@/modules/ProductsModule/ProductsModule";
+import CartProductModule from "@/modules/CartProductsModule/CartProductModule";
 function App() {
   return (
     <div>
       <CartProductsProvider>
-        <ProductComponent />
-        <CartComponent />
+        <ProductsModule />
+        <CartProductModule />
       </CartProductsProvider>
     </div>
   );

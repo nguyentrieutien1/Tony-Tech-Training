@@ -4,7 +4,7 @@ import { CartProducts } from "../modules/cart-products/cart-products.model";
 import { Cart } from "../modules/cart/cart.model";
 import { IGetUserAuthInfoRequest } from "../types/custom.type";
 import { HelpError } from "../helpers/helpError.helper";
-import { CartDTO } from "../types/cart.type";
+import { CartProductsDTO } from "../types/cart.type";
 import { CartProductsController } from "../modules/cart-products/cart-products.controller";
 const checkCartPermission = async (
   req: IGetUserAuthInfoRequest,
@@ -14,7 +14,7 @@ const checkCartPermission = async (
   try {
     const _id = req.user?._id;
     const { id } = req.params;
-    const cart: CartDTO | null = await Cart.findOne({ user: _id });
+    const cart: CartProductsDTO | null = await Cart.findOne({ user: _id });
     if (!cart) throw new Unauthorized();
     const cartItem: CartProductsController | null = await CartProducts.findOne({
       _id: id,

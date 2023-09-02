@@ -1,25 +1,34 @@
-import { WithCartProductsContext } from "@/HOCs/withProductCartContext";
-import { ProductDTO } from "@/types/products.type";
 import React, { useState } from "react";
-import ProductListComponent from "../ProducstList/ProductsListComponent";
-import { CartProductsContextType } from "@/types/productCartContextType.type";
-import ProductDetailComponent from "../ProductsDetail/ProductDetailComponent";
-
-function ProductComponents(props: CartProductsContextType) {
-  const { products } = props;
+import { ProductsDTO } from "@/types/products.type";
+import ProducItem from "../ProductItem/ProductItem";
+import ProductDetail from "../ProductsDetail/ProductDetail";
+import { CartProductsDTO } from "@/types/cart.type";
+interface ProductsPropsType {
+  products: ProductsDTO[];
+  cart: CartProductsDTO[];
+  create: (payload: CartProductsDTO) => Promise<void>;
+  update: (_id: string, payload: CartProductsDTO) => Promise<void>;
+}
+function Product(props: ProductsPropsType) {
+  // GET ALL PROPS
+  const { products, cart, create, update } = props;
   const [isShowProductDetail, setIsShowProductDetail] =
     useState<boolean>(false);
   const [productId, setProductId] = useState<string>("");
+  // SHOW MODAL
   const showModal = (_id: string) => {
     setProductId(_id);
     setIsShowProductDetail(true);
   };
+
+  // CLOSE MODAL
   const closeModal = () => {
     setIsShowProductDetail(false);
   };
   return (
     <div>
-      <ProductDetailComponent
+      <ProductDetail
+        cart={cart}
         _id={productId}
         isShowProductDetail={isShowProductDetail}
       />
@@ -35,15 +44,19 @@ function ProductComponents(props: CartProductsContextType) {
           </div>
           <div className="trending__product--items">
             {products.length > 0 ? (
-              products.map((product: ProductDTO) => (
-                <ProductListComponent
+              products.map((product: ProductsDTO) => (
+                <ProducItem
+                  products={products}
                   key={product?._id}
                   _id={product?._id}
                   image={product?.image}
+                  cart={cart}
                   product_name={product?.product_name}
                   product_price={product?.product_price}
                   product_title={product?.product_title}
                   showModal={showModal}
+                  create={create}
+                  update={update}
                 />
               ))
             ) : (
@@ -57,4 +70,4 @@ function ProductComponents(props: CartProductsContextType) {
     </div>
   );
 }
-export default WithCartProductsContext(ProductComponents);
+export default Product;

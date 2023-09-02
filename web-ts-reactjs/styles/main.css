@@ -2901,3 +2901,8 @@ transform: translate(-50%,-50%);
   opacity: 1;
   visibility: visible;
 }
+.auth__form {
+  margin-top: 100px;
+  display: flex;
+  justify-content: center;
+}

@@ -1,60 +1,44 @@
+import React, { createContext, useState } from "react";
 import { CartProductsContextType } from "@/types/productCartContextType.type";
 import { CartProductsProviderProps } from "@/types/productCartProviderProps.type";
-import { ProductDTO } from "@/types/products.type";
-import React, { createContext, useEffect, useState } from "react";
-import { API_URL } from "@/constants/apiUrl";
-import { CartDTO } from "@/types/cart.type";
-import { headersInfo } from "@/utils/headerInfo";
+import { ProductsDTO } from "@/types/products.type";
+import { CartProductsDTO } from "@/types/cart.type";
+import { ProductsApi } from "@/apis/products.api";
+import { CartProductsApi } from "@/apis/cartProducts.api";
 const CartProductsContext = createContext<CartProductsContextType>(
   {} as CartProductsContextType
 );
 const CartProductsProvider = ({ children }: CartProductsProviderProps) => {
-  const [products, setProducts] = useState<ProductDTO[]>([]);
-  const [cart, setCart] = useState<CartDTO[]>([]);
+  const [products, setProducts] = useState<ProductsDTO[]>([]);
+  const [cart, setCart] = useState<CartProductsDTO[]>([]);
   const [isToggleCart, setIsToggleCart] = useState<boolean>(false);
-  useEffect(() => {
-    getAllCartItem().then((data) => {
-      setCart([...data]);
-    });
-    getAllProductItem().then((productItem) => {
-      setProducts(productItem);
-    });
-  }, []);
-  const getAllProductItem = async () => {
-    const result = await fetch(`${API_URL}/products`);
-    const { data }: { data: ProductDTO[] } = await result.json();
-    return data;
+
+  const getAllProduct = async () => {
+    const products = await ProductsApi.getAll();
+    return products;
   };
-  const getAllCartItem = async () => {
-    const response = await fetch(`${API_URL}/cart/my_cart`, {
-      method: "GET",
-      headers: headersInfo(),
-    });
-    const result = await response.json();
-    const { data }: { data: CartDTO[] } = result;
-    return data;
+  const getAllCartProducts = async () => {
+    const cartProducts = await CartProductsApi.getAll();
+    return cartProducts;
   };
-  const create = async (item: CartDTO): Promise<CartDTO> => {
-    const response = await fetch(`${API_URL}/cart-products`, {
-      method: "POST",
-      headers: headersInfo(),
-      body: JSON.stringify(item),
-    });
-    const { data } = await response.json();
-    return data;
+  const create = async (item: CartProductsDTO): Promise<void> => {
+    const data = await CartProductsApi.create(item);
+    setCart([...cart, data]);
   };
-  const update = async (_id: string, payload: CartDTO): Promise<void> => {
-    await fetch(`${API_URL}/cart-products/${_id}`, {
-      method: "PUT",
-      headers: headersInfo(),
-      body: JSON.stringify(payload),
-    });
+  const update = async (
+    _id: string,
+    payload: CartProductsDTO
+  ): Promise<void> => {
+    const index = cart.findIndex((item) => item._id == _id);
+    cart[index].quantity = payload.quantity;
+    setCart([...cart]);
+    await CartProductsApi.update(_id, payload);
   };
   const remove = async (_id: string): Promise<void> => {
-    await fetch(`${API_URL}/cart-products/${_id}`, {
-      headers: headersInfo(),
-      method: "DELETE",
-    });
+    const index = cart.findIndex((item) => item._id == _id);
+    cart.splice(index, 1);
+    setCart([...cart]);
+    await CartProductsApi.remove(_id);
   };
   return (
     <CartProductsContext.Provider
@@ -68,6 +52,8 @@ const CartProductsProvider = ({ children }: CartProductsProviderProps) => {
         update,
         remove,
         setProducts,
+        getAllProduct,
+        getAllCartProducts,
       }}
     >
       {children}

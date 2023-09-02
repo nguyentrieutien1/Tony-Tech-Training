@@ -28,8 +28,11 @@ class BaseService {
             return yield this.model.find(query).exec();
         });
     }
-    findOne(query) {
+    findOne(query, populateOptions) {
         return __awaiter(this, void 0, void 0, function* () {
+            if (populateOptions) {
+                return yield this.model.findOne(query).populate(populateOptions).exec();
+            }
             return yield this.model.findOne(query).exec();
         });
     }

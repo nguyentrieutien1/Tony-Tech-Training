@@ -16,7 +16,9 @@ const checkCartUserExits = (req, res, next) => __awaiter(void 0, void 0, void 0,
     var _a;
     try {
         const _id = (_a = req.user) === null || _a === void 0 ? void 0 : _a._id;
-        const findCartUser = yield cart_model_1.Cart.findOne({ user: _id });
+        const findCartUser = yield cart_model_1.Cart.findOne({
+            user: _id,
+        });
         if (!findCartUser) {
             const cartUser = new cart_model_1.Cart({ user: _id });
             yield cartUser.save();

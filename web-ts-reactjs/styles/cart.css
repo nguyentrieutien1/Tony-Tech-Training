@@ -178,7 +178,7 @@
   background-color: var(--white);
 }
 .cart__icon .xmark {
-  display: none;
+  display: block;
   transition: .5s ease;
 
 }

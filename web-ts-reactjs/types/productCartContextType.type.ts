@@ -1,15 +1,17 @@
-import { CartDTO } from "./cart.type";
-import { ProductDTO } from "./products.type";
+import { CartProductsDTO } from "./cart.type";
+import { ProductsDTO } from "./products.type";
 
 type CartProductsContextType = {
-  products: ProductDTO[];
-  cart: CartDTO[];
+  products: ProductsDTO[];
+  cart: CartProductsDTO[];
   isToggleCart: boolean;
-  create: (item: CartDTO) => Promise<CartDTO>;
-  update: (_id: string, payload: CartDTO) => Promise<void>;
+  getAllProduct: () => Promise<ProductsDTO[]>;
+  getAllCartProducts: () => Promise<CartProductsDTO[]>;
+  create: (item: CartProductsDTO) => Promise<void>;
+  update: (_id: string, payload: CartProductsDTO) => Promise<void>;
   remove: (_id: string) => Promise<void>;
   setIsToggleCart: React.Dispatch<React.SetStateAction<boolean>>;
-  setProducts: React.Dispatch<React.SetStateAction<ProductDTO[]>>;
-  setCart: React.Dispatch<React.SetStateAction<CartDTO[]>>;
+  setProducts: React.Dispatch<React.SetStateAction<ProductsDTO[]>>;
+  setCart: React.Dispatch<React.SetStateAction<CartProductsDTO[]>>;
 };
 export type { CartProductsContextType };

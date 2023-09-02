@@ -1,58 +1,48 @@
-import { WithCartProductsContext } from "@/HOCs/withProductCartContext";
-import { CartProductsContext } from "@/contexts/CartProductContext";
-import { ProductDTO } from "@/types/products.type";
 import React, { Component } from "react";
-import ProductDetailComponent from "../ProductsDetail/ProductDetailComponent";
-interface MyComponentState {
+import { withCartProductsContext } from "@/HOCs/withProductCartContext";
+import { CartProductsContext } from "@/contexts/CartProductContext";
+import { ProductsDTO } from "@/types/products.type";
+import { CartProductsDTO } from "@/types/cart.type";
+interface ProductItemState {
   isShowProductDetail: boolean;
   productId: string;
+  create: (payload: CartProductsDTO) => Promise<CartProductsDTO>;
+  update: (_id: string, payload: CartProductsDTO) => Promise<void>;
 }
 
-class ProductListComponent extends Component<
-  ProductDTO | any,
-  MyComponentState
-> {
-  static contextType = CartProductsContext;
-  context!: React.ContextType<typeof CartProductsContext>;
-  constructor(props: ProductDTO) {
-    super(props);
-    this.state = {
-      isShowProductDetail: false,
-      productId: "",
-    };
-  }
+class ProductItem extends Component<ProductsDTO | any, ProductItemState> {
+  // Create cart item
   handleCreate = async () => {
-    const { showModal } = this.props;
-    const { _id } = this.props;
-    const { create, setCart } = this.context;
-    const product = this.context.products.find((product) => product._id == _id);
-    const cartItem = await create({ productId: product?._id!, quantity: 1 });
-    cartItem.product = product;
-    setCart((prevState) => [...prevState, cartItem]);
+    const { showModal, products, _id, create } = this.props;
+    const product = products.find((product: ProductsDTO) => product._id == _id);
     showModal(_id);
-    this.setState({ isShowProductDetail: true, productId: _id });
+    await create({ productId: product?._id!, quantity: 1 });
   };
+  // Update
   handleUpdate = async (index: number) => {
-    const { showModal } = this.props;
-    const { cart, setCart, update } = this.context;
+    console.log("handleUpdate");
+    const { showModal, _id, cart, update } = this.props;
     const quantity = cart[index].quantity + 1;
-    cart[index].quantity = quantity;
-    setCart([...cart]);
-    showModal(this.props._id);
+    showModal(_id);
     if (cart[index]._id) {
-      update(cart[index]._id!, { quantity });
+      await update(cart[index]._id!, { quantity });
     }
   };
+  // Function handle if product item exist in cart, let update, else let create new
   handleAddOrUpdate = async () => {
-    const { cart } = this.context;
-    const { _id } = this.props;
+    const { cart, _id } = this.props;
     if (cart.length === 0) {
+      // if cart empty, create new cart item
       this.handleCreate();
     } else {
-      const index = cart.findIndex((p) => p?.product?._id == _id);
+      const index = cart.findIndex(
+        (item: CartProductsDTO) => item?.product?._id == _id
+      );
       if (index > -1) {
+        // else if cart item exist, let update
         this.handleUpdate(index);
       } else {
+        // else create new
         this.handleCreate();
       }
     }
@@ -110,4 +100,4 @@ class ProductListComponent extends Component<
     );
   }
 }
-export default WithCartProductsContext(ProductListComponent);
+export default ProductItem;

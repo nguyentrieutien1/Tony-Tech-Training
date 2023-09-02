@@ -7,26 +7,7 @@ export const HomeContext = createContext();
 export default function App() {
   const [cart, setCart] = useState([]);
   const [products, setProducts] = useState([]);
-  useEffect(() => {
-    const getMyCart = async () => {
-      const response = await fetch(`${API_URL}/cart/my_cart`, {
-        method: "GET",
-        headers: headersInfo(),
-      });
-      const result = await response.json();
-      const { data } = result;
-      setCart([...data]);
-    };
-    getMyCart();
-  }, []);
-  useEffect(() => {
-    const getAllProducts = async () => {
-      const result = await fetch(`${API_URL}/products`);
-      const { data } = await result.json();
-      setProducts(data);
-    };
-    getAllProducts();
-  }, []);
+  
   const create = async (_id) => {
     const product = products.find((product) => product._id == _id);
     const response = await fetch(`${API_URL}/cart-products`, {
@@ -57,6 +38,26 @@ export default function App() {
       method: "DELETE",
     });
   };
+  useEffect(() => {
+    const getMyCart = async () => {
+      const response = await fetch(`${API_URL}/cart/my_cart`, {
+        method: "GET",
+        headers: headersInfo(),
+      });
+      const result = await response.json();
+      const { data } = result;
+      setCart([...data]);
+    };
+    getMyCart();
+  }, []);
+  useEffect(() => {
+    const getAllProducts = async () => {
+      const result = await fetch(`${API_URL}/products`);
+      const { data } = await result.json();
+      setProducts(data);
+    };
+    getAllProducts();
+  }, []);
   return (
     <>
       <HomeContext.Provider

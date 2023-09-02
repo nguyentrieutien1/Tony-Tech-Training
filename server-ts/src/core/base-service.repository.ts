@@ -17,7 +17,10 @@ class BaseService<T> implements IRepository<T> {
     return await this.model.find(query).exec();
   }
 
-  async findOne(query: Partial<T>): Promise<T | null> {
+  async findOne(query: Partial<T>, populateOptions?: string): Promise<T | any> {
+    if (populateOptions) {
+      return await this.model.findOne(query).populate(populateOptions).exec();
+    }
     return await this.model.findOne(query).exec();
   }
 

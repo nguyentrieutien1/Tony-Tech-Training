@@ -1,6 +1,5 @@
-import { useRouter } from "next/router";
 import { useEffect } from "react";
-
+import { useRouter } from "next/router";
 const withAuthentication = (WrappedComponent: any) => {
   const withAuth = (props: any) => {
     const router = useRouter();

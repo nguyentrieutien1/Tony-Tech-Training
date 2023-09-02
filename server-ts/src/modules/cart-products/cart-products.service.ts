@@ -15,7 +15,11 @@ class CartProductsService extends BaseService<CartProductsDTO> {
       product,
       quantity,
     });
-    return cartProduct;
+    const findCartItem = await this._instance.findOne(
+      cartProduct._id,
+      "product"
+    );
+    return findCartItem;
   };
   static findByIdAndUpdate = async (
     _id: Types.ObjectId,

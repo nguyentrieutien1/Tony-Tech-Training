@@ -1,9 +1,9 @@
-import { ProductDTO } from "./products.type";
+import { ProductsDTO } from "./products.type";
 
-type CartDTO = {
+type CartProductsDTO = {
   _id?: string;
   quantity: number;
   productId?: string;
-  product?: ProductDTO;
+  product?: ProductsDTO;
 };
-export type { CartDTO };
+export type { CartProductsDTO };

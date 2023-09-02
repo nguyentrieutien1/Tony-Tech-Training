@@ -1,7 +1,11 @@
-import { WithCartProductsContext } from "@/HOCs/withProductCartContext";
-import { CartProductsContextType } from "@/types/productCartContextType.type";
 import React from "react";
-function ToggleCartComponent(props: CartProductsContextType) {
+import { CartProductsDTO } from "@/types/cart.type";
+interface ToggleCartProps {
+  cart: CartProductsDTO[];
+  setIsToggleCart: () => void;
+  isToggleCart: boolean;
+}
+function ToggleCart(props: ToggleCartProps) {
   const { cart, setIsToggleCart, isToggleCart } = props;
   const quantity: number = !cart
     ? 0
@@ -9,7 +13,7 @@ function ToggleCartComponent(props: CartProductsContextType) {
         return (prevState += currentState.quantity);
       }, 0);
   const handleToggleCart = (): void => {
-    setIsToggleCart((prevState) => !prevState);
+    setIsToggleCart();
   };
   return (
     <div className={`cart__icon ${isToggleCart && "position__cart--icon"}`}>
@@ -18,15 +22,11 @@ function ToggleCartComponent(props: CartProductsContextType) {
       </div>
       <div className="amount">{quantity}</div>
       {isToggleCart && (
-        <div
-          onClick={handleToggleCart}
-          className="xmark icon"
-          style={{ display: "block" }}
-        >
+        <div onClick={handleToggleCart} className="xmark icon">
           <i className="fa-solid fa-xmark"></i>
         </div>
       )}
     </div>
   );
 }
-export default WithCartProductsContext(ToggleCartComponent);
+export default ToggleCart;

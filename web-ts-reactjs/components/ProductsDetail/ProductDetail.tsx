@@ -1,26 +1,22 @@
-import { WithCartProductsContext } from "@/HOCs/withProductCartContext";
-import { CartProductsContext } from "@/contexts/CartProductContext";
-import { CartDTO } from "@/types/cart.type";
-import { CartProductsContextType } from "@/types/productCartContextType.type";
-import { ProductDTO } from "@/types/products.type";
 import React, { Component } from "react";
-
-class ProductDetailComponent extends Component<
-  ProductDTO | CartProductsContextType | CartDTO | any
-> {
-  static contextType = CartProductsContext;
-  context!: React.ContextType<typeof CartProductsContext>;
-  constructor(props: ProductDTO | CartProductsContextType | CartDTO | any) {
-    super(props);
-  }
+import { CartProductsDTO } from "@/types/cart.type";
+import { ProductsDTO } from "@/types/products.type";
+interface ProductDetailProps {
+  _id: string;
+  isShowProductDetail: boolean;
+  cart: CartProductsDTO[];
+}
+// SHOW PRODUCT DETAIL IN MODAL
+class ProductDetail extends Component<ProductDetailProps> {
   render() {
-    const { _id, isShowProductDetail } = this.props;
-    const { cart } = this.context;
-    const cartItem = cart.find((item) => item.product?._id == _id);
+    const { _id, isShowProductDetail, cart } = this.props;
+    const cartItem = cart.find(
+      (item: CartProductsDTO) => item.product?._id == _id
+    );
     if (cartItem) {
       const quantity = cartItem?.quantity!;
       const { product_name, product_price, image } =
-        cartItem?.product as ProductDTO;
+        cartItem?.product as ProductsDTO;
       return (
         <div>
           <div
@@ -77,4 +73,4 @@ class ProductDetailComponent extends Component<
     return <></>;
   }
 }
-export default WithCartProductsContext(ProductDetailComponent);
+export default ProductDetail;

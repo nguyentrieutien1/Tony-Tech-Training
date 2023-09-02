@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { CartDTO } from "../../types/cart.type";
+import { CartProductsDTO } from "../../types/cart.type";
 const cartSchema = new mongoose.Schema({
   user: {
     type: mongoose.Schema.Types.ObjectId,
@@ -7,5 +7,5 @@ const cartSchema = new mongoose.Schema({
   },
 });
 //Export the model
-const Cart = mongoose.model<CartDTO>("Cart", cartSchema);
+const Cart = mongoose.model<CartProductsDTO>("Cart", cartSchema);
 export { Cart };

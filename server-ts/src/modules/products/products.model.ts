@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { ProductDTO } from "../../types/products.type";
+import { ProductsDTO } from "../../types/products.type";
 const productSchema = new mongoose.Schema({
   id: {
     type: Number,
@@ -22,5 +22,5 @@ const productSchema = new mongoose.Schema({
   },
 });
 //Export the model
-const Product = mongoose.model<ProductDTO>("Product", productSchema);
+const Product = mongoose.model<ProductsDTO>("Product", productSchema);
 export { Product };

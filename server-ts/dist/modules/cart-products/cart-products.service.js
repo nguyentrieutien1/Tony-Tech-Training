@@ -28,7 +28,8 @@ CartProductsService.create = ({ product, quantity, cart }) => __awaiter(void 0, 
         product,
         quantity,
     });
-    return cartProduct;
+    const findCartItem = yield _a._instance.findOne(cartProduct._id, "product");
+    return findCartItem;
 });
 CartProductsService.findByIdAndUpdate = (_id, quantity) => __awaiter(void 0, void 0, void 0, function* () {
     const product = yield _a._instance.findByIdAndUpdate(_id, quantity);

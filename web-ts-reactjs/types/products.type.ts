@@ -1,4 +1,4 @@
-type ProductDTO = {
+type ProductsDTO = {
   _id: string;
   image: string;
   product_name: string;
@@ -6,4 +6,4 @@ type ProductDTO = {
   product_price: string;
   quantity?: number;
 };
-export type { ProductDTO };
+export type { ProductsDTO };

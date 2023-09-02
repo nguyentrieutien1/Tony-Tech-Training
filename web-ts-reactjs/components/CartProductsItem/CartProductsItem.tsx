@@ -1,16 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { CartProductsContextType } from "@/types/productCartContextType.type";
-import { ProductDTO } from "@/types/products.type";
-import { WithCartProductsContext } from "@/HOCs/withProductCartContext";
-function CartListComponent(props: ProductDTO | CartProductsContextType) {
+import { ProductsDTO } from "@/types/products.type";
+import { CartProductsDTO } from "@/types/cart.type";
+interface CartProductsItemProps {
+  remove: (_id: string) => void;
+  update: (_id: string, payload: CartProductsDTO) => Promise<void>;
+  cart: CartProductsDTO[];
+}
+function CartProductItem(props: CartProductsItemProps | ProductsDTO) {
   const { image, product_name, product_price, quantity, _id } =
-    props as ProductDTO;
-  const { cart, remove, setCart, update } = props as CartProductsContextType;
+    props as ProductsDTO;
+  const { remove, cart, update } = props as CartProductsItemProps;
   const [valueInput, setValueInput] = useState<number>(quantity!);
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  useEffect(() => {
-    setValueInput(quantity!);
-  }, [quantity]);
+  // HELPER UPDATE, CHECK TYPE TO UPDATE +1, -1 OR = VALUE
   const helpUpdateQuantityCartItem = async (
     _id: string,
     { type, value }: { type: number; value?: number }
@@ -21,10 +24,9 @@ function CartListComponent(props: ProductDTO | CartProductsContextType) {
     if (payload && payload <= 1) {
       payload = 1;
     }
-    cart[cartItemIndex].quantity = payload!;
-    setCart([...cart]);
     update(_id, { quantity: payload! });
   };
+  // CHANGE INPUT VALUE BECAUSE BLUR EVENT CAN'T CHANGE WHEN WE WANT ENTER VALUE
   const handleChange = (e: React.ChangeEvent<HTMLInputElement> | null) => {
     let value = parseInt(e!.target.value);
     if (value == 0) {
@@ -32,15 +34,19 @@ function CartListComponent(props: ProductDTO | CartProductsContextType) {
     }
     setValueInput(value);
   };
+
+  // UPDATE FUNCTION
   const handleUpdate = (
     e: React.ChangeEvent<HTMLInputElement> | null,
     number: number
   ) => {
     showLoading();
+    // IF UPDATE BY INPUT TYPE, PASS VALUE TO HELPER UPDATE
     if (number == 1) {
       let value = parseInt(e!.target.value);
 
       helpUpdateQuantityCartItem(_id, { type: number, value });
+      // ELSE +1 or -1 BY BUTTON TYPE
     } else {
       helpUpdateQuantityCartItem(_id, { type: number });
     }
@@ -54,12 +60,10 @@ function CartListComponent(props: ProductDTO | CartProductsContextType) {
   const showLoading = () => {
     setIsLoading(true);
   };
-  const handleRemove = () => {
-    const index = cart.findIndex((item) => item._id == _id);
-    cart.splice(index, 1);
-    setCart([...cart]);
-    remove(_id);
-  };
+
+  useEffect(() => {
+    setValueInput(quantity!);
+  }, [quantity]);
   return (
     <div className="cart__item">
       <div className="cart__item--info">
@@ -104,7 +108,7 @@ function CartListComponent(props: ProductDTO | CartProductsContextType) {
         </div>
       </div>
       <div
-        onClick={handleRemove}
+        onClick={() => remove(_id)}
         className="cart__item--delete-btn"
         data-id="64f00a9c11ec7096223c0687"
       >
@@ -113,4 +117,4 @@ function CartListComponent(props: ProductDTO | CartProductsContextType) {
     </div>
   );
 }
-export default WithCartProductsContext(CartListComponent);
+export default CartProductItem;

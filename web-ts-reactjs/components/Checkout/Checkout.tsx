@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
-import { WithCartProductsContext } from "@/HOCs/withProductCartContext";
+import { withCartProductsContext } from "@/HOCs/withProductCartContext";
 import { CartProductsContextType } from "@/types/productCartContextType.type";
 
-function CheckoutComponent(props: CartProductsContextType) {
+function Checkout(props: CartProductsContextType) {
   const { cart } = props;
   let total__price: number =
     cart?.length > 0
@@ -42,4 +42,4 @@ function CheckoutComponent(props: CartProductsContextType) {
     </div>
   );
 }
-export default WithCartProductsContext(CheckoutComponent);
+export default withCartProductsContext(Checkout);

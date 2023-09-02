@@ -1,6 +1,6 @@
 import { Types } from "mongoose";
 
-type ProductDTO = {
+type ProductsDTO = {
   _id: Types.ObjectId;
   id: number;
   image: string;
@@ -8,4 +8,4 @@ type ProductDTO = {
   product_title: string;
   product_price: string;
 };
-export { ProductDTO };
+export { ProductsDTO };

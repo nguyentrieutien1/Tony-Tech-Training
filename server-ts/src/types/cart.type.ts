@@ -1,7 +1,7 @@
 import { Types } from "mongoose";
 
-type CartDTO = {
+type CartProductsDTO = {
   _id: Types.ObjectId;
   user: Types.ObjectId;
 };
-export { CartDTO };
+export { CartProductsDTO };

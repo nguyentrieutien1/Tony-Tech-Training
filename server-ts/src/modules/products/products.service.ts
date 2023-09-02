@@ -1,10 +1,10 @@
 import { BaseService } from "../../core/base-service.repository";
-import { ProductDTO } from "../../types/products.type";
+import { ProductsDTO } from "../../types/products.type";
 import { Product } from "./products.model";
-class ProductService extends BaseService<ProductDTO> {
+class ProductService extends BaseService<ProductsDTO> {
   static _instance = new BaseService(Product);
-  static find = async (): Promise<ProductDTO[]> => {
-    const products: ProductDTO[] = await this._instance.find({});
+  static find = async (): Promise<ProductsDTO[]> => {
+    const products: ProductsDTO[] = await this._instance.find({});
     return products;
   };
 }
