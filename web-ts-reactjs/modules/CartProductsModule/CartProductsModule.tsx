@@ -8,23 +8,20 @@ import Checkout from "@/components/Checkout/Checkout";
 class CartProductModule extends Component<CartProductsContextType> {
   static contextType = CartProductsContext;
   context!: React.ContextType<typeof CartProductsContext>;
+
+  // HANDLE DELETE CART ITEM
   onDelete = async (_id: string) => {
     const { remove } = this.context;
     await remove(_id);
   };
-  onUpdate = async (_id: string, type: number, value: number) => {
-    const { cart, update } = this.context;
-    const index = cart.findIndex((item) => item._id == _id);
-    let quantity = cart[index]?.quantity!;
-    // IF TYPE == BUTTON EVENT, +1 OR +(-1)
-    if (type === 0) {
-      quantity = quantity + value;
-      // ELSE ASSIGN THIS VALUE FOR QUANTITY
-    } else {
-      quantity = value;
-    }
-    await update(_id, { quantity });
+
+  // HANDLE UPDATE CART ITEM
+  onUpdate = async (_id: string, type: number, quantity: number) => {
+    const { update } = this.context;
+    await update(_id, type, { quantity });
   };
+
+  
   render() {
     const { isToggleCart, cart, setIsToggleCart } = this.context;
     return (

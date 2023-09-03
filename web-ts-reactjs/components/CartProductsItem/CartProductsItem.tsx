@@ -18,7 +18,7 @@ function CartProductsItem(props: CartProductsItemProps) {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement> | null) => {
     let value = parseInt(e!.target.value);
-    if (value == 0) {
+    if (value <= 1) {
       value = 1;
     }
     setValueInput(value);

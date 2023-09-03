@@ -22,9 +22,9 @@ class ProductsModule extends Component<CartProductsContextType, ProductsState> {
       isShowProductDetail: false,
       productId: "",
     };
-
-    // SHOW MODAL
   }
+
+  // SHOW MODAL
   showModal = (_id: string) => {
     this.setState({
       isShowProductDetail: true,
@@ -38,6 +38,7 @@ class ProductsModule extends Component<CartProductsContextType, ProductsState> {
       isShowProductDetail: false,
     });
   };
+
   // ADD TO CART
   onAddToCart = async (_id: string) => {
     const { cart, create, update } = this.context;
@@ -46,15 +47,14 @@ class ProductsModule extends Component<CartProductsContextType, ProductsState> {
     );
     // IF PRODUCT EXIST IN THE CART, LET UPDATE
     if (index > -1) {
-      const quantity = cart[index].quantity + 1;
-      await update(cart[index]._id!, { quantity });
+      await update(cart[index]._id!, 0, { quantity: 1 });
       // ELSE LET CREATE NEW
     } else {
-       await create({ productId: _id, quantity: 1 });
-    
+      await create({ productId: _id, quantity: 1 });
     }
-    this.showModal(_id)
+    this.showModal(_id);
   };
+
   render() {
     const { products, cart } = this.context;
     const { productId, isShowProductDetail } = this.state;

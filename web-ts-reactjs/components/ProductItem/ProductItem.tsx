@@ -56,7 +56,6 @@ class ProductItem extends Component<ProductItemProps, ProductItemState> {
               <i
                 onClick={() => onAddToCart(_id)}
                 className="fa-solid fa-cart-shopping shopping-btn"
-                data-id={1}
               />
             </div>
           </div>

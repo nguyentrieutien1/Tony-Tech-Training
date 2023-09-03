@@ -30,11 +30,24 @@ const CartProductsProvider = ({ children }: CartProductsProviderProps) => {
 
   const update = async (
     _id: string,
+    type: number,
     payload: CartProductsDTO
   ): Promise<void> => {
-    await CartProductsApi.update(_id, payload);
     const index = cart.findIndex((item) => item._id == _id);
-    cart[index].quantity = payload.quantity;
+    let quantity = cart[index]?.quantity!;
+    // IF ONCLICK EVENT (TYPE == 0), +1 OR +(-1)
+    if (type === 0) {
+      quantity = quantity + payload.quantity;
+      // ELSE BLUR EVENT (TYPE == 1), ASSIGN THIS VALUE TO QUANTITY
+    } else {
+      quantity = payload.quantity;
+    }
+    quantity = quantity <= 1 ? 1 : quantity;
+    // CALL API TO UPDATE CART ITEM
+    await CartProductsApi.update(_id, { quantity });
+
+    // HANDLE UPDATE STATE
+    cart[index].quantity = quantity;
     setCart([...cart]);
   };
 

@@ -1,6 +1,4 @@
-import React, { useContext } from "react";
-import { withCartProductsContext } from "@/HOCs/withProductCartContext";
-import { CartProductsContextType } from "@/types/productCartContextType.type";
+import React from "react";
 import { CartProductsDTO } from "@/types/cart.type";
 interface CheckoutProps {
   cart: CartProductsDTO[];
@@ -8,7 +6,6 @@ interface CheckoutProps {
 function Checkout(props: CheckoutProps) {
   const { cart } = props;
 
-  
   let total__price: number =
     cart?.length > 0
       ? cart.reduce((prevState: number, currentState) => {
@@ -18,7 +15,6 @@ function Checkout(props: CheckoutProps) {
         }, 0)
       : 0;
   total__price = Number.parseFloat(total__price.toFixed(2));
-
 
   return (
     <div className="cart__checkout">
