@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { withCartProductsContext } from "@/HOCs/withProductCartContext";
 import ToggleCart from "@/components/ToggleCart/ToggleCart";
 import { CartProductsContext } from "@/contexts/CartProductContext";
 import { CartProductsDTO } from "@/types/cart.type";
@@ -9,27 +8,32 @@ import Checkout from "@/components/Checkout/Checkout";
 class CartProductModule extends Component<CartProductsContextType> {
   static contextType = CartProductsContext;
   context!: React.ContextType<typeof CartProductsContext>;
-  remove = async (_id: string) => {
+  onDelete = async (_id: string) => {
     const { remove } = this.context;
     await remove(_id);
   };
-  update = async (_id: string, payload: CartProductsDTO) => {
-    const { update } = this.context;
-    await update(_id, payload);
-  };
-  setIsToggleCart = () => {
-    const { setIsToggleCart } = this.context;
-    setIsToggleCart((prevState) => !prevState);
+  onUpdate = async (_id: string, type: number, value: number) => {
+    const { cart, update } = this.context;
+    const index = cart.findIndex((item) => item._id == _id);
+    let quantity = cart[index]?.quantity!;
+    // IF TYPE == BUTTON EVENT, +1 OR +(-1)
+    if (type === 0) {
+      quantity = quantity + value;
+      // ELSE ASSIGN THIS VALUE FOR QUANTITY
+    } else {
+      quantity = value;
+    }
+    await update(_id, { quantity });
   };
   render() {
-    const { isToggleCart, cart } = this.context;
+    const { isToggleCart, cart, setIsToggleCart } = this.context;
     return (
       <>
         {/* SHOW BUTTON TOGGLE CART */}
         <ToggleCart
           cart={cart}
           isToggleCart={isToggleCart}
-          setIsToggleCart={this.setIsToggleCart}
+          setIsToggleCart={() => setIsToggleCart((prevState) => !prevState)}
         />
         <div
           className={`cart__container ${
@@ -44,20 +48,19 @@ class CartProductModule extends Component<CartProductsContextType> {
                   return (
                     <CartProductsItem
                       cartItem={cartItem}
-                      cart={cart}
-                      update={this.update}
-                      remove={this.remove}
                       key={cartItem?._id}
+                      onUpdate={this.onUpdate}
+                      onDelete={this.onDelete}
                     />
                   );
                 }
               })}
           </div>
           {/* SHOW CHECKOUT */}
-          <Checkout />
+          <Checkout cart={cart} />
         </div>
       </>
     );
   }
 }
-export default withCartProductsContext(CartProductModule);
+export default CartProductModule;

@@ -1,4 +1,4 @@
-import { getFromLocalStorage } from "./storage.js";
+import { getFromLocalStorage } from "./storage";
 
 const headersInfo = () => {
   return {

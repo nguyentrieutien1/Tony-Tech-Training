@@ -7,51 +7,13 @@ import { CartProductsContextType } from "@/types/productCartContextType.type";
 interface ProductItemState {
   isShowProductDetail: boolean;
   productId: string;
-  create: (payload: CartProductsDTO) => Promise<CartProductsDTO>;
+}
+interface ProductItemProps {
+  product: ProductsDTO;
+  onAddToCart: (_id: string) => Promise<void>;
 }
 
-class ProductItem extends Component<
-  ProductsDTO | CartProductsContextType | any,
-  ProductItemState
-> {
-  // Create cart item
-  handleCreate = async () => {
-    // const { showModal, products, _id, create } = this.props;
-    // const product = products.find((product: ProductsDTO) => product._id == _id);
-    // showModal(_id);
-    // await create({ productId: product?._id!, quantity: 1 });
-  };
-  // Update
-  handleUpdate = async (index: number) => {
-    // const { showModal, _id, cart, update } = this.props;
-    // const quantity = cart[index].quantity + 1;
-    // showModal(_id);
-    // if (cart[index]._id) {
-    //   await update(cart[index]._id!, { quantity });
-    // }
-  };
-  // Function handle if product item exist in cart, let update, else let create new
-  handleAddOrUpdate = async () => {
-    // const { cart, _id } = this.props;
-    // if (cart.length === 0) {
-    //   // if cart empty, create new cart item
-    //   this.handleCreate();
-    // } else {
-    //   const index = cart.findIndex(
-    //     (item: CartProductsDTO) => item?.product?._id == _id
-    //   );
-    //   if (index > -1) {
-    //     // else if cart item exist, let update
-    //     this.handleUpdate(index);
-    //   } else {
-    //     // else create new
-    //     this.handleCreate();
-    //   }
-    // }
-  };
-  onCloseModel = () => {
-    this.setState({ isShowProductDetail: false });
-  };
+class ProductItem extends Component<ProductItemProps, ProductItemState> {
   render() {
     const { image, product_name, product_price, product_title, _id } =
       this.props.product;

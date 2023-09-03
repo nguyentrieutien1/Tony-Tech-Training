@@ -2906,3 +2906,7 @@ transform: translate(-50%,-50%);
   display: flex;
   justify-content: center;
 }
+.trending__product--items h3 {
+   text-align: "center";
+    width: "100%" 
+}

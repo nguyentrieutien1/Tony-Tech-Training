@@ -40,18 +40,20 @@ class ProductsModule extends Component<CartProductsContextType, ProductsState> {
   };
   // ADD TO CART
   onAddToCart = async (_id: string) => {
-    const { cart, create, setCart, update } = this.context;
+    const { cart, create, update } = this.context;
     const index = cart.findIndex(
       (item: CartProductsDTO) => item.product!._id == _id
     );
+    // IF PRODUCT EXIST IN THE CART, LET UPDATE
     if (index > -1) {
       const quantity = cart[index].quantity + 1;
       await update(cart[index]._id!, { quantity });
+      // ELSE LET CREATE NEW
     } else {
-      const cartItem = await create({ productId: _id, quantity: 1 });
-      cart.push(cartItem);
-      setCart([...cart]);
+       await create({ productId: _id, quantity: 1 });
+    
     }
+    this.showModal(_id)
   };
   render() {
     const { products, cart } = this.context;
@@ -64,7 +66,7 @@ class ProductsModule extends Component<CartProductsContextType, ProductsState> {
           isShowProductDetail={isShowProductDetail}
         />
         <div
-          onClick={() => this.closeModal}
+          onClick={this.closeModal}
           className={`modal__body ${
             isShowProductDetail && "show__modal--body"
           }`}
@@ -82,15 +84,10 @@ class ProductsModule extends Component<CartProductsContextType, ProductsState> {
                     key={product?._id}
                     product={product}
                     onAddToCart={this.onAddToCart}
-                    // showModal={this.showModal}
-                    // cart={cart}
-                    // products={products}
                   />
                 ))
               ) : (
-                <h3 style={{ textAlign: "center", width: "100%" }}>
-                  Loading Products . . .
-                </h3>
+                <h3>Loading Products . . .</h3>
               )}
             </div>
           </div>

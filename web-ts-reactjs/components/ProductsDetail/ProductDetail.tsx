@@ -10,6 +10,7 @@ interface ProductDetailProps {
 class ProductDetail extends Component<ProductDetailProps> {
   render() {
     const { _id, isShowProductDetail, cart } = this.props;
+
     const cartItem = cart.find(
       (item: CartProductsDTO) => item.product?._id == _id
     );

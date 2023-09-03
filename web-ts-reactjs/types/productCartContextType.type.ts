@@ -5,7 +5,7 @@ type CartProductsContextType = {
   products: ProductsDTO[];
   cart: CartProductsDTO[];
   isToggleCart: boolean;
-  create: (item: CartProductsDTO) => Promise<CartProductsDTO>;
+  create: (item: CartProductsDTO) => Promise<void>;
   update: (_id: string, payload: CartProductsDTO) => Promise<void>;
   remove: (_id: string) => Promise<void>;
   setIsToggleCart: React.Dispatch<React.SetStateAction<boolean>>;
