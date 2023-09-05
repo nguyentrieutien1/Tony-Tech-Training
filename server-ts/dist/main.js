@@ -11,7 +11,7 @@ const db_1 = require("./config/db");
 const index_route_1 = __importDefault(require("./routes/index.route"));
 const error_middleware_1 = require("./middlewares/error.middleware");
 const app = (0, express_1.default)();
-const PORT = parseInt(process.env.PORT) || 3000;
+const PORT = 5000;
 // CONNECT DB
 db_1.ConnectDatabase.connect();
 // MIDDLEWARES

@@ -1,9 +1,5 @@
 import React, { Component } from "react";
-import { withCartProductsContext } from "@/HOCs/withProductCartContext";
-import { CartProductsContext } from "@/contexts/CartProductContext";
 import { ProductsDTO } from "@/types/products.type";
-import { CartProductsDTO } from "@/types/cart.type";
-import { CartProductsContextType } from "@/types/productCartContextType.type";
 interface ProductItemState {
   isShowProductDetail: boolean;
   productId: string;
@@ -11,17 +7,22 @@ interface ProductItemState {
 interface ProductItemProps {
   product: ProductsDTO;
   onAddToCart: (_id: string) => Promise<void>;
+  idLoading: string | null;
 }
 
 class ProductItem extends Component<ProductItemProps, ProductItemState> {
   render() {
     const { image, product_name, product_price, product_title, _id } =
       this.props.product;
-    const { onAddToCart } = this.props;
+    const { onAddToCart, idLoading } = this.props;
     return (
       <>
         <div className="deal__product--item toptreding__product--item">
-          <i className="fa-solid fa-spinner fa-spin fa-spin-1" />
+          <i
+            className={`fa-solid fa-spinner fa-spin fa-spin-1 ${
+              idLoading === _id && "show__fa-spin"
+            }`}
+          />
           <div className="deal__product--item-img">
             <img src={image} className="img-1" alt="Image" />
             <img src={image} className="img-2" alt="Image" />

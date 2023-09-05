@@ -7,8 +7,7 @@ import appRouters from "./routes/index.route";
 import { errorHandler } from "./middlewares/error.middleware";
 const app: Application = express();
 
-const PORT: number = parseInt(process.env.PORT!) || 3000;
-
+const PORT: number = 5000;
 // CONNECT DB
 ConnectDatabase.connect();
 

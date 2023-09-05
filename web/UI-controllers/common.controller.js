@@ -27,6 +27,8 @@ export const loading = (array, { status }) => {
   const cart = document.querySelector(".cart__icon");
   const cart__container = document.querySelector(".cart__container");
   const close_cart_icon = document.querySelector(".cart__icon .xmark");
+
+  
   // START TOGGLE MENU SIDEBAR
   menu_btns.forEach((menu__btn) => {
     menu__btn.addEventListener("click", () => {

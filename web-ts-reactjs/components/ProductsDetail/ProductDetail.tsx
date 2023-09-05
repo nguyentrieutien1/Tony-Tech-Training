@@ -2,17 +2,17 @@ import React, { Component } from "react";
 import { CartProductsDTO } from "@/types/cart.type";
 import { ProductsDTO } from "@/types/products.type";
 interface ProductDetailProps {
-  _id: string;
+  productId: string;
   isShowProductDetail: boolean;
   cart: CartProductsDTO[];
 }
 // SHOW PRODUCT DETAIL IN MODAL
 class ProductDetail extends Component<ProductDetailProps> {
   render() {
-    const { _id, isShowProductDetail, cart } = this.props;
+    const { productId, isShowProductDetail, cart } = this.props;
 
     const cartItem = cart.find(
-      (item: CartProductsDTO) => item.product?._id == _id
+      (item: CartProductsDTO) => item.product?._id == productId
     );
     if (cartItem) {
       const quantity = cartItem?.quantity!;

@@ -148,6 +148,9 @@
   color: var(--white);
   display: none;
 }
+.show__fa-spin {
+  display: block !important;
+}
 .cart__icon {
   position: fixed;
   bottom: 10px;

@@ -69,5 +69,6 @@ class Cart {
     const result = await fetch(`${API_URL}/cart/${cartId}`);
     return await result.json();
   };
+  
 }
 export default new Cart();

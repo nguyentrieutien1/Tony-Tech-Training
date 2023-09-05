@@ -4,7 +4,8 @@ interface ButtonProps {
   label: string;
   disabled?: boolean;
   className: string;
-  onClick: (e: FormEvent<Element> | any) => Promise<void>;
+  type: any;
+  onClick?: (e: FormEvent<Element> | any) => Promise<void>;
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -12,9 +13,15 @@ const Button: React.FC<ButtonProps> = ({
   onClick,
   disabled = false,
   className,
+  type,
 }) => {
   return (
-    <button className={className} onClick={onClick} disabled={disabled}>
+    <button
+      type={type}
+      className={className}
+      onClick={onClick}
+      disabled={disabled}
+    >
       {label}
     </button>
   );

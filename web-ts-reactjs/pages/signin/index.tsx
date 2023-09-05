@@ -21,19 +21,12 @@ export const authFields = [
 ];
 export default function SignIn() {
   const router = useRouter();
-  const [user, setUser] = useState<UserDTO>({ email: "", password: "" });
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { target } = e;
-    const { value, name } = target;
-    setUser((prevState) => {
-      return {
-        ...prevState,
-        [name]: value,
-      };
-    });
-  };
-  const handleSignIn = async (e: FormEvent) => {
+  
+
+  const handleSignIn = async (e: FormEvent, user: UserDTO) => {
     e.preventDefault();
+    console.log(user);
+
     const result = await AuthApi.signIn(user);
     const { status, message } = result;
     const { data } = result;
@@ -45,12 +38,6 @@ export default function SignIn() {
     }
   };
   return (
-    <AuthForm
-      fields={authFields}
-      onSubmit={handleSignIn}
-      handleChange={handleChange}
-      user={user}
-      title="Sign In"
-    />
+    <AuthForm fields={authFields} onSubmit={handleSignIn} title="Sign In" />
   );
 }

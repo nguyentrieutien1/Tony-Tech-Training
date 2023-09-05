@@ -15,6 +15,7 @@ export const createCartItem = () => {
       btn.addEventListener("click", async function (e) {
         const spin = document.querySelector(`.fa-spin-${index}`);
         spin.style.display = "block";
+        spin.style.zIndex = "1";
         const productId = this?.getAttribute("data-id");
         await cartService.createOrUpdate(productId);
         await getCartItems(productId, modal__content);

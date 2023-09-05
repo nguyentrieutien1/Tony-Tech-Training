@@ -1,29 +1,41 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import ToggleCart from "@/components/ToggleCart/ToggleCart";
 import { CartProductsContext } from "@/contexts/CartProductContext";
 import { CartProductsDTO } from "@/types/cart.type";
 import { CartProductsContextType } from "@/types/productCartContextType.type";
 import CartProductsItem from "@/components/CartProductsItem/CartProductsItem";
 import Checkout from "@/components/Checkout/Checkout";
-class CartProductModule extends Component<CartProductsContextType> {
+import { CartProductsAction } from "@/actions/cart-products.action";
+class CartProductModule extends Component<any, { isLoading: boolean }> {
   static contextType = CartProductsContext;
   context!: React.ContextType<typeof CartProductsContext>;
-
+  constructor(props: any) {
+    super(props);
+    this.state = {
+      isLoading: false,
+    };
+  }
   // HANDLE DELETE CART ITEM
   onDelete = async (_id: string) => {
-    const { remove } = this.context;
-    await remove(_id);
+    const { removeCartItem } = this.props;
+    await removeCartItem(_id);
   };
 
   // HANDLE UPDATE CART ITEM
-  onUpdate = async (_id: string, type: number, quantity: number) => {
-    const { update } = this.context;
-    await update(_id, type, { quantity });
+  onUpdate = async (_id: string, payload: CartProductsDTO) => {
+    const { updateCartItem } = this.props;
+    await updateCartItem(_id, payload);
   };
+  componentDidMount(): void {
+    const { getAllCartProducts } = this.props;
+    getAllCartProducts();
+  }
 
-  
   render() {
-    const { isToggleCart, cart, setIsToggleCart } = this.context;
+    const { isToggleCart, setIsToggleCart } = this.context;
+    const { isLoading } = this.state;
+    const { cart } = this.props;
     return (
       <>
         {/* SHOW BUTTON TOGGLE CART */}
@@ -44,10 +56,12 @@ class CartProductModule extends Component<CartProductsContextType> {
                 if (cartItem.product && cartItem._id) {
                   return (
                     <CartProductsItem
+                      isLoading={isLoading}
                       cartItem={cartItem}
                       key={cartItem?._id}
                       onUpdate={this.onUpdate}
                       onDelete={this.onDelete}
+                      cart={cart}
                     />
                   );
                 }
@@ -60,4 +74,21 @@ class CartProductModule extends Component<CartProductsContextType> {
     );
   }
 }
-export default CartProductModule;
+const mapDispatchToProps = (dispatch: any) => {
+  return {
+    getAllCartProducts: () => dispatch(CartProductsAction.getAllCartProducts()),
+    updateCartItem: (_id: string, payload: CartProductsDTO) =>
+      dispatch(CartProductsAction.updateCartItem(_id, payload)),
+    removeCartItem: (_id: string) =>
+      dispatch(CartProductsAction.removeCartItem(_id)),
+  };
+};
+const mapDispatchToState = (state: any) => {
+  return {
+    cart: state.cartProductsReducer,
+  };
+};
+export default connect(
+  mapDispatchToState,
+  mapDispatchToProps
+)(CartProductModule);
