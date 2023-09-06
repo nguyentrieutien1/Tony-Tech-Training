@@ -32,18 +32,18 @@ class CartProductModule extends Component<
   }
   // HANDLE DELETE CART ITEM
   onDelete = async (_id: string) => {
+    this.setState({ idLoadingCartItem: _id });
     const { removeCartItem } = this.props;
     await removeCartItem(_id);
+    this.setState({ idLoadingCartItem: null });
   };
 
   // HANDLE UPDATE CART ITEM
   onUpdate = async (_id: string, payload: CartProductsDTO) => {
     this.setState({ idLoadingCartItem: _id });
     const { updateCartItem } = this.props;
-    setTimeout(async () => {
-      await updateCartItem(_id, payload);
-      this.setState({ idLoadingCartItem: null });
-    }, 500);
+    await updateCartItem(_id, payload);
+    this.setState({ idLoadingCartItem: null });
   };
 
   componentDidMount(): void {
@@ -61,7 +61,9 @@ class CartProductModule extends Component<
         <ToggleCart
           cart={cart}
           isToggleCart={isToggleCart}
-          setIsToggleCart={() => setIsToggleCart((prevState) => !prevState)}
+          setIsToggleCart={() =>
+            setIsToggleCart((prevState: boolean) => !prevState)
+          }
         />
         <div
           className={`cart__container ${
@@ -104,12 +106,9 @@ const mapDispatchToProps = (dispatch: any) => {
       dispatch(CartProductsAction.removeCartItem(_id)),
   };
 };
-const mapDispatchToState = (state: any) => {
+const mapStateToProps = (state: any) => {
   return {
     cart: state.cartProductsReducer,
   };
 };
-export default connect(
-  mapDispatchToState,
-  mapDispatchToProps
-)(CartProductModule);
+export default connect(mapStateToProps, mapDispatchToProps)(CartProductModule);

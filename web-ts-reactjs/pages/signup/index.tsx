@@ -1,12 +1,15 @@
 import React, { FormEvent, useState } from "react";
 import { UserDTO } from "@/types/user.type";
-import { API_URL } from "../../constants/apiUrl";
 import { useRouter } from "next/navigation";
 import AuthForm from "@/components/AuthForm/AuthForm";
 import { authFields } from "../signin";
 import { AuthApi } from "@/apis/auth.api";
 export default function SignUp() {
+
+
   const router = useRouter();
+
+
   const handleSignUp = async (e: FormEvent, user: UserDTO) => {
     e.preventDefault();
     try {
@@ -24,6 +27,8 @@ export default function SignUp() {
       alert(message);
     }
   };
+
+  
   return (
     <AuthForm fields={authFields} onSubmit={handleSignUp} title="Sign Up" />
   );

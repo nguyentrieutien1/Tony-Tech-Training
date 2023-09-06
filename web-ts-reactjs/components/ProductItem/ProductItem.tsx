@@ -11,10 +11,14 @@ interface ProductItemProps {
 }
 
 class ProductItem extends Component<ProductItemProps, ProductItemState> {
+
+
   render() {
     const { image, product_name, product_price, product_title, _id } =
       this.props.product;
     const { onAddToCart, idLoadingProductItem } = this.props;
+
+
     return (
       <>
         <div className="deal__product--item toptreding__product--item">
@@ -65,4 +69,6 @@ class ProductItem extends Component<ProductItemProps, ProductItemState> {
     );
   }
 }
+
+
 export default ProductItem;

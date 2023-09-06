@@ -9,9 +9,13 @@ const productReducer = (
 ) => {
   const { type, payload } = action;
   switch (type) {
+
+
     case GET_ALL_PRODUCTS:
       state = [...payload];
       return [...state];
+    
+    
     default:
       return [...state];
   }

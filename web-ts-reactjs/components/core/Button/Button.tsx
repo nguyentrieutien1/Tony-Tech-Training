@@ -15,6 +15,8 @@ const Button: React.FC<ButtonProps> = ({
   className,
   type,
 }) => {
+
+
   return (
     <button
       type={type}
@@ -26,5 +28,6 @@ const Button: React.FC<ButtonProps> = ({
     </button>
   );
 };
+
 
 export default Button;

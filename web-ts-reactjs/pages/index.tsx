@@ -6,6 +6,8 @@ import CartProductModule from "@/modules/CartProductsModule/CartProductsModule";
 import { Provider } from "react-redux";
 import { store } from "@/store";
 function App() {
+
+
   return (
     <div>
       <Provider store={store}>
@@ -17,5 +19,6 @@ function App() {
     </div>
   );
 }
-const mapDispatchToProps = {};
+
+
 export default withAuthentication(App);

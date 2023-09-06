@@ -19,14 +19,16 @@ export const authFields = [
     lable: "Password",
   },
 ];
+
+
 export default function SignIn() {
+
+
   const router = useRouter();
   
 
   const handleSignIn = async (e: FormEvent, user: UserDTO) => {
     e.preventDefault();
-    console.log(user);
-
     const result = await AuthApi.signIn(user);
     const { status, message } = result;
     const { data } = result;
@@ -37,6 +39,8 @@ export default function SignIn() {
       alert(message);
     }
   };
+
+  
   return (
     <AuthForm fields={authFields} onSubmit={handleSignIn} title="Sign In" />
   );

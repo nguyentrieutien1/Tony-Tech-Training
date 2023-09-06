@@ -3,8 +3,11 @@ import { CartProductsDTO } from "@/types/cart.type";
 interface CheckoutProps {
   cart: CartProductsDTO[];
 }
+
+
 function Checkout(props: CheckoutProps) {
   const { cart } = props;
+
 
   let total__price: number =
     cart?.length > 0
@@ -15,6 +18,8 @@ function Checkout(props: CheckoutProps) {
         }, 0)
       : 0;
   total__price = Number.parseFloat(total__price.toFixed(2));
+
+
 
   return (
     <div className="cart__checkout">
@@ -45,4 +50,6 @@ function Checkout(props: CheckoutProps) {
     </div>
   );
 }
+
+
 export default Checkout;

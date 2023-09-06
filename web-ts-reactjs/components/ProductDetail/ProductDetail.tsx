@@ -6,8 +6,12 @@ interface ProductDetailProps {
   isShowProductDetail: boolean;
   cart: CartProductsDTO[];
 }
+
+
 // SHOW PRODUCT DETAIL IN MODAL
 class ProductDetail extends Component<ProductDetailProps> {
+
+
   render() {
     const { productId, isShowProductDetail, cart } = this.props;
 

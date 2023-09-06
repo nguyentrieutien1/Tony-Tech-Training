@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { ProductsDTO } from "@/types/products.type";
 import { CartProductsDTO } from "@/types/cart.type";
+
+
 interface CartProductsItemProps {
   onDelete: (_id: string) => void;
   onUpdate: (_id: string, payload: CartProductsDTO) => Promise<void>;
@@ -8,13 +10,19 @@ interface CartProductsItemProps {
   cart: CartProductsDTO[];
   idLoadingCartItem: string | null;
 }
+
+
 function CartProductsItem(props: CartProductsItemProps) {
   const { onDelete, onUpdate, cartItem, cart, idLoadingCartItem } = props;
   const { quantity, _id } = cartItem;
   const { image, product_name, product_price } =
     cartItem.product as ProductsDTO;
+  
+  
 
   const [valueInput, setValueInput] = useState<number>(quantity!);
+
+
 
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement> | null) => {
@@ -24,6 +32,7 @@ function CartProductsItem(props: CartProductsItemProps) {
     }
     setValueInput(value);
   };
+
 
   
   const handleUpdateCartItem = async (
@@ -44,9 +53,15 @@ function CartProductsItem(props: CartProductsItemProps) {
     await onUpdate(cartId, { quantity });
   };
 
+
+
+
   useEffect(() => {
     setValueInput(quantity!);
   }, [quantity]);
+
+
+
 
   return (
     <div className="cart__item">
@@ -106,4 +121,6 @@ function CartProductsItem(props: CartProductsItemProps) {
     </div>
   );
 }
+
+
 export default CartProductsItem;

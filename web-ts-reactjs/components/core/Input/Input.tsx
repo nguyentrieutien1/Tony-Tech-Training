@@ -19,6 +19,8 @@ const Input: React.FC<InputProps> = ({
   placeholder,
   className,
 }) => {
+
+  
   return (
     <div>
       <label>{label}</label>

@@ -5,8 +5,12 @@ interface ToggleCartProps {
   setIsToggleCart: () => void;
   isToggleCart: boolean;
 }
+
+
 function ToggleCart(props: ToggleCartProps) {
   const { cart, setIsToggleCart, isToggleCart } = props;
+
+
 
   // TOTAL QUANTITY OF THE CART
   const quantity: number = !cart
@@ -16,11 +20,14 @@ function ToggleCart(props: ToggleCartProps) {
     }, 0);
   
   
+  
   // HANDLE CLOSE AND OPEN THE CART
   const handleToggleCart = (): void => {
     setIsToggleCart();
   };
 
+
+  
   return (
     <div className={`cart__icon ${isToggleCart && "position__cart--icon"}`}>
       <div onClick={handleToggleCart} className="icon">

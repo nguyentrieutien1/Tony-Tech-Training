@@ -1,6 +1,6 @@
 import React, { createContext, useState } from "react";
-import { CartProductsContextType } from "@/types/productCartContextType.type";
-import { CartProductsProviderProps } from "@/types/productCartProviderProps.type";
+import { CartProductsContextType } from "@/types/cart-products.context.type";
+import { CartProductsProviderProps } from "@/types/cart-products.provider.type";
 const CartProductsContext = createContext<CartProductsContextType>(
   {} as CartProductsContextType
 );

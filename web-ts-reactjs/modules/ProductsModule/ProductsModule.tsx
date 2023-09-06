@@ -1,7 +1,6 @@
 import React, { Component, createContext } from "react";
 import { connect } from "react-redux";
 import { ProductsDTO } from "@/types/products.type";
-import { CartProductsContextType } from "@/types/productCartContextType.type";
 import { withCartProductsContext } from "@/HOCs/withCartProductsContext";
 import { CartProductsContext } from "@/contexts/CartProductContext";
 import { CartProductsDTO } from "@/types/cart.type";
@@ -67,9 +66,8 @@ class ProductsModule extends Component<ProductsProps, ProductsState> {
     });
   };
 
-
   onAddToCart = async (_id: string) => {
-    // this.showAddedProductLoading(_id);
+    this.showAddedProductLoading(_id);
     const { createCartItem, updateCartItem } = this.props;
     const { cart } = this.state;
     const index = cart.findIndex(
@@ -83,10 +81,8 @@ class ProductsModule extends Component<ProductsProps, ProductsState> {
     } else {
       await createCartItem({ productId: _id, quantity: 1 });
     }
-    // setTimeout(() => {
-    //   this.showAddedCartItemModal(_id);
-    //   this.closeAddedProductLoading();
-    // }, 500);
+    this.showAddedCartItemModal(_id);
+    this.closeAddedProductLoading();
   };
 
   componentDidMount(): void {
@@ -108,7 +104,7 @@ class ProductsModule extends Component<ProductsProps, ProductsState> {
   }
 
   render() {
-    const { products, cart } = this.props;
+    const { products, cart } = this.state;
     const { productId, isShowProductDetail, idLoadingProductItem } = this.state;
     return (
       <div>
@@ -150,27 +146,26 @@ class ProductsModule extends Component<ProductsProps, ProductsState> {
   }
 }
 
-
-const mapDispathToState = (state: any) => {
+const mapStateToProps = (state: any) => {
   return {
     products: state.productReducer,
     cart: state.cartProductsReducer,
   };
 };
 
-
 const mapDispathToProps = (dispatch: any) => {
   return {
     getAllProducts: () => dispatch(ProductsAction.getAllProducts()),
+
     updateCartItem: (_id: string, payload: CartProductsDTO) =>
       dispatch(CartProductsAction.updateCartItem(_id, payload)),
+
     createCartItem: (cartItem: CartProductsDTO) =>
       dispatch(CartProductsAction.createCartItem(cartItem)),
   };
 };
 
-
 export default connect(
-  mapDispathToState,
+  mapStateToProps,
   mapDispathToProps
 )(withCartProductsContext(ProductsModule));
