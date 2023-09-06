@@ -2,33 +2,40 @@ import React, { Component, createContext } from "react";
 import { connect } from "react-redux";
 import { ProductsDTO } from "@/types/products.type";
 import { CartProductsContextType } from "@/types/productCartContextType.type";
-import { withCartProductsContext } from "@/HOCs/withProductCartContext";
+import { withCartProductsContext } from "@/HOCs/withCartProductsContext";
 import { CartProductsContext } from "@/contexts/CartProductContext";
 import { CartProductsDTO } from "@/types/cart.type";
-import ProductDetail from "@/components/ProductsDetail/ProductDetail";
+import ProductDetail from "@/components/ProductDetail/ProductDetail";
 import ProductItem from "@/components/ProductItem/ProductItem";
 import { ProductsAction } from "@/actions/product.action";
 import { CartProductsAction } from "@/actions/cart-products.action";
 export const ProductsContext = createContext([]);
+interface ProductsProps {
+  createCartItem: (item: CartProductsDTO) => Promise<void>;
+  updateCartItem: (cartId: string, payload: CartProductsDTO) => Promise<void>;
+  getAllProducts: () => Promise<ProductsDTO[]>;
+  products: ProductsDTO[];
+  cart: CartProductsDTO[];
+}
 interface ProductsState {
   products: ProductsDTO[];
   cart: CartProductsDTO[];
-  idLoading: string | null;
-
+  idLoadingProductItem: string | null;
   isShowProductDetail: boolean;
   productId: string;
 }
-class ProductsModule extends Component<any, ProductsState> {
+
+class ProductsModule extends Component<ProductsProps, ProductsState> {
   static contextType = CartProductsContext;
   context!: React.ContextType<typeof CartProductsContext>;
-  constructor(props: CartProductsContextType) {
+  constructor(props: ProductsProps) {
     super(props);
     this.state = {
       products: [],
       isShowProductDetail: false,
       productId: "",
       cart: [],
-      idLoading: null,
+      idLoadingProductItem: null,
     };
   }
 
@@ -46,20 +53,23 @@ class ProductsModule extends Component<any, ProductsState> {
     });
   };
 
-  // SHOW LOADING
-  showAddedCartLoading = (_id: string) => {
+  // SHOW PRODUCT LOADING
+  showAddedProductLoading = (_id: string) => {
     this.setState({
-      idLoading: _id,
+      idLoadingProductItem: _id,
     });
   };
-  closeAddedCartLoading = () => {
+
+  // CLOSE PRODUCT LOADING
+  closeAddedProductLoading = () => {
     this.setState({
-      idLoading: null,
+      idLoadingProductItem: null,
     });
   };
-  // ADD TO CART
+
+
   onAddToCart = async (_id: string) => {
-    this.showAddedCartLoading(_id);
+    // this.showAddedProductLoading(_id);
     const { createCartItem, updateCartItem } = this.props;
     const { cart } = this.state;
     const index = cart.findIndex(
@@ -68,20 +78,22 @@ class ProductsModule extends Component<any, ProductsState> {
     // IF PRODUCT EXIST IN THE CART, LET UPDATE
     if (index > -1) {
       const quantity = cart[index].quantity + 1;
-      await updateCartItem(cart[index]?._id, { quantity });
+      await updateCartItem(cart[index]?._id!, { quantity });
       // ELSE LET CREATE NEW
     } else {
       await createCartItem({ productId: _id, quantity: 1 });
     }
-    setTimeout(() => {
-      this.closeAddedCartLoading();
-      this.showAddedCartItemModal(_id);
-    }, 500);
+    // setTimeout(() => {
+    //   this.showAddedCartItemModal(_id);
+    //   this.closeAddedProductLoading();
+    // }, 500);
   };
+
   componentDidMount(): void {
     const { getAllProducts } = this.props;
     getAllProducts();
   }
+
   componentDidUpdate(
     prevProps: Readonly<any>,
     prevState: Readonly<ProductsState>
@@ -94,9 +106,10 @@ class ProductsModule extends Component<any, ProductsState> {
       this.setState({ cart: [...cart] });
     }
   }
+
   render() {
     const { products, cart } = this.props;
-    const { productId, isShowProductDetail, idLoading } = this.state;
+    const { productId, isShowProductDetail, idLoadingProductItem } = this.state;
     return (
       <div>
         <ProductDetail
@@ -120,7 +133,7 @@ class ProductsModule extends Component<any, ProductsState> {
               {products.length > 0 ? (
                 products.map((product: ProductsDTO) => (
                   <ProductItem
-                    idLoading={idLoading}
+                    idLoadingProductItem={idLoadingProductItem}
                     key={product?._id}
                     product={product}
                     onAddToCart={this.onAddToCart}
@@ -136,12 +149,16 @@ class ProductsModule extends Component<any, ProductsState> {
     );
   }
 }
+
+
 const mapDispathToState = (state: any) => {
   return {
     products: state.productReducer,
     cart: state.cartProductsReducer,
   };
 };
+
+
 const mapDispathToProps = (dispatch: any) => {
   return {
     getAllProducts: () => dispatch(ProductsAction.getAllProducts()),
@@ -151,6 +168,8 @@ const mapDispathToProps = (dispatch: any) => {
       dispatch(CartProductsAction.createCartItem(cartItem)),
   };
 };
+
+
 export default connect(
   mapDispathToState,
   mapDispathToProps

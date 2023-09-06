@@ -6,16 +6,17 @@ interface CartProductsItemProps {
   onUpdate: (_id: string, payload: CartProductsDTO) => Promise<void>;
   cartItem: CartProductsDTO;
   cart: CartProductsDTO[];
-  isLoading: boolean;
+  idLoadingCartItem: string | null;
 }
 function CartProductsItem(props: CartProductsItemProps) {
-  const { cartItem, cart, isLoading } = props;
+  const { onDelete, onUpdate, cartItem, cart, idLoadingCartItem } = props;
   const { quantity, _id } = cartItem;
   const { image, product_name, product_price } =
     cartItem.product as ProductsDTO;
-  const { onDelete, onUpdate } = props as CartProductsItemProps;
 
   const [valueInput, setValueInput] = useState<number>(quantity!);
+
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement> | null) => {
     let value = parseInt(e!.target.value);
     if (value <= 1) {
@@ -24,6 +25,7 @@ function CartProductsItem(props: CartProductsItemProps) {
     setValueInput(value);
   };
 
+  
   const handleUpdateCartItem = async (
     cartId: string,
     type: number,
@@ -49,10 +51,14 @@ function CartProductsItem(props: CartProductsItemProps) {
   return (
     <div className="cart__item">
       <div className="cart__item--info">
-        <div className={`sub__spin ${isLoading && "show__sub-spin"}`} />
+        <div
+          className={`sub__spin ${
+            idLoadingCartItem == _id && "show__sub-spin"
+          }`}
+        />
         <i
           className={`fa-solid fa-spinner fa-spin fa-spin-item ${
-            isLoading && "show__fa-spin-item"
+            idLoadingCartItem == _id && "show__fa-spin-item"
           }`}
         />
         <img src={image} />

@@ -7,20 +7,20 @@ interface ProductItemState {
 interface ProductItemProps {
   product: ProductsDTO;
   onAddToCart: (_id: string) => Promise<void>;
-  idLoading: string | null;
+  idLoadingProductItem: string | null;
 }
 
 class ProductItem extends Component<ProductItemProps, ProductItemState> {
   render() {
     const { image, product_name, product_price, product_title, _id } =
       this.props.product;
-    const { onAddToCart, idLoading } = this.props;
+    const { onAddToCart, idLoadingProductItem } = this.props;
     return (
       <>
         <div className="deal__product--item toptreding__product--item">
           <i
             className={`fa-solid fa-spinner fa-spin fa-spin-1 ${
-              idLoading === _id && "show__fa-spin"
+              idLoadingProductItem === _id && "show__fa-spin"
             }`}
           />
           <div className="deal__product--item-img">

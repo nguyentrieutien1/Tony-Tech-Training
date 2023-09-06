@@ -3,17 +3,31 @@ import { connect } from "react-redux";
 import ToggleCart from "@/components/ToggleCart/ToggleCart";
 import { CartProductsContext } from "@/contexts/CartProductContext";
 import { CartProductsDTO } from "@/types/cart.type";
-import { CartProductsContextType } from "@/types/productCartContextType.type";
 import CartProductsItem from "@/components/CartProductsItem/CartProductsItem";
 import Checkout from "@/components/Checkout/Checkout";
 import { CartProductsAction } from "@/actions/cart-products.action";
-class CartProductModule extends Component<any, { isLoading: boolean }> {
+
+interface CartProductsProps {
+  removeCartItem: (cartId: string) => Promise<void>;
+  updateCartItem: (cartId: string, payload: CartProductsDTO) => Promise<void>;
+  getAllCartProducts: () => Promise<void>;
+  cart: CartProductsDTO[];
+}
+
+interface CartProductsState {
+  idLoadingCartItem: string | null;
+}
+
+class CartProductModule extends Component<
+  CartProductsProps,
+  CartProductsState
+> {
   static contextType = CartProductsContext;
   context!: React.ContextType<typeof CartProductsContext>;
   constructor(props: any) {
     super(props);
     this.state = {
-      isLoading: false,
+      idLoadingCartItem: null,
     };
   }
   // HANDLE DELETE CART ITEM
@@ -24,9 +38,14 @@ class CartProductModule extends Component<any, { isLoading: boolean }> {
 
   // HANDLE UPDATE CART ITEM
   onUpdate = async (_id: string, payload: CartProductsDTO) => {
+    this.setState({ idLoadingCartItem: _id });
     const { updateCartItem } = this.props;
-    await updateCartItem(_id, payload);
+    setTimeout(async () => {
+      await updateCartItem(_id, payload);
+      this.setState({ idLoadingCartItem: null });
+    }, 500);
   };
+
   componentDidMount(): void {
     const { getAllCartProducts } = this.props;
     getAllCartProducts();
@@ -34,7 +53,7 @@ class CartProductModule extends Component<any, { isLoading: boolean }> {
 
   render() {
     const { isToggleCart, setIsToggleCart } = this.context;
-    const { isLoading } = this.state;
+    const { idLoadingCartItem } = this.state;
     const { cart } = this.props;
     return (
       <>
@@ -56,7 +75,7 @@ class CartProductModule extends Component<any, { isLoading: boolean }> {
                 if (cartItem.product && cartItem._id) {
                   return (
                     <CartProductsItem
-                      isLoading={isLoading}
+                      idLoadingCartItem={idLoadingCartItem}
                       cartItem={cartItem}
                       key={cartItem?._id}
                       onUpdate={this.onUpdate}
@@ -77,8 +96,10 @@ class CartProductModule extends Component<any, { isLoading: boolean }> {
 const mapDispatchToProps = (dispatch: any) => {
   return {
     getAllCartProducts: () => dispatch(CartProductsAction.getAllCartProducts()),
+
     updateCartItem: (_id: string, payload: CartProductsDTO) =>
       dispatch(CartProductsAction.updateCartItem(_id, payload)),
+
     removeCartItem: (_id: string) =>
       dispatch(CartProductsAction.removeCartItem(_id)),
   };

@@ -8,7 +8,9 @@ class ProductsAction {
       try {
         const products: ProductsDTO[] = await ProductsApi.getAll();
         dispatch({ type: GET_ALL_PRODUCTS, payload: products });
-      } catch (error) {}
+      } catch (error) {
+        // DISPATCH ERROR TO REDUCER HERE
+      }
     };
   };
 }
