@@ -24,7 +24,6 @@ export const createCartItem = () => {
         modal__checkout.innerHTML = `
 							Subtotal: $ ${await totalPrice({ id: productId })}
 						`;
-
         modal__body.classList?.add("show__modal--body");
       });
     });
@@ -209,6 +208,9 @@ export const getCartItemById = async (id) => {
   return renderProduct;
 };
 
+
+
+
 const listenCheckout = async () => {
   const total = await totalPrice(null);
   const total__price = document.querySelector(".total__price");
@@ -249,6 +251,7 @@ const listenQuantityCartItem = async () => {
   }, 0);
   quantityElement.textContent = quantities;
 };
+
 const updateQuantityCartItem = async (id, { type, value }) => {
   const product = cartState.find((cart) => cart?._id == id);
   const index_spin = cartState.findIndex((p) => p?._id == id);
